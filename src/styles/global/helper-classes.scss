@@ -1,0 +1,277 @@
+/*================ Helper Classes ================*/
+.clearfix {
+  @include clearfix();
+}
+
+.visually-hidden {
+  @include visually-hidden();
+}
+
+.js-focus-hidden:focus {
+  outline: none;
+}
+
+.label-hidden {
+  @include visually-hidden();
+
+  // No placeholders, so force show labels
+  .no-placeholder & {
+    @include visually-shown();
+  }
+}
+
+.visually-shown {
+  @include visually-shown();
+}
+
+// Only show when JS is not supported
+.no-js:not(html) {
+  display: none;
+
+  .no-js & {
+    display: block;
+  }
+}
+
+// Only show when JS is supported
+.js {
+  .no-js & {
+    display: none;
+  }
+}
+
+// Only show when browser cookies are not supported
+.supports-no-cookies:not(html) {
+  display: none;
+
+  html.supports-no-cookies & {
+    display: block;
+  }
+}
+
+// Only show when browser cookies are supported
+.supports-cookies {
+  html.supports-no-cookies & {
+    display: none;
+  }
+}
+
+/*============================================================================
+  Skip to content button
+    - Overrides .visually-hidden when focused
+==============================================================================*/
+.skip-link:focus {
+  @include visually-shown(absolute);
+  color: $color-body-text;
+  background-color: $color-body;
+  padding: $gutter / 2;
+  z-index: $z-index-skip-to-content;
+  transition: none;
+}
+
+// PERSONAL GLOBAL stylesheet
+
+/*@media(max-width: 992px){
+  h1{
+    font-size: 34px;
+  }
+  h2{
+    font-size: 32px;
+  }
+  h3{
+    font-size: 30px;
+  }
+  h4{
+    font-size: 28px;
+  }
+}*/
+.text-underline{
+  text-decoration: underline;
+}
+img{
+  width: 100%;
+}
+.text-center{
+  text-align: center;
+}
+
+.transition{
+  transition: all ease .3s;
+}
+.opacity-off{
+  opacity: 0;
+}
+.opacity-on{
+  opacity: 1;
+}
+
+.width--full{
+  width: 100%;
+}
+.height--full{
+  height: 100%;
+}
+.height--full--view{
+  height: 100vh;
+}
+
+/*BACKGROUND */
+.bg-yellow{
+  background-color: #FED766;
+}
+.bg-navy{
+  background-color: #063042;
+}
+.bg-black-gradiant {
+    background: black; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(black, black 60%, white); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(black, black 60%, white); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(black, black 60%, white); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(black, black 60%, white); /* Standard syntax */
+}
+.bg-white-navy{
+  background: white; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(white, #063042); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(white, #063042); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(white, #063042); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(white, #063042); /* Standard syntax */
+
+}
+@media(max-width: 991px){
+  /*.height--full{
+    height: auto;
+  }*/
+}
+
+
+.bg-transparent{
+  background-color: transparent;
+}
+.bg-grey{
+  background-color: #a3a5a7;
+}
+
+.text--fine-print{
+  font-size: 8px;
+}
+
+.text--semibold{
+  font-weight: bold;
+}
+.text--bold{
+  font-weight: bolder;
+}
+/*PADDINGS*/
+.pleft-15{
+  padding-left: 15px;
+}
+.pright-15{
+  padding-right: 15px;
+}
+.psides-15{
+  padding: 0 15px;
+}
+.pleft-30{
+  padding-left: 30px;
+}
+.pright-30{
+  padding-right: 30px;
+}
+.psides-30{
+  padding: 0 30px;
+}
+.ptop-30{
+  padding-top: 30px;
+}
+.pbot-30{
+  padding-bottom: 30px;
+}
+.psides-45{
+  padding: 0 45px;
+}
+.padding-15{
+  padding: 15px;
+}
+.padding-30{
+  padding: 30px;
+}
+/*MARGINS*/
+.margin-center{
+  margin: 0 auto;
+}
+.mtop-0{
+  margin-top: 0px;
+}
+.mtop-10{
+  margin-top: 10px;
+}
+.mtop-15{
+  margin-top: 15px;
+}
+.mtop-30{
+  margin-top: 30px;
+}
+.mbot-0{
+  margin-bottom: 0px;
+}
+.mbot-15{
+  margin-bottom: 15px;
+}
+.mbot-30{
+  margin-bottom: 30px;
+}
+.mleft-15{
+  margin-left: 15px;
+}
+.mleft-30{
+  margin-left: 30px;
+}
+.mright-15{
+  margin-right: 15px;
+}
+.mright-30{
+  margin-right: 30px;
+}
+
+
+.flex{
+  display: flex;
+}
+.justify-center{
+  justify-content: center;
+}
+.justify-between{
+  justify-content: space-between;
+}
+.justify-around{
+  justify-content: space-around;
+}
+.align-center{
+  align-items: center;
+}
+
+.is-relative{
+  position: relative;
+}
+.is-absolute{
+  position: absolute;
+}
+li{
+  list-style: none;
+}
+
+.border-none{
+  border: 0px;
+}
+.box-shadow-none{
+  box-shadow: none;
+}
+
+/*BUTTONS*/
+.btn{
+  height: 40px;
+  border-radius: 5px;
+}
+.btn-small{
+  width: 150px;
+}
