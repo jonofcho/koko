@@ -1,9 +1,26 @@
 .theme__navigation{
   height: 76px;
+  padding: 0 40px;
 }
 .theme__promotion-bar{
   height: 40px;
+  letter-spacing: 1.5px;
 }
 .navigation__link{
   height: 76px;
+}
+.navigation__link--text{
+  @extend .text-light-grey;
+  &:hover{
+    @extend .text-dark-grey;
+  }
+}
+.m-theme__navigation{
+  .navigation__user-controller--container, .navigation__search--container{
+    width: 60px;
+  }
+}
+
+.navigation__icon--container{
+  width: 20px;
 }

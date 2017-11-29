@@ -1,24 +1,55 @@
-<div class="theme__promotion-bar bg-grey flex align-center justify-center">
+<div class="theme__promotion-bar bg-grey flex align-center justify-center text-white text--small">
   <p>Free Shipping on Orders Over $125</p>
 </div>
-<div class="theme__navigation flex justify-between z-depth-1 align-center">
+<!-- DESKTOP NAV -->
+<div class="theme__navigation flex justify-between z-depth-1 align-center medium-down--hide">
   <div class="navigation__logo--container">
     <h2 class="text--bold">KOKO BEAUTE</h2>
   </div>
-  <div class="navigation__menu--container">
+  <!-- <div class="navigation__menu--container"> -->
     <!-- linklists[section.settings.main_linklist].links -->
-    <ul class="flex justify-around">
-      {%- for link in linklists['main-menu'].links -%}
-        <li class="psides-15"><a href="{{link.url}}"><div class="navigation__link flex align-center">{{ link.title }}</div></a></li>
-      {%- endfor -%}
-    </ul>
-  </div>
+
+    <!-- <ul class="flex justify-around"> -->
+    <!-- </ul> -->
+  <!-- </div> -->
+  {%- for link in linklists['main-menu'].links -%}
+    <a href="{{link.url}}"><div class="psides-15 navigation__link flex align-center"><p class="navigation__link--text">{{ link.title }}</p></div></a>
+  {%- endfor -%}
   <div class="navigation__user-controls--container">
     <div>
-      <h3>TESTEST CONTROL</h3>
+      <p>SIGN IN</p>
+
     </div>
   </div>
 </div>
+<!-- DESKTOPNAV  -->
+<!-- MOBILENAV -->
+<div class="m-theme__navigation z-depth-2 large-up--hide flex justify-between align-center psides-15">
+  <div class="navigation__search--container">
+    <div class="navigation__icon--container">
+      <img src="{{ 'icon--search.svg' | asset_url }}" alt="">
+    </div>
+  </div>
+
+    <h2 class="text--bold">KOKO BEAUTE</h2>
+
+  <div class="flex justify-around navigation__user-controller--container align-center">
+    <div class="navigation__cart--container">
+      <div class="navigation__icon--container">
+        <img src="{{ 'icon--bag.svg' | asset_url }}" alt="">
+      </div>
+    </div>
+    <div class="navigation__hamburger--container js-navigation__collapse" data-activates="slide-left">
+      <div class="navigation__icon--container">
+        <img src="{{ 'icon--hamburger.svg' | asset_url }}" alt="">
+      </div>
+    </div>
+  </div>
+</div>
+{% include 'sidebar' %}
+<!-- MOBILENAV -->
+
+
 
 {% comment %}
 <style>
