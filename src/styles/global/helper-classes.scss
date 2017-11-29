@@ -116,26 +116,17 @@ img{
 }
 
 /*BACKGROUND */
+.bg-red-orange{
+  background-color: #d3977b;
+}
 .bg-yellow{
   background-color: #FED766;
 }
 .bg-navy{
   background-color: #063042;
 }
-.bg-black-gradiant {
-    background: black; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(black, black 60%, white); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(black, black 60%, white); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(black, black 60%, white); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(black, black 60%, white); /* Standard syntax */
-}
-.bg-white-navy{
-  background: white; /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(white, #063042); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(white, #063042); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(white, #063042); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(white, #063042); /* Standard syntax */
-
+.bg-grey{
+  background-color: #f9f9f9;
 }
 @media(max-width: 991px){
   /*.height--full{
@@ -150,11 +141,27 @@ img{
 .bg-grey{
   background-color: #a3a5a7;
 }
-
-.text--fine-print{
-  font-size: 8px;
+// TEXT COLORS
+.text-white{
+  color: #ffffff;
 }
-
+.text-light-grey{
+  color: #696969;
+}
+.text-dark-grey{
+  color: #303030;
+}
+// TEXT size
+.text--fine-print{
+  font-size: 0.571em;
+}
+.text--small{
+  font-size: 0.857em;
+}
+.text--default{
+  font-size: 1em;
+}
+// TEXT BOLD
 .text--semibold{
   font-weight: bold;
 }
@@ -162,6 +169,7 @@ img{
   font-weight: bolder;
 }
 /*PADDINGS*/
+
 .pleft-15{
   padding-left: 15px;
 }
@@ -173,6 +181,12 @@ img{
 }
 .pleft-30{
   padding-left: 30px;
+}
+.pleft-30{
+  padding-left: 32px;
+}
+.pright-20{
+  padding-right: 20px;
 }
 .pright-30{
   padding-right: 30px;
@@ -237,6 +251,9 @@ img{
 .flex{
   display: flex;
 }
+.justify-end{
+  justify-content: flex-end;
+}
 .justify-center{
   justify-content: center;
 }
@@ -274,4 +291,11 @@ li{
 }
 .btn-small{
   width: 150px;
+}
+// position
+.absolute{
+  position: absolute;
+}
+.relative{
+  position: relative;
 }
