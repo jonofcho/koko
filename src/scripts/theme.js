@@ -2,6 +2,9 @@ window.slate = window.slate || {};
 window.theme = window.theme || {};
 
 /*================ Slate ================*/
+// =require materialize/sideNav.js
+
+/*================ Slate ================*/
 // =require slate/a11y.js
 // =require slate/cart.js
 // =require slate/utils.js

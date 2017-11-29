@@ -60,6 +60,9 @@
 
   {{ content_for_header }}
 
+  <!-- import scripts -->
+  <!-- font awesome -->
+  <script src="https://use.fontawesome.com/0e3a2dd010.js"></script>
 </head>
 
 <body id="{{ page_title | handle }}" class="template-{{ template.name | handle }}">
@@ -73,10 +76,12 @@
   </main>
 
   {% section 'footer' %}
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+  <!-- CUSTOM JS FILES -->
+  {{ "materializeBuild.js" | asset_url | script_tag }}
+  {{ "sideNav.js" | asset_url | script_tag }}
+  {{ "mHeader.js" | asset_url | script_tag }}
 
-</script>
 </body>
 </html>
