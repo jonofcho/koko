@@ -1,0 +1,36 @@
+<div id="slide-left" class="side-nav bg-white">
+
+    <div class="sidebar__link--container sidebar__link--close sidebg-grey flex align-center justify-end pleft-32">
+      <div class="sidebar__icon-close--container">
+        <img src="{{ 'icon--close.svg' | asset_url }}" alt="">
+      </div>
+    </div>
+    {%- for link in linklists['main-menu'].links -%}
+      <div class="">
+        <p>{{link.title}}</p>
+      </div>
+      {% assign link_handle = link.title | handle %}
+      <div class="sidenav__child-links--container hide">
+        {%- for child_link in linklists[link_handle].links -%}
+          <p>{{ child_link.title }}</p>
+          {% assign child_handle = child_link.title | handle %}
+          <div class="sidenav__grand-child-links--container hide" >
+            {%- for grand_child_link in linklists[child_handle].links -%}
+              <p>{{ grand_child_link.title }}</p>
+              {% assign grand_child_handle = grand_child_link.title | handle %}
+              <div class="sidnav__great-grand-child-links--container hide">
+                {%- if linklists[grand_child_handle].links.size > 0 -%}
+                  {%- for great_grand_child_link in linklists[grand_child_handle].links -%}
+                    <p>{{ great_grand_child_link.title }}</p>
+                  {%- endfor -%}
+                {% else %}
+
+                {%- endif -%}
+              </div>
+            {%- endfor -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endfor -%}
+
+</div>
