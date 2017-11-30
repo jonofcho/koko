@@ -1,9 +1,11 @@
-<div id="slide-left" class="side-nav bg-white">
+<div id="main-menu" class="side-nav bg-white">
 
   <div class="sidebar__close">
-    <div class="sidebar__icon-close--container">
-      <img src="{{ 'icon--close.svg' | asset_url }}" alt="">
-    </div>
+    <a href="#close">
+      <div class="sidebar__icon-close--container js-sidebar--close">  
+          <img src="{{ 'icon--close.svg' | asset_url }}" alt="">
+      </div>
+    </a>
   </div>
   <ul class="pleft-30 collapsible" data-collapsible="accordion">
     {%- for link in linklists['main-menu'].links -%}
