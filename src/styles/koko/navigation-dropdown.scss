@@ -1,0 +1,13 @@
+.header__dropdown{
+  @extend .hidden;
+  min-height: 500px;
+}
+
+.dropdown__sublinks--container{
+  @extend .flex;
+  @extend .flex-wrap;
+}
+
+.dropdown__mainlink .active{
+  @extend .text-black;
+}

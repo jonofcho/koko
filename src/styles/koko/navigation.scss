@@ -1,6 +1,11 @@
 .theme__navigation{
   height: 76px;
   padding: 0 40px;
+  @extend .flex;
+  @extend .justify-between;
+  @extend .z-depth-1;
+  @extend .align-center;
+  @extend .bg-white;
 }
 .theme__promotion-bar{
   height: 40px;
