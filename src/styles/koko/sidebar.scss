@@ -1,9 +1,11 @@
 .sidebar__icon-close--container{
   width: 16px;
 }
-
+.sidebar__icon-close--submenu-container, .sidebar__submenu--placeholder{
+  width: 8px;
+}
 .sidebar__link{
-  @extend .pleft-15;
+  // @extend .pleft-15;
   @extend .pright-15;
   @extend .flex;
   @extend .align-center;
@@ -19,5 +21,14 @@
   @extend .pright-15;
   @extend .ptop-20;
   @extend .pbot-20;
-  @extend .bg-grey;
+  @extend .bg-light-grey;
+}
+
+.sidebar__close--submenu{
+  @extend .flex;
+  @extend .align-center;
+  @extend .justify-between;
+  @extend .psides-30;
+  @extend .bg-light-grey;
+  @extend .text-light-grey;
 }

@@ -8,7 +8,9 @@
  * 2. Prevent adjustments of font size after orientation changes in
  *    IE on Windows Phone and in iOS.
  */
-
+*{
+  letter-spacing: 1.5px;
+}
 html {
   font-family: Open Sans;
   line-height: 1.15; /* 1 */
@@ -66,6 +68,14 @@ figcaption,
 figure,
 main { /* 1 */
   display: block;
+}
+.theme__main-content--container{
+  padding-top: 100px;
+}
+@include media-query($large-up) {
+  .theme__main-content--container{
+    padding-top: 120px;
+  }
 }
 
 /**
