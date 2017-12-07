@@ -13,4 +13,7 @@ a{
   max-width: $width-site;
   padding: 0 $gutter;
   margin: 0 auto;
+  @include media-query($medium-down) {
+    padding: 0 $mobile-gutter;
+  };
 }

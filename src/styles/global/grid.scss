@@ -9,11 +9,17 @@
   margin: 0;
   padding: 0;
   margin-left: -$grid-gutter;
+  @include media-query($medium-down) {
+    margin-left: -$mobile-grid-gutter
+  }
 }
 
 .grid__item {
   float: left;
   padding-left: $grid-gutter;
+  @include media-query($medium-down) {
+    padding-left: $mobile-grid-gutter
+  }
   width: 100%;
 
   &[class*='--push'] {

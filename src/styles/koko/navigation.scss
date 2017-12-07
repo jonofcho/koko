@@ -1,9 +1,13 @@
+.theme__header--container{
+  z-index: 100;
+  @extend .bg-white;
+}
 .theme__navigation{
   height: 76px;
   padding: 0 40px;
   @extend .flex;
   @extend .justify-between;
-  @extend .z-depth-1;
+  @extend .z-depth-2;
   @extend .align-center;
   @extend .bg-white;
 }

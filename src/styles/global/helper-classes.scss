@@ -132,7 +132,7 @@ img{
   background-color: #ffffff;
 }
 .bg-red-orange{
-  background-color: #d3977b;
+  background-color: #dbc9b3;
 }
 .bg-yellow{
   background-color: #FED766;
@@ -163,6 +163,9 @@ img{
 .text-light-grey{
   color: #696969;
 }
+.text-medium-grey{
+  color: #8d8d8d;
+}
 .text-dark-grey{
   color: #303030;
 }
@@ -179,6 +182,9 @@ img{
 .text--default{
   font-size: 1em;
 }
+.text--large{
+  font-size: 1.143em;
+}
 // TEXT BOLD
 .text--reduced-bold{
   font-weight: 100;
@@ -190,7 +196,9 @@ img{
   font-weight: bolder;
 }
 /*PADDINGS*/
-
+.padding-none{
+  padding: 0;
+}
 .pleft-15{
   padding-left: 15px;
 }
@@ -226,6 +234,12 @@ img{
   padding: 0 30px;
 }
 
+.pbot-5{
+  padding-bottom: 5px;
+}
+.pbot-10{
+  padding-bottom: 10px;
+}
 .pbot-15{
   padding-bottom: 15px;
 }
@@ -262,6 +276,9 @@ img{
 .margin-center{
   margin: 0 auto;
 }
+.margin-none{
+  margin: 0 !important;
+}
 .mtop-0{
   margin-top: 0px;
 }
@@ -270,6 +287,9 @@ img{
 }
 .mtop-15{
   margin-top: 15px;
+}
+.mtop-25{
+  margin-top: 25px;
 }
 .mtop-30{
   margin-top: 30px;
@@ -353,4 +373,10 @@ li{
 }
 .relative{
   position: relative;
+}
+// HOVER
+.hover-underline{
+  &:hover{
+    text-decoration: underline;
+  }
 }

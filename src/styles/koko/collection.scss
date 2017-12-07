@@ -1,5 +1,33 @@
-.collection__product--alert{
-  width: 113px;
-  top: 20px;
-  left: 16px;
+.collection__filter--container{
+  @extend .mbot-30;
+}
+.collection__filter{
+  @extend .flex;
+}
+.collection__filters{
+  @extend .flex;
+  @extend .align-center;
+  @extend .justify-between;
+}
+.collection__sort{
+  width: 189px;
+}
+.collection__filter--selection{
+  @extend .text-medium-grey;
+  @extend .text--default;
+  height: 42px;
+  width: 189px;
+  margin-right: 16px;
+  border: solid 1px #d9d9d9;
+  padding-left: 16px;
+
+  @include media-query($medium-down) {
+    width: 100%;
+  }
+}
+.collection__product--count{
+  @extend .text-center;
+  @extend .text-light-grey;
+  margin-top: 8px;
+  margin-bottom: 16px;
 }

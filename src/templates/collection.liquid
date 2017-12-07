@@ -1,3 +1,6 @@
+<div class="theme__breadcrumbs--container medium-down--hide">
+  {%- include 'breadcrumbs' -%}
+</div>
 <div class="page-width">
 
 {% paginate collection.products by 12 %}
@@ -13,30 +16,38 @@
   </header>
   {% endcomment %}
   <div class="grid">
-    <div class="grid__item">
+    <div class="text-center width--full">
+      <h1 class="text-light-grey mbot-30">{{collection.title}}</h1>
+    </div>
+  </div>
+  <div class="grid">
+    <div class="grid__item large-up--push-one-fifth large-up--four-fifths">
       {% include 'collection-filter'%}
     </div>
   </div>
   <div class="grid">
-    <div class="grid__item medium-down--one-whole large-up--one-fifth">
-      <h1>{{ collection.title }}</h1>
+    <div class="grid__item medium-down--hide large-up--one-fifth">
+      <h3 class="margin-none text-light-grey text--large">{{ collection.title }}</h3>
       <div class="collection__tags--container">
         {% if collection.all_tags.size > 0 %}
-          <ul>
+          <ul class="padding-none">
             {% for tag in collection.all_tags %}
               {% if current_tags contains tag %}
-                <li class="active">
-                  {{ tag | link_to_remove_tag: tag }}
+                <li class="active pbot-15">
+                  <a class="text-light-grey text--small hover-underline" href="#">{{tag}}</a>
                 </li>
               {% else %}
-                <li>
-                  {{ tag | link_to_tag: tag }}
+                <li class="pbot-15">
+                  <a class="text-light-grey text--small hover-underline" href="#">{{tag}}</a>
                 </li>
               {% endif %}
             {% endfor %}
           </ul>
         {% endif %}
       </div>
+    </div>
+    <div class="grid__item large-up--hide">
+      <p class="collection__product--count">65 Items</p>
     </div>
     <div class="grid__item medium-down--one-whole large-up--four-fifths">
       <div class="collection__list--container">

@@ -43,17 +43,19 @@
 </div>
 {% endcomment %}
 
-<div class="js-header__dropdown bg-white medium-down--hide">
+<div class="js-header__dropdown bg-white medium-down--hide z-depth-2">
   {%- for link in linklists['main-menu'].links -%}
     {% assign link_handle = link.title | handle %}
     {%- if linklists[link_handle].links.size > 0-%}
     <div class="header__dropdown js-dropdown--container" data-source="{{link_handle}}">
       <div class="grid">
         <div class="grid__item one-fifth">
-          <div class="text-right">
+          <div class="dropdown__mainlinks--container">
             {%- for child_link in linklists[link_handle].links -%}
             {% assign child_handle = child_link.title | handle %}
-            <p class="js-dropdown__mainlink text-light-grey dropdown__mainlink" data-target="{{child_handle}}"><span class="{%- if forloop.first -%}active{%- endif -%}">{{ child_link.title }}</span></p>
+            <div class="dropdown__mainlink-container text-left">
+              <h3 class="js-dropdown__mainlink text-light-grey dropdown__mainlink" data-target="{{child_handle}}"><span class="{%- if forloop.first -%}active{%- endif -%}">{{ child_link.title }}</span></h3>
+            </div>
             {%- endfor -%}
           </div>
         </div>
@@ -61,14 +63,21 @@
           <div class="dropdown__sublinks--container">
             {%- for child_link in linklists[link_handle].links -%}
               {% assign child_handle = child_link.title | handle %}
-              <div class="{%- if forloop.first -%}active &nbsp;{%- endif -%} hidden js-dropdown__sublinks dropdown__sublinks" data-source="{{child_handle}}">
-              {%- for grand_child_link in linklists[child_handle].links -%}
-                {% assign grand_child_link_handle = grand_child_link.title | handle %}
-                <h3 class="text-light-grey">{{grand_child_link.title}}</h3>
-                {%- for great_grand_child_link in linklists[grand_child_link_handle].links -%}
-                  <p class="text-light-grey">{{ great_grand_child_link.title }}<p/>
-                {%- endfor -%}
-              {%- endfor -%}
+              <div class="{%- if forloop.first -%}active &nbsp;{%- endif -%} hidden js-dropdown__sublinks dropdown__sublinks width--full" data-source="{{child_handle}}">
+                <div class="grid">
+                  {%- for grand_child_link in linklists[child_handle].links -%}
+                    {% assign grand_child_link_handle = grand_child_link.title | handle %}
+                    <div class="grid__item {% if linklists[grand_child_link_handle].links.size > 0 %}one-third{%else%}one-whole{% endif %}">
+                      <h3 class="text-light-grey">{{grand_child_link.title}}</h3>
+                      {%- if linklists[grand_child_link_handle].links.size > 0 -%}
+
+                        {%- for great_grand_child_link in linklists[grand_child_link_handle].links -%}
+                          <p class="text-light-grey pbot-10">{{ great_grand_child_link.title }}<p/>
+                        {%- endfor -%}
+                      {%- endif -%}
+                    </div>
+                  {%- endfor -%}
+                </div>
               </div>
             {%- endfor -%}
           </div>

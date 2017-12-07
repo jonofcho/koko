@@ -1,13 +1,32 @@
 .header__dropdown{
   @extend .hidden;
-  min-height: 500px;
+  height: 500px;
+  padding-bottom: 50px;
 }
 
 .dropdown__sublinks--container{
   @extend .flex;
   @extend .flex-wrap;
+  padding-top : 48px;
+  padding-left: 80px;
 }
 
+.dropdown__sublinks{
+
+}
+
+.dropdown__mainlinks--container{
+  padding-top: 48px;
+}
+
+.dropdown__mainlink-container{
+  width: 150px;
+  margin: 0 0 0 auto;
+  padding-left: 32px;
+}
+.dropdown__mainlink{
+  padding-bottom: 48px;
+}
 .dropdown__mainlink .active{
   @extend .text-black;
 }
