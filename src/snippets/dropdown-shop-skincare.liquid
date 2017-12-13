@@ -1,0 +1,15 @@
+
+  <div class="sublinks__skincare--container">
+    <div class="column-3">
+      {%- for link in linklists[child_handle].links -%}
+        {% assign link_handle = link.title | handle %}
+        <h3 class="sublink__title">{{link.title}}</h3>
+        <div class="">
+          {%- for child_link in linklists[link_handle].links -%}
+            <a href="#"><p class="sublink">{{child_link.title | downcase | capitalize }}</p></a>
+          {%- endfor -%}
+        </div>
+      {%- endfor -%}
+    </div>
+    <img class="width--full placeholder-img" src="https://news.nationalgeographic.com/content/dam/news/photos/000/755/75552.ngsversion.1422285553360.adapt.1900.1.jpg" alt="">
+  </div>

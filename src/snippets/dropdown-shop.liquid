@@ -1,0 +1,40 @@
+<div class="page-width height--full">
+  <div class="grid height--full">
+    <div class="grid__item one-fifth height--full">
+      <div class="main-links--container shop__main-links--container height--full">
+        {%- for child_link in linklists['shop'].links -%}
+        {% assign child_handle = child_link.title | handle %}
+        {%- if forloop.first -%}
+          {% assign active = 'open-flex' %}
+        {%- else condition -%}
+          {% assign active = 'null' %}
+        {%- endif -%}
+          <h3 class="{{active}} shop__mainlink js-shop__mainlink" data-handle="{{child_handle}}">{{ child_link.title }}</h3>
+        {%- endfor -%}
+      </div>
+    </div>
+    <div class="grid__item four-fifths">
+      <div class="shop__sub-links--container">
+        {%- for child_link in linklists['shop'].links -%}
+        {% assign child_handle = child_link.title | handle %}
+        {%- if forloop.first -%}
+          {% assign active = 'open' %}
+        {%- else condition -%}
+          {% assign active = 'null' %}
+        {%- endif -%}
+        <div class="{{active}} sub-links" data-handle="{{child_handle}}">
+          {%- if child_handle == 'skincare' -%}
+            {%- include 'dropdown-shop-skincare' -%}
+          {%- elsif child_handle == 'makeup' -%}
+            {%- include 'dropdown-shop-makeup' -%}
+          {%- elsif child_handle == 'suncare' -%}
+            {%- include 'dropdown-shop-suncare' -%}
+          {%- elsif child_handle == 'men' -%}
+            {%- include 'dropdown-shop-men' -%}
+          {%- endif -%}
+        </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="page-width height--full">
+  <div class="grid height--full">
+    <div class="grid__item two-fifths height--full">
+      <div class="collections__main-links--container height--full">
+        <div class="collection__main-links--inner column-2">
+          {%- for child_link in linklists['collections'].links -%}
+          {% assign child_handle = child_link.title | handle %}
+            <h3 class="collections__mainlink" data-handle="{{child_handle}}">{{ child_link.title }}</h3>
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+    <div class="grid__item three-fifths">
+      <div class="flex align-center justify-around ptop-48">
+        <img class="width--full placeholder-img" src="https://news.nationalgeographic.com/content/dam/news/photos/000/755/75552.ngsversion.1422285553360.adapt.1900.1.jpg" alt="">
+        <img class="width--full placeholder-img" src="https://news.nationalgeographic.com/content/dam/news/photos/000/755/75552.ngsversion.1422285553360.adapt.1900.1.jpg" alt="">
+        <img class="width--full placeholder-img" src="https://news.nationalgeographic.com/content/dam/news/photos/000/755/75552.ngsversion.1422285553360.adapt.1900.1.jpg" alt="">
+      </div>
+    </div>
+  </div>
+</div>
