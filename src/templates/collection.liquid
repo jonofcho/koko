@@ -33,7 +33,7 @@
           <ul class="padding-none">
             {% for tag in collection.all_tags %}
               {% if current_tags contains tag %}
-                <li class="active pbot-15">
+                <li class="open pbot-15">
                   <a class="text-light-grey text--small hover-underline" href="#">{{tag}}</a>
                 </li>
               {% else %}
