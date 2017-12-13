@@ -10,31 +10,38 @@
     $('.js-sidebar__submenu--trigger').sideNav({
       menuWidth: 335, // Default is 300
       edge: 'right', // Choose the horizontal origin
-      closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+      closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
       draggable: true, // Choose whether you can drag to open on touch screens,
     });
-
-
-
+    $('.js-sub-side-nav-close').on('click', function(){
+        var $this = $(this);
+        var handle = $this.data('target');
+      console.log('asdfasdf');
+      $(`.drag-target[data-sidenav='${handle}']`).trigger('click');
+    })
 $(document).ready(function(){
-  $('.js-navigation-link').on('mouseenter', function(){
-    var that = $(this);
-    var target = that.data('active');
-    $('.js-dropdown--container').removeClass('active');
-    $(`.js-dropdown--container[data-source="${target}"]`).addClass('active');
-    $('.js-header__dropdown').fadeIn();
-  })
+  $('.js-navigation__link').on('mouseenter', function(){
 
-  $('.js-dropdown__mainlink').on('mouseenter',function(){
     var that = $(this);
-    var target = that.data('target');
-    $('.js-dropdown__mainlink').children('span').removeClass('active');
-    that.children('span').addClass('active');
-    $('.js-dropdown__sublinks').removeClass('active');
-    $(`.js-dropdown__sublinks[data-source="${target}"]`).addClass('active');
+    var handle = that.data('active');
+    var count = that.data('count');
+    console.log(count);
+    if (count == true) {
+      $('.js-navigation__dropdown').removeClass('open');
+      $(`.js-navigation__dropdown[data-handle="${handle}"]`).addClass('open');
+      $('.js-navigation__dropdown--container').addClass('open');
+    }
   })
-
   $('.js-theme__header--container').on('mouseleave', function(){
-    $('.js-header__dropdown').fadeOut();
+    $('.js-navigation__dropdown--container').removeClass('open');
   })
+  $('.js-shop__mainlink').on('mouseenter', function(){
+    var that = $(this);
+    var handle = that.data('handle');
+    $('.js-shop__mainlink').removeClass('open');
+    that.addClass('open');
+    $('.sub-links').removeClass('open');
+    $(`.sub-links[data-handle="${handle}"]`).addClass('open');
+  })
+
 })

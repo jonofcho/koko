@@ -1,32 +1,81 @@
-.header__dropdown{
+.navigation__dropdown--container{
+  height: 400px;
   @extend .hidden;
-  height: 500px;
-  padding-bottom: 50px;
+  @extend .z-depth-2;
+  h1,h2,h3,h4,h5{
+    margin: 0;
+  }
+  .sub-links{
+    @extend .hidden;
+  }
+
+  .sublinks__skincare--container{
+    @extend .flex;
+  }
+  .sublinks__suncare--container{
+    @extend .flex;
+    @extend .justify-around;
+  }
+  .sublinks__men--container{
+    @extend .flex;
+    @extend .justify-around;
+  }
+  .sublink__title{
+    @extend .text-dark-grey;
+    @extend .flex;
+    @extend .align-center;
+    margin-bottom: 16px;
+    height: 34px;
+  }
+  .sublink{
+    margin-bottom: 16px;
+    @extend .text-light-grey;
+  }
+  // skin-concern specific
+  .skin-concern__mainlink{
+    margin-bottom: 32px;
+    @extend .text-light-grey;
+  }
+  .skin-concern__main-links--inner{
+    height: 300px;
+    @extend .is-block;
+  }
+  .skin-concern__main-links--container{
+    padding-top: 48px;
+  }
+
+  // collections specific
+  .collections__mainlink{
+    margin-bottom: 32px;
+    @extend .text-dark-grey;
+  }
+  .collection__main-links--inner{
+    height: 300px;
+    @extend .is-block;
+  }
+  .collections__main-links--container{
+    padding-top: 48px;
+  }
+  // shop specific
+  .shop__mainlink{
+    @extend .mbot-50;
+    @extend .text-light-grey;
+    @extend .align-center;
+    height: 34px;
+  }
+  .shop__mainlink.open-flex{
+    @extend .text-black;
+    border-right: 1px solid black;
+  }
+  .shop__main-links--container, .shop__sub-links--container{
+    padding-top: 40px;
+  }
+  .main-links--container{
+    border-right: solid 0.5px #cccccc;
+  }
 }
 
-.dropdown__sublinks--container{
-  @extend .flex;
-  @extend .flex-wrap;
-  padding-top : 48px;
-  padding-left: 80px;
-}
-
-.dropdown__sublinks{
-
-}
-
-.dropdown__mainlinks--container{
-  padding-top: 48px;
-}
-
-.dropdown__mainlink-container{
-  width: 150px;
-  margin: 0 0 0 auto;
-  padding-left: 32px;
-}
-.dropdown__mainlink{
-  padding-bottom: 48px;
-}
-.dropdown__mainlink .active{
-  @extend .text-black;
+.placeholder-img{
+  width: 200px;
+  height: 300px;
 }

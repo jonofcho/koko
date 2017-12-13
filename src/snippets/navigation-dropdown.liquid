@@ -1,89 +1,17 @@
-{% comment %}
-<div class="navigation__dropdown--container medium-down--hide bg-white">
-  {%- for link in linklists['main-menu'].links -%}
-  {% assign link_handle = link.title | handle %}
-  <div class="grid">
-    <div class="grid__item one-fifth">
-      <div class="dropdown__main-links--container js-dropdown__main-links--container" data-source="{{link_handle}}" >
-        {%- for child_link in linklists[link_handle].links -%}
-        {% assign child_handle = child_link.title | handle %}
-        <h4 class="js-navigation__dropdown-link--activate" data-target="{{child_handle}}">{{child_link.title}}</h4>
-        {%- endfor -%}
-      </div>
-    </div>
-    <div class="grid__item four-fifths">
-      <div class="">
-        <div class="flex flex-wrap" style="border-bottom: 1px solid black">
-          {%- for child_link in linklists[link_handle].links -%}
-          {% assign child_handle = child_link.title | handle %}
-          <div class="js-navigation__dropdown-section navigation__dropdown-section" data-source="{{child_handle}}">
-            {%- for grand_child_link in linklists[child_handle].links -%}
-            {% assign grand_child_handle = grand_child_link.title | handle %}
-
-            <div class="{% if forloop.first %} active {% endif %}">
-              <p class="text-light-grey text--bold">{{ grand_child_link.title }}</p>
-            </div>
-            <div class="{% if forloop.first %} active {% endif %}">
-              {%- if linklists[grand_child_handle].links.size > 0 -%}
-              {%- for great_grand_child_link in linklists[grand_child_handle].links -%}
-              <div class="">
-                <p class="text-light-grey">{{ great_grand_child_link.title }}</p>
-              </div>
-              {%- endfor -%}
-              {%- endif -%}
-            </div>
-            {%- endfor -%}
-          </div>
-          {%- endfor -%}
-        </div>
-      </div>
+<div class="navigation__dropdown--container js-navigation__dropdown--container height--full medium-down--hide">
+  <div class="navigation__dropdown height--full js-navigation__dropdown" data-handle="shop">
+    <div class="dropdown__shop--container height--full">
+      {%- include 'dropdown-shop' -%}
     </div>
   </div>
-  {%- endfor -%}
-</div>
-{% endcomment %}
-
-<div class="js-header__dropdown bg-white medium-down--hide z-depth-2">
-  {%- for link in linklists['main-menu'].links -%}
-    {% assign link_handle = link.title | handle %}
-    {%- if linklists[link_handle].links.size > 0-%}
-    <div class="header__dropdown js-dropdown--container" data-source="{{link_handle}}">
-      <div class="grid">
-        <div class="grid__item one-fifth">
-          <div class="dropdown__mainlinks--container">
-            {%- for child_link in linklists[link_handle].links -%}
-            {% assign child_handle = child_link.title | handle %}
-            <div class="dropdown__mainlink-container text-left">
-              <h3 class="js-dropdown__mainlink text-light-grey dropdown__mainlink" data-target="{{child_handle}}"><span class="{%- if forloop.first -%}active{%- endif -%}">{{ child_link.title }}</span></h3>
-            </div>
-            {%- endfor -%}
-          </div>
-        </div>
-        <div class="grid__item four-fifths">
-          <div class="dropdown__sublinks--container">
-            {%- for child_link in linklists[link_handle].links -%}
-              {% assign child_handle = child_link.title | handle %}
-              <div class="{%- if forloop.first -%}active &nbsp;{%- endif -%} hidden js-dropdown__sublinks dropdown__sublinks width--full" data-source="{{child_handle}}">
-                <div class="grid">
-                  {%- for grand_child_link in linklists[child_handle].links -%}
-                    {% assign grand_child_link_handle = grand_child_link.title | handle %}
-                    <div class="grid__item {% if linklists[grand_child_link_handle].links.size > 0 %}one-third{%else%}one-whole{% endif %}">
-                      <h3 class="text-light-grey">{{grand_child_link.title}}</h3>
-                      {%- if linklists[grand_child_link_handle].links.size > 0 -%}
-
-                        {%- for great_grand_child_link in linklists[grand_child_link_handle].links -%}
-                          <p class="text-light-grey pbot-10">{{ great_grand_child_link.title }}<p/>
-                        {%- endfor -%}
-                      {%- endif -%}
-                    </div>
-                  {%- endfor -%}
-                </div>
-              </div>
-            {%- endfor -%}
-          </div>
-        </div>
-      </div>
+  <div class="navigation__dropdown js-navigation__dropdown" data-handle="collections">
+    <div class="dropdown__collections--container" >
+      {%- include 'dropdown-collections' -%}
     </div>
-    {%- endif -%}
-  {%- endfor -%}
+  </div>
+  <div class="navigation__dropdown js-navigation__dropdown"  data-handle="skin-concern">
+    <div class="dropdown__skinconcern--container">
+      {%- include 'dropdown-skinconcern' -%}
+    </div>
+  </div>
 </div>

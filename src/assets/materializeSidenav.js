@@ -11,12 +11,12 @@
         onClose: null
       };
       options = $.extend(defaults, options);
-
+      console.log($(this));
       $(this).each(function(){
         var $this = $(this);
         var menuId = $this.attr('data-activates');
         var menu = $("#"+ menuId);
-
+        console.log(menu);
         // Set to width
         if (options.menuWidth != 300) {
           menu.css('width', options.menuWidth);
@@ -87,8 +87,21 @@
             }
           });
         }
+        // $('.js-sidenav-close').on('click', function(){
+        //   var $this = $(this);
+        //   var handle = $this.data('target');
+        //   removeSubMenu(true, handle);
+        // })
+
+
+        // $('.js-sub-side-nav-close').on('click', function(){
+        //   console.log('asdfasdf');
+        //   removeMenu();
+        // })
+
 
         var removeMenu = function(restoreNav) {
+
           panning = false;
           menuOut = false;
           // Reenable scrolling

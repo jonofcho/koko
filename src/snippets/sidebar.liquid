@@ -24,11 +24,11 @@
 
       <div id="{{link_handle}}" class="side-nav">
         <div class="sidebar__close--submenu test">
-          <a href="#">
-            <div class="sidebar__submenu--icon-close-container sidenav-close">
+          <div data-target="{{link_handle}}" class="js-sub-side-nav-close">
+            <div class="sidebar__submenu--icon-close-container sidenav-close " data-target="{{link_handle}}">
               <img src="{{ 'icon--arrow-left.svg' | asset_url }}" alt="">
             </div>
-          </a>
+          </div>
 
 
           <div class="sidebar__submenu--title">

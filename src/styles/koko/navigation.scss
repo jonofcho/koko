@@ -15,10 +15,17 @@
   height: 40px;
   letter-spacing: 1.5px;
 }
+
 .navigation__link{
   height: 76px;
+  margin-left: 28px;
+  margin-right: 28px;
+  &:hover{
+    border-bottom: 1.5px solid black;
+  }
 }
 .navigation__link--text{
+  @extend .nowrap;
   @extend .text-light-grey;
   &:hover{
     @extend .text-dark-grey;
@@ -29,7 +36,32 @@
     width: 60px;
   }
 }
+.navigation__logo--container{
+  margin-left: 26px;
+  margin-right: 26px;
 
+}
+.navigation__user-controls--container{
+  @extend .flex;
+  @extend .align-center;
+  @extend .justify-around;
+  width: 180px;
+}
+.navigation__icons--container{
+  width: 55px;
+  @extend .flex;
+  @extend .justify-between;
+  @extend .align-center;
+}
 .navigation__icon--container{
   width: 20px;
+}
+.navigation__search-icon--container{
+  width: 16px;
+}
+.navigation__search-bag--container{
+  width: 16px;
+}
+.navigation__dropdown{
+  @extend .hidden;
 }
