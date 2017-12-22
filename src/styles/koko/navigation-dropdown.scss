@@ -60,10 +60,12 @@
   .shop__mainlink{
     @extend .mbot-50;
     @extend .text-light-grey;
+    @extend .flex;
     @extend .align-center;
     height: 34px;
   }
   .shop__mainlink.open-flex{
+    @extend .flex;
     @extend .text-black;
     border-right: 1px solid black;
   }

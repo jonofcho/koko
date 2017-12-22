@@ -85,6 +85,9 @@
   {{ "materializeCollapsible.js" | asset_url | script_tag }}
   {{ "kokoHeader.js" | asset_url | script_tag }}
   {{ "kokoCollapsible.js" | asset_url | script_tag }}
+  {%- if template == "collection" -%}
+    {{"kokoCollection.js" | asset_url | script_tag }}
+  {%- endif -%}
 
 </body>
 </html>

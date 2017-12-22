@@ -25,6 +25,13 @@
     width: 100%;
   }
 }
+.collection__filter--clear{
+  @extend .text-medium-grey;
+  @extend .mleft-30;
+  @extend .text-underline;
+  @extend .text--reduced-bold;
+  @extend .hover-pointer;
+}
 .collection__product--count{
   @extend .text-center;
   @extend .text-light-grey;
