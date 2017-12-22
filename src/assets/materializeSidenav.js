@@ -11,12 +11,12 @@
         onClose: null
       };
       options = $.extend(defaults, options);
-      console.log($(this));
+  
       $(this).each(function(){
         var $this = $(this);
         var menuId = $this.attr('data-activates');
         var menu = $("#"+ menuId);
-        console.log(menu);
+
         // Set to width
         if (options.menuWidth != 300) {
           menu.css('width', options.menuWidth);

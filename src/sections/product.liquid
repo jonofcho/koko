@@ -1,3 +1,4 @@
+{% comment %}
 <div data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true" itemscope itemtype="http://schema.org/Product">
 
   {%- assign current_variant = product.selected_or_first_available_variant -%}
@@ -116,6 +117,76 @@
       {{ product | json }}
     </script>
   {% endunless %}
+</div>
+
+
+{% endcomment %}
+{% assign productTitleArr = product.title | split: '_' %}
+{% assign collectionTitle = productTitleArr.first %}
+{% assign productTitleClean = productTitleArr.last %}
+<div class="pdp__detail--container">
+  <div class="page-width ">
+    <div class="grid pdp__grid">
+      <div class="grid__item pdp__grid-item one-half">
+        <div class="pdp__breadcrumbs--container">
+          {%- include 'breadcrumbs' -%}
+        </div>
+      </div>
+      <div class="grid__item pdp__grid-item one-half">
+      </div>
+    </div>
+    <div class="grid pdp__grid">
+      <div class="grid__item pdp__grid-item one-half">
+        <div class="pdp__image--container">
+          <div class="">
+            <div class=""style="height: 565px; width: 455px; background-color: #d8d8d8">
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid__item pdp__grid-item one-half">
+        <div class="pdp__info--container">
+          <div class="">
+            <h3 class="pdp__info--vendor">{{ product.vendor }}</h3>
+            {% comment %}
+            <h3>{{collectionTitle}}</h3>
+            {% endcomment %}
+            <h2 class="pdp__info--title">{{ productTitleClean }}</h2>
+          </div>
+          <div class="">
+            <h2 class="pdp__info--price">{{ product.price }}</h2>
+          </div>
+          <div class="pdp__info--description">
+            <p>{{ product.description }}</p>
+          </div>
+          <div class="mtop-15">
+            {%- if product.variants.size > 0 -%}
+            <p class="mbot-15">Select Size</p>
+            {%- for variant in product.variants -%}
+              <div class="pdp__variant--container">
+                {{variant.title}}
+              </div>
+            {%- endfor -%}
+            {%- endif -%}
+          </div>
+          <hr class="pdp__details--hr">
+          <div class="flex align-center ">
+            <div class="pdp__quantity-incrementor--container">
+              <div class="pdp__quantity-incrementor">
+                <img src="{{ 'icon--minus.svg' | asset_url }}" alt="">
+              </div>
+              <p>1</p>
+              <div class="pdp__quantity-incrementor">
+                <img src="{{ 'icon--plus.svg' | asset_url }}" alt="">
+              </div>
+            </div>
+            <button type="button" name="button" class="btn pdp__add-to-cart">ADD TO CART</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 {% schema %}
