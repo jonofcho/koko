@@ -1,23 +1,28 @@
-<div class="grid__item medium-down--one-half large-up--one-third">
-  <div class="relative collection__card--hover">
-    <div class="collection__product--alert">
-      <!-- REPLACE WITH LIQUID LATER -->
-      <p>Best Seller</p>
-    </div>
-    <div class="collection__product-image--container">
-      <img class="width--full" src="https://news.nationalgeographic.com/content/dam/news/photos/000/755/75552.ngsversion.1422285553360.adapt.1900.1.jpg" alt="">
-      <div class="product__card--controls">
-        <p>Quick View</p>
-        <p>|</p>
-        <p>Add to Cart</p>
+{% assign productTitleArr = product.title | split: '_' %}
+{% assign collectionTitle = productTitleArr.first %}
+{% assign productTitleClean = productTitleArr.last %}
+<a href="{{product.url}}">
+  <div class="grid__item medium-down--one-half large-up--one-third">
+    <div class="relative collection__card--hover">
+      <div class="collection__product--alert">
+        <!-- REPLACE WITH LIQUID LATER -->
+        <p>Best Seller</p>
       </div>
-    </div>
-    <div class="collection__product-detail--container">
-      <div class="collection__product--price">
-        <p>{{ product.vendor }}</p>
-        <p>{{ product.price }}</p>
+      <div class="collection__product-image--container">
+        <img class="width--full" src="https://news.nationalgeographic.com/content/dam/news/photos/000/755/75552.ngsversion.1422285553360.adapt.1900.1.jpg" alt="">
+        <div class="product__card--controls">
+          <p>Quick View</p>
+          <p>|</p>
+          <p>Add to Cart</p>
+        </div>
       </div>
-      <p class="collection__product--title">{{product.title}}</p>
+      <div class="collection__product-detail--container">
+        <div class="collection__product--price">
+          <p>{{ product.vendor }}</p>
+          <p>{{ product.price }}</p>
+        </div>
+        <p class="collection__product--title">{{ productTitleClean }}</p>
+      </div>
     </div>
   </div>
-</div>
+</a>
