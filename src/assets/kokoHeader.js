@@ -16,7 +16,6 @@
     $('.js-sub-side-nav-close').on('click', function(){
         var $this = $(this);
         var handle = $this.data('target');
-      console.log('asdfasdf');
       $(`.drag-target[data-sidenav='${handle}']`).trigger('click');
     })
 $(document).ready(function(){
@@ -25,7 +24,6 @@ $(document).ready(function(){
     var that = $(this);
     var handle = that.data('active');
     var count = that.data('count');
-    console.log(count);
     if (count == true) {
       $('.js-navigation__dropdown').removeClass('open');
       $(`.js-navigation__dropdown[data-handle="${handle}"]`).addClass('open');
@@ -38,8 +36,8 @@ $(document).ready(function(){
   $('.js-shop__mainlink').on('mouseenter', function(){
     var that = $(this);
     var handle = that.data('handle');
-    $('.js-shop__mainlink').removeClass('open');
-    that.addClass('open');
+    $('.js-shop__mainlink').removeClass('open-flex');
+    that.addClass('open-flex');
     $('.sub-links').removeClass('open');
     $(`.sub-links[data-handle="${handle}"]`).addClass('open');
   })

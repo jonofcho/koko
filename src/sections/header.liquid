@@ -16,16 +16,22 @@
         {%- else condition -%}
           {% assign childCount = false %}
         {%- endif -%}
-        <a href="{{link.url}}">
+        {%- if linklists[link_handle].links.size > 0 -%}
           <div class="js-navigation__link navigation__link flex align-center" data-active="{{link_handle}}" data-count="{{childCount}}">
             <p class="navigation__link--text">{{ link.title }}</p>
           </div>
-        </a>
+        {%- else condition -%}
+          <a href="{{link.url}}">
+            <div class="js-navigation__link navigation__link flex align-center" data-active="{{link_handle}}" data-count="{{childCount}}">
+              <p class="navigation__link--text">{{ link.title }}</p>
+            </div>
+          </a>
+        {%- endif -%}
         {%- endfor -%}
       </div>
     </div>
     <div class="navigation__user-controls--container">
-      <p class="nowrap">SIGN IN</p>
+      <p class="nowrap text-light-grey">SIGN IN</p>
       <div class="">
         |
       </div>

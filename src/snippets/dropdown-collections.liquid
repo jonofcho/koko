@@ -5,7 +5,7 @@
         <div class="collection__main-links--inner column-2">
           {%- for child_link in linklists['collections'].links -%}
           {% assign child_handle = child_link.title | handle %}
-            <h3 class="collections__mainlink" data-handle="{{child_handle}}">{{ child_link.title }}</h3>
+            <a href="{{child_link.url}}"><h3 class="collections__mainlink" data-handle="{{child_handle}}">{{ child_link.title }}</h3><a/>
           {%- endfor -%}
         </div>
       </div>
