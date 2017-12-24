@@ -1,3 +1,4 @@
+{% comment %}
 <footer>
 
   {%- assign social_accounts = 'Facebook, Twitter, Pinterest, Instagram, Snapchat, Tumblr, YouTube, Vimeo,' | split: ', ' -%}
@@ -51,7 +52,7 @@
     <small>{{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}. {{ powered_by_link }}</small>
   </div>
 </footer>
-
+{% endcomment %}
 {% schema %}
   {
     "name": "Footer",
