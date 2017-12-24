@@ -19,6 +19,10 @@
 .pdp__image--container{
   @extend .float-right;
 }
+.pdp__image{
+  height: 565px;
+  width: 455px;
+}
 .pdp__info--container{
   width: 100%;
   max-width: 533px;
@@ -78,4 +82,44 @@
 .pdp__details--hr{
   margin-top: 46px;
   margin-bottom: 31px;
+}
+@include media-query($medium-down) {
+  .pdp__grid{
+    margin-left: -15px;
+  }
+  .pdp__grid-item{
+    padding-left: 15px;
+  }
+  .pdp__info--vendor{
+    font-size: 1em;
+  }
+  .pdp__info--title{
+    font-size: 1em;
+  }
+  .pdp__image--container{
+    float: unset;
+  }
+  .pdp__image{
+    max-width: 225px;
+    height: auto;
+    margin: 0 auto;
+  }
+  .pdp__info--price{
+    text-align: center;
+  }
+  .pdp__variants--container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .pdp__add-to-cart--container--mobile{
+    padding: 16px 20px;
+    box-shadow: 0 -3px 6px 0 rgba(0, 0, 0, 0.25);
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+  }
+  .pdp__add-to-cart{
+    width: 100%;
+  }
 }

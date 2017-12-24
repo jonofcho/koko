@@ -124,9 +124,9 @@
 {% assign productTitleArr = product.title | split: '_' %}
 {% assign collectionTitle = productTitleArr.first %}
 {% assign productTitleClean = productTitleArr.last %}
-<div class="pdp__detail--container">
+<div class="pdp__detail--container medium-down--hide">
   <div class="page-width ">
-    <div class="grid pdp__grid">
+    <div class="grid pdp__grid medium-down--hide">
       <div class="grid__item pdp__grid-item one-half">
         <div class="pdp__breadcrumbs--container">
           {%- include 'breadcrumbs' -%}
@@ -135,19 +135,25 @@
       <div class="grid__item pdp__grid-item one-half">
       </div>
     </div>
+    <div class="grid large-up--hide">
+      <div class="grid__item medium-down--one-whole">
+        <h3 class="pdp__info--vendor">{{ product.vendor }}</h3>
+        <h2 class="pdp__info--title">{{ productTitleClean }}</h2>
+      </div>
+    </div>
     <div class="grid pdp__grid">
-      <div class="grid__item pdp__grid-item one-half">
+      <div class="grid__item pdp__grid-item large-up--one-half medium-down--one-whole">
         <div class="pdp__image--container">
-          <div class="">
-            <div class=""style="height: 565px; width: 455px; background-color: #d8d8d8">
+          <div class="pdp__image">
 
-            </div>
+              <img class="width--full" src="https://news.nationalgeographic.com/content/dam/news/photos/000/755/75552.ngsversion.1422285553360.adapt.1900.1.jpg" alt="">
+
           </div>
         </div>
       </div>
-      <div class="grid__item pdp__grid-item one-half">
+      <div class="grid__item pdp__grid-item large-up--one-half medium-down--one-whole">
         <div class="pdp__info--container">
-          <div class="">
+          <div class="medium-down--hide">
             <h3 class="pdp__info--vendor">{{ product.vendor }}</h3>
             {% comment %}
             <h3>{{collectionTitle}}</h3>
@@ -157,12 +163,12 @@
           <div class="">
             <h2 class="pdp__info--price">{{ product.price }}</h2>
           </div>
-          <div class="pdp__info--description">
+          <div class="pdp__info--description medium-down--hide">
             <p>{{ product.description }}</p>
           </div>
           <div class="mtop-15">
             {%- if product.variants.size > 0 -%}
-            <p class="mbot-15">Select Size</p>
+            <p class="mbot-15 medium-down--hide">Select Size</p>
             {%- for variant in product.variants -%}
               <div class="pdp__variant--container">
                 {{variant.title}}
@@ -188,6 +194,54 @@
     </div>
   </div>
 </div>
+
+<!-- <div class="page-width"> -->
+<!-- PRODUCT MOBILE -->
+
+<div class="mtop-16 text-light-grey">
+  <div class="grid large-up--hide">
+    <div class="grid__item one-whole">
+      <div class="text-center">
+        <h3 class="pdp__info--vendor">{{ product.vendor }}</h3>
+        <h2 class="pdp__info--title">{{ productTitleClean }}</h2>
+      </div>
+    </div>
+    <div class="grid__item one-whole">
+      <div class="">
+        <div class="pdp__image">
+          <img class="width--full" src="https://news.nationalgeographic.com/content/dam/news/photos/000/755/75552.ngsversion.1422285553360.adapt.1900.1.jpg" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="grid__item one-whole">
+
+    </div>
+    <div class="grid__item one-whole">
+      <div class="">
+        <h2 class="pdp__info--price">{{ product.price }}</h2>
+        {%- if product.variants.size > 0 -%}
+        <p class="mbot-15 medium-down--hide">Select Size</p>
+        <div class="pdp__variants--container">
+          {%- for variant in product.variants -%}
+          <div class="pdp__variant--container">
+              {{variant.title}}
+          </div>
+          {%- endfor -%}
+        </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+  <div class="pdp__add-to-cart--container--mobile">
+
+    <form class="product-form" action="/cart/add" data-productid="{{product.id}}"  method="post">
+      <input type="hidden" name="id" data-productid="{{product.id}}" class="product-select" value="{{ product.variants[0].id }}" data-variant-title="{{ product.variants[0].title }}" />
+      <input type="submit" value="ADD TO CART" class="pdp__add-to-cart" />
+    </form>
+
+  </div>
+</div>
+<!-- </div> -->
 
 {% schema %}
   {
