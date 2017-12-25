@@ -13,14 +13,20 @@
       <div class="collection__filters">
         <div class="">
           <select class="collection__filter--selection js-collection__filter--selection" name="skin-type">
-            <option value="skin-type-0">Skin Type</option>
-            <option value="skin-type-1">Skin Type</option>
-            <option value="skin-type-2">Skin Type</option>
+            <option value="skin-type-0">Oily</option>
+            <option value="skin-type-1">Dry</option>
+            <option value="skin-type-2">Combination</option>
+            <option value="skin-type-3">Normal</option>
+            <option value="skin-type-4">Sensitive</option>
           </select>
           <select class="collection__filter--selection js-collection__filter--selection" name="skin-concern">
-            <option value="skin-concern-1">Skin Concern</option>
-            <option value="skin-concern-2">Skin Concern</option>
-            <option value="skin-concern-3">Skin Concern</option>
+            <option value="skin-concern-1">Acne</option>
+            <option value="skin-concern-2">Anti-aging</option>
+            <option value="skin-concern-3">Pores</option>
+            <option value="skin-concern-4">Dryness</option>
+            <option value="skin-concern-5">Pigmentation</option>
+            <option value="skin-concern-6">Sensitive Skin</option>
+
           </select>
           <select class="collection__filter--selection js-collection__filter--selection" name="brand">
             <option value="brand-1">Brand</option>
@@ -29,10 +35,12 @@
           </select>
         </div>
         <div class="">
-          <select class="collection__filter--selection margin-none" name="">
-            <option value="brand">Brand</option>
-            <option value="brand">Brand</option>
-            <option value="brand">Brand</option>
+          <select class="collection__filter--selection margin-none" name="" id="SortBy">
+              <option value="best-selling">{{ 'collections.sorting.best_selling' }}</option>
+              <option value="title-ascending">{{ 'collections.sorting.az' }}</option>
+              <option value="title-descending">{{ 'collections.sorting.za' }}</option>
+              <option value="price-ascending">{{ 'collections.sorting.price_ascending' }}</option>
+              <option value="price-descending">{{ 'collections.sorting.price_descending' }}</option>
           </select>
         </div>
       </div>

@@ -30,19 +30,29 @@
       <h3 class="margin-none text-light-grey text--large">{{ collection.title }}</h3>
       <div class="collection__tags--container">
         {% if collection.all_tags.size > 0 %}
-          <ul class="padding-none">
+        <ul class="padding-none">
+          <li {% unless current_tags %} class="active pbot-15" {%- else -%} class="pbot-15"{% endunless %}>
+            {% if collection.handle %}
+            <a class="text-light-grey text--small hover-underline" href="/collections/{{ collection.handle }}{% if collection.sort_by %}?sort_by={{ collection.sort_by }}{% endif %}">All</a>
+            {% elsif collection.current_type %}
+            <a class="text-light-grey text--small hover-underline" href="{{ collection.current_type | url_for_type | sort_by: collection.sort_by }}">All</a>
+            {% elsif collection.current_vendor %}
+            <a class="text-light-grey text--small hover-underline" href="{{ collection.current_vendor | url_for_vendor | sort_by: collection.sort_by }}">All</a>
+            {% endif %}
+          </li>
             {% for tag in collection.all_tags %}
               {% if current_tags contains tag %}
-                <li class="open pbot-15">
-                  <a class="text-light-grey text--small hover-underline" href="#">{{tag}}</a>
+                <li class="open pbot-15 collection__tags">
+                  {{ tag | link_to_remove_tag: tag }}
                 </li>
               {% else %}
-                <li class="pbot-15">
-                  <a class="text-light-grey text--small hover-underline" href="#">{{tag}}</a>
+                <li class="pbot-15 collection__tags">
+                  {{ tag | link_to_tag: tag }}
                 </li>
               {% endif %}
             {% endfor %}
           </ul>
+
         {% endif %}
       </div>
     </div>

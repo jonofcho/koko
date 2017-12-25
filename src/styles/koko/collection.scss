@@ -12,6 +12,13 @@
 .collection__sort{
   width: 189px;
 }
+.collection__tags a{
+
+    @extend .text-light-grey;
+    @extend .text--small;
+    @extend .hover-underline;
+
+}
 .collection__filter--selection{
   @extend .text-medium-grey;
   @extend .text--default;
