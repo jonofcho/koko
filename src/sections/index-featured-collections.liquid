@@ -1,0 +1,110 @@
+<div class="grid">
+  <div class="grid__item one-quarter">
+    <div class="index__featured-collection--container">
+      <div class="featured-collection__img--container bg-placeholder">
+        {%- if section.settings.card_image_one -%}
+          <!-- <img class="width--full" src="{{ section.settings.card_image_one | img_url: 'large' }}" alt=""> -->
+        {%- else -%}
+          <!-- <img class="width--full" src="https://news.nationalgeographic.com/content/dam/news/photos/000/755/75552.ngsversion.1422285553360.adapt.1900.1.jpg" alt=""> -->
+        {%- endif -%}
+      </div>
+      <div class="featured-collection__cover-text">
+        <h2>{{ section.settings.card_title_one }}</h2>
+      </div>
+    </div>
+  </div>
+  <div class="grid__item one-quarter">
+    <div class="index__featured-collection--container">
+      <div class="featured-collection__img--container bg-placeholder">
+        {%- if section.settings.card_image_two -%}
+          <!-- <img class="width--full" src="{{ section.settings.card_image_two | img_url: 'large' }}" alt=""> -->
+        {%- else -%}
+          <!-- <img class="width--full" src="https://news.nationalgeographic.com/content/dam/news/photos/000/755/75552.ngsversion.1422285553360.adapt.1900.1.jpg" alt=""> -->
+        {%- endif -%}
+      </div>
+      <div class="featured-collection__cover-text">
+        <h2>{{ section.settings.card_title_two }}</h2>
+      </div>
+    </div>
+  </div>
+  <div class="grid__item one-quarter">
+    <div class="index__featured-collection--container">
+
+      <div class="featured-collection__img--container bg-placeholder">
+        {%- if section.settings.card_image_three -%}
+          <!-- <img class="width--full" src="{{ section.settings.card_image_three | img_url: 'large' }}" alt=""> -->
+        {%- else -%}
+          <!-- <img class="width--full" src="https://news.nationalgeographic.com/content/dam/news/photos/000/755/75552.ngsversion.1422285553360.adapt.1900.1.jpg" alt=""> -->
+        {%- endif -%}
+      </div>
+      <div class="featured-collection__cover-text">
+        <h2>{{ section.settings.card_title_three }}</h2>
+
+      </div>
+    </div>
+  </div>
+  <div class="grid__item one-quarter">
+    <div class="index__featured-collection--container">
+
+      <div class="featured-collection__img--container bg-placeholder">
+        {%- if section.settings.card_image_four -%}
+          <!-- <img class="width--full" src="{{ section.settings.card_image_four | img_url: 'large' }}" alt=""> -->
+        {%- else -%}
+          <!-- <img class="width--full" src="https://news.nationalgeographic.com/content/dam/news/photos/000/755/75552.ngsversion.1422285553360.adapt.1900.1.jpg" alt=""> -->
+        {%- endif -%}
+      </div>
+      <div class="featured-collection__cover-text">
+        <h2>{{ section.settings.card_title_four }}</h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name" : "Featured Collection Cards",
+    "settings" : [
+      {
+        "id": "card_image_one",
+        "type": "image_picker",
+        "label": "Card Image One"
+      },
+      {
+        "id" : "card_title_one",
+        "type": "text",
+        "label": "Card Title One"
+      },
+      {
+        "id": "card_image_two",
+        "type": "image_picker",
+        "label": "Card Image Two"
+      },
+      {
+        "id" : "card_title_two",
+        "type": "text",
+        "label": "Card Title Two"
+      },
+      {
+        "id": "card_image_three",
+        "type": "image_picker",
+        "label": "Card Image Three"
+      },
+      {
+        "id" : "card_title_three",
+        "type": "text",
+        "label": "Card Title Three"
+      },
+      {
+        "id": "card_image_four",
+        "type": "image_picker",
+        "label": "Card Image Four"
+      },
+      {
+        "id" : "card_title_four",
+        "type": "text",
+        "label": "Card Title Four"
+      }
+    ]
+  }
+{% endschema %}
