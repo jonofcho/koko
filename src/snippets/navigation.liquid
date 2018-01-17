@@ -3,46 +3,56 @@
     <p>Free Shipping on Orders Over $125</p>
   </div>
   <!-- DESKTOP NAV -->
-  <div class="theme__navigation medium-down--hide">
-    <div class="flex align-center">
-      <div class="navigation__logo--container">
-        <h2 class="text--bold text--extra-large">KOKO BEAUTE</h2>
-      </div>
+  <div class="z-depth-2 medium-down--hide">
+    <div class="page-width">
+      <div class="theme__navigation">
+
       <div class="flex align-center">
-        {%- for link in linklists['main-menu'].links -%}
-        {% assign link_handle = link.title | handle %}
-        {%- if linklists[link_handle].links.size > 0 -%}
-          {% assign childCount = true %}
-        {%- else condition -%}
-          {% assign childCount = false %}
-        {%- endif -%}
-        {%- if linklists[link_handle].links.size > 0 -%}
-          <div class="js-navigation__link navigation__link flex align-center" data-active="{{link_handle}}" data-count="{{childCount}}">
-            <p class="navigation__link--text">{{ link.title }}</p>
-          </div>
-        {%- else -%}
-          <a href="{{link.url}}">
+        <div class="navigation__logo--container">
+          <a class="text-light-grey" href="/"><h2 class="text--bold text--extra-large">KOKO BEAUTE</h2></a>
+        </div>
+        <div class="flex align-center">
+          {%- for link in linklists['main-menu'].links -%}
+          {% assign link_handle = link.title | handle %}
+          {%- if linklists[link_handle].links.size > 0 -%}
+            {% assign childCount = true %}
+          {%- else condition -%}
+            {% assign childCount = false %}
+          {%- endif -%}
+          {%- if linklists[link_handle].links.size > 0 -%}
             <div class="js-navigation__link navigation__link flex align-center" data-active="{{link_handle}}" data-count="{{childCount}}">
               <p class="navigation__link--text">{{ link.title }}</p>
             </div>
-          </a>
-        {%- endif -%}
-        {%- endfor -%}
+          {%- else -%}
+            <a href="{{link.url}}">
+              <div class="js-navigation__link navigation__link flex align-center" data-active="{{link_handle}}" data-count="{{childCount}}">
+                <p class="navigation__link--text">{{ link.title }}</p>
+              </div>
+            </a>
+          {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+      <div class="navigation__user-controls--container">
+        <p class="nowrap text-light-grey">SIGN IN</p>
+        <div class="">
+          |
+        </div>
+        <div class="navigation__icons--container">
+          <div class="navigation__icon--outer-container">
+            <div class="navigation__search-icon--container">
+              <img src="{{ 'icon--search.svg' | asset_url }}" alt="">
+            </div>
+          </div>
+          <div class="navigation__icon--outer-container navigation__icon--outer-container--cart">
+            <div class="navigation__bag-icon--container">
+              <img src="{{ 'icon--bag.svg' | asset_url }}" alt="">
+            </div>
+            {%- include 'navigation-cart-dropdown' -%}
+          </div>
+        </div>
       </div>
     </div>
-    <div class="navigation__user-controls--container">
-      <p class="nowrap text-light-grey">SIGN IN</p>
-      <div class="">
-        |
-      </div>
-      <div class="navigation__icons--container">
-        <div class="navigation__search-icon--container">
-          <img src="{{ 'icon--search.svg' | asset_url }}" alt="">
-        </div>
-        <div class="navigation__bag-icon--container">
-          <img src="{{ 'icon--bag.svg' | asset_url }}" alt="">
-        </div>
-      </div>
     </div>
   </div>
 
