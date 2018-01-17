@@ -1,0 +1,44 @@
+<div class="grid__item one-quarter">
+  <div class="">
+    <img class="dropdown__image width--full" src="{{ section.settings.image_one | img_url: 'large' }}" >
+  </div>
+</div>
+<div class="grid__item one-quarter">
+  <div class="">
+    <img class="dropdown__image width--full" src="{{ section.settings.image_two | img_url: 'large' }}" >
+  </div>
+</div>
+<div class="grid__item one-quarter">
+  <div class="">
+    <img class="dropdown__image width--full" src="{{ section.settings.image_three | img_url: 'large' }}" >
+  </div>
+</div>
+{{ section.settings.product }}
+{% schema %}
+  {
+    "name" : "Men Dropdown Images",
+    "settings" : [
+      {
+        "id": "image_one",
+        "type": "image_picker",
+        "label": "Image One"
+      },
+      {
+        "id": "image_two",
+        "type": "image_picker",
+        "label": "Image Two"
+      },
+      {
+        "id": "image_three",
+        "type": "image_picker",
+        "label": "Image Three"
+      },
+      {
+        "id": "product",
+        "type": "product",
+        "label": "Image Three"
+      }
+
+    ]
+  }
+{% endschema %}

@@ -1,11 +1,11 @@
 
   <div class="sublinks__men--container">
-    <div class="">
-      {%- for link in linklists[child_handle].links -%}
-        <p class="sublink">{{link.title | remove: "MEN " | downcase | capitalize }}</p>
-      {%- endfor -%}
+    <div class="grid">
+      <div class="grid__item one-quarter">
+        {%- for link in linklists[child_handle].links -%}
+          <p class="sublink">{{link.title | remove: "MEN " | downcase | capitalize }}</p>
+        {%- endfor -%}
+      </div>
+      {% section 'dropdown-shop-men-images' %}
     </div>
-    <img class="width--full placeholder-img" src="https://news.nationalgeographic.com/content/dam/news/photos/000/755/75552.ngsversion.1422285553360.adapt.1900.1.jpg" alt="">
-    <img class="width--full placeholder-img" src="https://news.nationalgeographic.com/content/dam/news/photos/000/755/75552.ngsversion.1422285553360.adapt.1900.1.jpg" alt="">
-    <img class="width--full placeholder-img" src="https://news.nationalgeographic.com/content/dam/news/photos/000/755/75552.ngsversion.1422285553360.adapt.1900.1.jpg" alt="">
   </div>

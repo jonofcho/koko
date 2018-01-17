@@ -1,0 +1,17 @@
+<div class="" id="textsection">
+  <div class="simpletext">
+    <img class="width--full" src="{{ section.settings.teamPhoto | img_url: 'large' }}" >
+  </div>
+</div>
+{% schema %}
+  {
+    "name" : "Skincare Dropdown Image",
+    "settings" : [
+      {
+        "id": "teamPhoto",
+        "type": "image_picker",
+        "label": "Team Photo image"
+      }
+    ]
+  }
+{% endschema %}

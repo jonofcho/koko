@@ -4,10 +4,10 @@
 }
 .theme__navigation{
   height: 76px;
-  padding: 0 40px;
+  // padding: 0 40px;
   @extend .flex;
   @extend .justify-between;
-  @extend .z-depth-2;
+  // @extend .z-depth-2;
   @extend .align-center;
   @extend .bg-white;
 }
@@ -24,6 +24,7 @@
     border-bottom: 1.5px solid black;
   }
 }
+
 .navigation__link--text{
   @extend .nowrap;
   @extend .text-light-grey;
@@ -37,7 +38,7 @@
   }
 }
 .navigation__logo--container{
-  margin-left: 26px;
+  // margin-left: 26px;
   margin-right: 26px;
 
 }
@@ -48,13 +49,23 @@
   width: 180px;
 }
 .navigation__icons--container{
-  width: 55px;
+  width: 100px;
   @extend .flex;
   @extend .justify-between;
   @extend .align-center;
 }
+.navigation__icon--outer-container{
+  @extend .flex;
+  @extend .align-center;
+  @extend .justify-center;
+  width: 50px;
+
+}
 .navigation__icon--container{
   width: 20px;
+}
+.navigation__icon--outer-container--cart{
+  position: relative
 }
 .navigation__search-icon--container{
   width: 16px;
@@ -64,4 +75,49 @@
 }
 .navigation__dropdown{
   @extend .hidden;
+}
+.navigation__bag-icon--container{
+  display: flex;
+  height: 76px;
+  &:hover + .navigation__cart-dropdown {
+    display: block;
+  }
+}
+.navigation__cart-dropdown{
+  @extend .absolute;
+  @extend .bg-white;
+  @extend .text-light-grey;
+  display: none;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.23);
+  padding: 24px;
+  right: 0;
+  top: 74px;
+  width: 430px;
+}
+.navigation__cart-dropdown-check-icon{
+  @extend .mright-16;
+  width: 15px;
+}
+.navigation__cart-dropdown--added-item-image{
+  max-width: 87px;
+  @extend .mright-16;
+}
+.navigation__cart-dropdown--item-details{
+  @extend .flex;
+  padding: 16px 0;
+  margin: 16px 0;
+  border-top: solid 1px #dedfe1;
+  border-bottom: solid 1px #dedfe1;
+}
+.navgation__cart-dropdown--cart-btn{
+  @extend .width--full;
+  @extend .text-white;
+  background: linear-gradient(to right, #dec1de, #b98dba);
+  height: 48px;
+}
+.navigation__cart-dropdown--remove-item{
+  @extend .absolute;
+  width: 9px;
+  top: 12px;
+  right: 0;
 }
