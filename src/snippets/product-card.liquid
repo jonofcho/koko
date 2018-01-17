@@ -1,19 +1,15 @@
 {% assign productTitleArr = product.title | split: '_' %}
 {% assign collectionTitle = productTitleArr.first %}
 {% assign productTitleClean = productTitleArr.last %}
+
 <a href="{{product.url}}">
-  <div class="grid__item medium-down--one-half large-up--one-third">
-    <div class="relative collection__card--hover">
+    <div class="relative collection__card--hover js-collection__product-card" data-tags="{{product.tags | join: ', ' }}">
       <div class="collection__product--alert">
         <!-- REPLACE WITH LIQUID LATER -->
         <p>Best Seller</p>
       </div>
       <div class="collection__product-image--container">
-        {{product.image.url}}
-        {%- if product.image -%}
-          <img class="width--full" src="{{product.image.src}}" alt="">
-        {%- endif -%}
-        <img class="width--full" src="https://news.nationalgeographic.com/content/dam/news/photos/000/755/75552.ngsversion.1422285553360.adapt.1900.1.jpg" alt="">
+        <img class="width--full" src="  {{product.images.first.src | img_url: '480x'}}" alt="">
         <div class="product__card--controls">
           <p>Quick View</p>
           <p>|</p>
@@ -28,5 +24,4 @@
         <p class="collection__product--title">{{ productTitleClean }}</p>
       </div>
     </div>
-  </div>
 </a>

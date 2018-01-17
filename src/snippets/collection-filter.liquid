@@ -11,24 +11,26 @@
         </div>
       </div>
       <div class="collection__filters">
-        <div class="">
+        <div class="flex align-center space-between">
           <select class="collection__filter--selection js-collection__filter--selection" name="skin-type">
-            <option value="skin-type-0">Oily</option>
-            <option value="skin-type-1">Dry</option>
-            <option value="skin-type-2">Combination</option>
-            <option value="skin-type-3">Normal</option>
-            <option value="skin-type-4">Sensitive</option>
+            <option default value="">All</option>
+            <option value="oily">Oily</option>
+            <option value="dry">Dry</option>
+            <option value="combination">Combination</option>
+            <option value="normal">Normal</option>
+            <option value="sensitive">Sensitive</option>
           </select>
           <select class="collection__filter--selection js-collection__filter--selection" name="skin-concern">
-            <option value="skin-concern-1">Acne</option>
-            <option value="skin-concern-2">Anti-aging</option>
-            <option value="skin-concern-3">Pores</option>
-            <option value="skin-concern-4">Dryness</option>
-            <option value="skin-concern-5">Pigmentation</option>
-            <option value="skin-concern-6">Sensitive Skin</option>
-
+            <option default>All</option>
+            <option value="acne">Acne</option>
+            <option value="anti-aging">Anti-aging</option>
+            <option value="pores">Pores</option>
+            <option value="dryness">Dryness</option>
+            <option value="pigmentation">Pigmentation</option>
+            <option value="sensitive-skin">Sensitive Skin</option>
           </select>
           <select class="collection__filter--selection js-collection__filter--selection" name="brand">
+            <option default>All</option>
             <option value="brand-1">Brand</option>
             <option value="brand-2">Brand</option>
             <option value="brand-3">Brand</option>
@@ -48,19 +50,103 @@
     <div class="large-up--hide">
       <div class="grid">
         <div class="grid__item one-half">
-          <select class="collection__filter--selection" name="">
-            <option value="skin-type">Skin Type</option>
-            <option value="skin-type">Skin Type</option>
-            <option value="skin-type">Skin Type</option>
-          </select>
+          <div class="">
+            <div class="collection__filter--selection js-collection__filter--selection" data-activates="collection__filter--slideout--mobile" name="">
+              <p>Sort By</p>
+              <div class="collection__filter-indicator--container">
+                <img class="width--full" src="{{ 'icon--triangle-down.svg' | asset_url }}" alt="">
+              </div>
+            </div>
+          </div>
         </div>
         <div class="grid__item one-half">
-          <select class="collection__filter--selection" name="">
-            <option value="skin-type">Skin Type</option>
-            <option value="skin-type">Skin Type</option>
-            <option value="skin-type">Skin Type</option>
-          </select>
+          <div class="">
+            <div class="collection__filter--selection js-collection__filter--selection"  data-activates="collection__filter--slideout--mobile" name="">
+              <p>Filter By</p>
+              <div class="collection__filter-indicator--container">
+                <img class="width--full" src="{{ 'icon--triangle-down.svg' | asset_url }}" alt="">
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
+    <div class="collection__filter--slideout--mobile large-up--hide side-nav width--full" id="collection__filter--slideout--mobile">
+      <div class="collection__filter--slideout--mobile--controls">
+        <div class="collection__filter--mobile--control--normalize">
+          <a href="#close">
+            <div class="collection__filter--close">
+              <img class="width--full" src="{{ 'icon--close.svg' | asset_url }}" alt="">
+            </div>
+          </a>
+        </div>
+        <div class="collection__filter--mobile--control--normalize">
+          <h3>Filter By</h3>
+        </div>
+        <div class="collection__filter--mobile--control--normalize text-right">
+          <h4 class="text--reduced">Reset</h4>
+        </div>
+      </div>
+      <ul class="collapsible collection__filter-options--mobile--container" data-collapsible="accordion">
+        <li class="">
+          <div class="collapsible-header">
+            <div class="collection__filter-options--mobile--header">
+              <h3>Skin Type</h3>
+              <div class="collection__filter--accordion-indicator">
+                <img src="{{ 'icon--arrow-down.svg' | asset_url }}" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="collapsible-body">
+            <div class="">
+              <div class="flex align-center mbot-24">
+                <input id="checkbox-oily" class="mright-16" type="checkbox" name="" value="Oily">
+                <label for="checkbox-oily">Oily</label>
+              </div>
+              <div class="flex align-center mbot-24">
+                <input id="checkbox-dry" class="mright-16" type="checkbox" name="" value="Dry">
+                <label for="checkbox-dry">Dry</label>
+              </div>
+              <div class="flex align-center mbot-24">
+                <input id="checkbox-combination" class="mright-16" type="checkbox" name="" value="Combination">
+                <label for="checkbox-combination">Combination</label>
+              </div>
+              <div class="flex align-center mbot-24">
+                <input id="checkbox-normal" class="mright-16" type="checkbox" name="" value="Normal">
+                <label for="checkbox-normal">Normal</label>
+              </div>
+              <div class="flex align-center mbot-24">
+                <input id="checkbox-sensitive" class="mright-16" type="checkbox" name="" value="Sensitive">
+                <label for="checkbox-sensitive">Sensitive</label>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="">
+          <div class="collapsible-header">
+            <div class="flex align-center justify-between">
+              <h3>Skin Type</h3>
+              <div class="collection__filter--accordion-indicator">
+                <img src="{{ 'icon--arrow-down.svg' | asset_url }}" alt="">
+
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="">
+          <div class="collapsible-header">
+            <div class="flex align-center justify-between">
+              <h3>Skin Type</h3>
+              <div class="collection__filter--accordion-indicator">
+                <img src="{{ 'icon--arrow-down.svg' | asset_url }}" alt="">
+
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="collection__apply-filter--container--mobile">
+        <button class="" type="button" name="button">Apply</button>
       </div>
     </div>
   </div>

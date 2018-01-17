@@ -22,21 +22,28 @@
 .collection__filter--selection{
   @extend .text-medium-grey;
   @extend .text--default;
+  @extend .flex;
+  @extend .align-center;
+  @extend .justify-between;
   height: 42px;
   width: 189px;
   margin-right: 16px;
   border: solid 1px #d9d9d9;
-  padding-left: 16px;
+  padding-left: 24px;
+  padding-right: 24px;
 
   @include media-query($medium-down) {
     width: 100%;
   }
 }
+.collection__filter-indicator--container{
+  width: 8px;
+}
 .collection__filter--clear{
   @extend .text-medium-grey;
   @extend .mleft-30;
   @extend .text-underline;
-  @extend .text--reduced-bold;
+  @extend .text--reduced;
   @extend .hover-pointer;
 }
 .collection__product--count{
@@ -44,4 +51,50 @@
   @extend .text-light-grey;
   margin-top: 8px;
   margin-bottom: 16px;
+}
+
+// COLLECTION MOBILE Filter
+.collection__filter--close{
+  width: 14px;
+}
+.collection__filter--mobile--control--normalize{
+  width: 82px;
+}
+.collection__filter--slideout--mobile{
+  width: 100% !important;
+  @extend .text-light-grey;
+}
+.collection__filter--slideout--mobile--controls{
+  @extend .flex;
+  @extend .align-center;
+  @extend .justify-between;
+  @extend .psides-15;
+  border-bottom: 1px solid #e1e1e1;
+}
+.collection__filter-options--mobile--container{
+  @extend .psides-25;
+  li{
+    border-bottom: 1px solid #e1e1e1;
+  }
+}
+.collection__filter-options--mobile--header{
+  @extend .flex;
+  @extend .align-center;
+  @extend .justify-between;
+  height: 54px;
+}
+.collection__apply-filter--container--mobile{
+  padding: 18px 24px;
+  button{
+    @extend .width--full;
+    @extend .text-white;
+    border: none;
+    height: 44px;
+    border-radius: 5px;
+    font-size: 1.143em;
+    background-color: #d3977b;
+  }
+}
+input[type=checkbox] {
+	visibility: hidden;
 }
