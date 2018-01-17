@@ -146,7 +146,7 @@
         <div class="pdp__image--container">
           <div class="pdp__image">
 
-              <img class="width--full" src="https://news.nationalgeographic.com/content/dam/news/photos/000/755/75552.ngsversion.1422285553360.adapt.1900.1.jpg" alt="">
+              <img class="width--full" src="{{product.images.first.src | img_url: '480x'}}" alt="">
 
           </div>
         </div>
@@ -209,7 +209,7 @@
     <div class="grid__item one-whole">
       <div class="">
         <div class="pdp__image">
-          <img class="width--full" src="https://news.nationalgeographic.com/content/dam/news/photos/000/755/75552.ngsversion.1422285553360.adapt.1900.1.jpg" alt="">
+          <img class="width--full" src="{{product.images.first.src | img_url: '480x'}}" alt="">
         </div>
       </div>
     </div>

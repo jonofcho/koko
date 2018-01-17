@@ -83,6 +83,9 @@
   margin-top: 46px;
   margin-bottom: 31px;
 }
+.pdp__add-to-cart--container--mobile{
+  display: none;
+}
 @include media-query($medium-down) {
   .pdp__grid{
     margin-left: -15px;
@@ -118,6 +121,7 @@
     position: absolute;
     width: 100%;
     bottom: 0;
+    display: block;
   }
   .pdp__add-to-cart{
     width: 100%;
