@@ -2,50 +2,18 @@
   <div class="grid">
     <div class="grid__item one-whole">
       <div class="">
-        <h2>Shopping Bag ( )</h2>
+        <h2>Shopping Bag ({{ cart.items.size }})</h2>
         <h3>You qualify for free shipping!</h3>
       </div>
     </div>
+
   </div>
   <div class="grid">
       <div class="grid__item large-up--two-thirds medium-down--one-whole">
         <div class="cart__item-list--container">
-          <!-- FOR ITEM IN CART.ITEMS -->
-          <div class="cart__item--container">
-            <div class="grid">
-              <div class="grid__item one-quarter">
-                <div class="cart__item-img--container">
-                  <img class="width--full placeholder-img" style="height: 209px" src="https://news.nationalgeographic.com/content/dam/news/photos/000/755/75552.ngsversion.1422285553360.adapt.1900.1.jpg" alt="">
-                </div>
-              </div>
-              <div class="grid__item three-quarters">
-                <div class="cart__item-details--container">
-                  <div class="mbot-24">
-                    <p class="pbot-5 text--semibold">Shiseido</p>
-                    <p class="text--medium">BIO-PERFORMANCE LIFT DYNAMIC CREAM</p>
-                  </div>
-                  <div class="cart__item-details--quantity">
-                    <div class="flex align-center">
-                      <p>50ml</p>
-                      <div class="cart__item-quantity-incrementor">
-                        <p>1</p>
-                        <div class="cart__arrow--container">
-                          <img src="{{ 'icon--arrow-down.svg' | asset_url }}" alt="">
-                        </div>
-                      </div>
-                    </div>
-                    <p class="text--medium">$125</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="cart__item--remove--container">
-              <div class="cart__item--remove">
-                <img src="{{ 'icon--close.svg' | asset_url }}" alt="">
-              </div>
-            </div>
-          </div>
-          <hr class="cart__item--divider">
+          {% for item in cart.items %}
+            {% include 'cart-item' %}
+          {% endfor %}
         </div>
       </div>
       <div class="grid__item large-up--one-third medium-down--hide">

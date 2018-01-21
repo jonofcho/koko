@@ -187,7 +187,10 @@
                 <img src="{{ 'icon--plus.svg' | asset_url }}" alt="">
               </div>
             </div>
-            <button type="button" name="button" class="btn pdp__add-to-cart">ADD TO CART</button>
+            <form class="product-form" action="/cart/add" data-productid="{{product.id}}"  method="post">
+              <input type="hidden" name="id" data-productid="{{product.id}}" class="product-select" value="{{ product.variants[0].id }}" data-variant-title="{{ product.variants[0].title }}" />
+              <input type="submit" class="btn pdp__add-to-cart">ADD TO CART</input>
+            </form>
           </div>
         </div>
       </div>
@@ -232,7 +235,7 @@
       </div>
     </div>
   </div>
-  <div class="pdp__add-to-cart--container--mobile">
+  <div class="pdp__add-to-cart--container--mobile large-up--hide">
 
     <form class="product-form" action="/cart/add" data-productid="{{product.id}}"  method="post">
       <input type="hidden" name="id" data-productid="{{product.id}}" class="product-select" value="{{ product.variants[0].id }}" data-variant-title="{{ product.variants[0].title }}" />

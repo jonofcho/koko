@@ -1,0 +1,35 @@
+<div class="cart__item--container" id="{{item.variant_id}}">
+  <div class="grid">
+    <div class="grid__item one-quarter">
+      <div class="cart__item-img--container">
+        <img class="width--full placeholder-img" src="{{item.image.src | img_url: '480x'}}" alt="">
+      </div>
+    </div>
+    <div class="grid__item three-quarters">
+      <div class="cart__item-details--container">
+        <div class="mbot-24">
+          <p class="pbot-5 text--semibold">{{ item.vendor }}</p>
+          <p class="text--medium">{{ item.title }}</p>
+        </div>
+        <div class="cart__item-details--quantity">
+          <div class="flex align-center">
+            <p>50ml</p>
+            <div class="cart__item-quantity-incrementor">
+              <p>1</p>
+              <div class="cart__arrow--container">
+                <img src="{{ 'icon--arrow-down.svg' | asset_url }}" alt="">
+              </div>
+            </div>
+          </div>
+          <p class="text--medium">{{ item.price | money }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cart__item--remove--container js-cart__item--remove" data-remove="{{item.variant_id}}">
+    <div class="cart__item--remove">
+      <img src="{{ 'icon--close.svg' | asset_url }}" alt="">
+    </div>
+  </div>
+</div>
+<hr class="cart__item--divider">

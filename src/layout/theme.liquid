@@ -92,6 +92,9 @@
   {%- if template == "collection" -%}
     {{"kokoCollection.js" | asset_url | script_tag }}
   {%- endif -%}
+  {% if template == 'cart' %}
+    {{"kokoCart.js" | asset_url | script_tag }}
+  {% endif %}
   {% if template == 'index' %}
     <script src="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.min.js"></script>
     {{ "kokoIndex.js" | asset_url | script_tag }}
