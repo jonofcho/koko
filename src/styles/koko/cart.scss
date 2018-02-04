@@ -39,6 +39,19 @@
    border: solid 1px #979797;
    margin: 35px 0;
 }
+.cart__item--title{
+  @extend .text-medium;
+  line-height: 18px;
+  @include media-query($medium-down) {
+    font-size: 10px;
+  }
+}
+.cart__item--price{
+  @extend .text--medium;
+  @include media-query($medium-down) {
+    font-size: 13px;
+  }
+}
 .cart__payment-details--divider{
   border: solid 1px #979797;
   margin: 33px 0;
