@@ -138,6 +138,7 @@
     <div class="grid large-up--hide">
       <div class="grid__item medium-down--one-whole">
         <h3 class="pdp__info--vendor">{{ product.vendor }}</h3>
+        <h3>{{ product.collections }}</h3>
         <h2 class="pdp__info--title">{{ productTitleClean }}</h2>
       </div>
     </div>
@@ -155,6 +156,7 @@
         <div class="pdp__info--container">
           <div class="medium-down--hide">
             <h3 class="pdp__info--vendor">{{ product.vendor }}</h3>
+            {{product.collections[1].title}}
             {% comment %}
             <h3>{{collectionTitle}}</h3>
             {% endcomment %}

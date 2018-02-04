@@ -40,3 +40,16 @@ $('.js-collection__filter--selection').sideNav({
   closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
   draggable: true, // Choose whether you can drag to open on touch screens,
 });
+
+$('.js-product__card--controls-add-to-cart').on('click', function(){
+  var that = $(this);
+  console.log(that);
+  var productId = that.data('product-id');
+
+  $.post('/cart/add.js', {
+      quantity: 1,
+      id: productId,
+  }).always(function(){
+    console.log('post complete');
+  })
+})

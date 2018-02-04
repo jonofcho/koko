@@ -377,6 +377,9 @@ img{
 .mbot-15{
   margin-bottom: 15px;
 }
+.mbot-16{
+  margin-bottom: 16px;
+}
 .mbot-18{
   margin-bottom: 18px;
 }
@@ -388,6 +391,9 @@ img{
 }
 .mbot-30{
   margin-bottom: 30px;
+}
+.mbot-32{
+  margin-bottom: 32px;
 }
 .mbot-40{
   margin-bottom: 40px;
@@ -445,7 +451,11 @@ img{
 .align-center{
   align-items: center;
 }
-
+.flex-center-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .is-relative{
   position: relative;
 }

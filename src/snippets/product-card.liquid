@@ -2,18 +2,19 @@
 {% assign collectionTitle = productTitleArr.first %}
 {% assign productTitleClean = productTitleArr.last %}
 
-<a href="{{product.url}}">
     <div class="relative collection__card--hover js-collection__product-card" data-tags="{{product.tags | join: ', ' }}">
       <div class="collection__product--alert">
         <!-- REPLACE WITH LIQUID LATER -->
         <p>Best Seller</p>
       </div>
       <div class="collection__product-image--container">
+        <a href="{{product.url}}">
         <img class="width--full" src="  {{product.images.first.src | img_url: '480x'}}" alt="">
-        <div class="product__card--controls">
+      </a>
+        <div class="product__card--controls" >
           <p>Quick View</p>
           <p>|</p>
-          <p>Add to Cart</p>
+          <p class="js-product__card--controls-add-to-cart" data-product-id="{{product.variants.first.id}}">Add to Cart</p>
         </div>
       </div>
       <div class="collection__product-detail--container">
@@ -24,4 +25,3 @@
         <p class="collection__product--title">{{ productTitleClean }}</p>
       </div>
     </div>
-</a>
