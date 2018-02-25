@@ -1,0 +1,226 @@
+{%- if customer -%}
+<div class="page-width history__container">
+  <div class="grid">
+    <div class="grid__item medium-down--hide large-up--one-third bg-white">
+      <div class="account__link-section--container">
+        <div class="account__link--container">
+          <a href="#"><p class="account__link">My Details</p></a>
+        </div>
+        <div class="account__link--container">
+          <a href="#"><p class="account__link">Order History</p></a>
+        </div>
+      </div>
+    </div>
+    <div class="grid__item medium-down--one-whole large-up--two-thirds">
+        <div class="history__content--container">
+          <div class="grid">
+            <div class="grid__item">
+              <div class="text-center mtop-40">
+                <p class="account__info--header text--bold">Order History</p>
+              </div>
+            </div>
+            <div class="grid__item">
+              <div class="history__orders--container">
+                <div class="grid">
+                  <div class="grid__item">
+                    <div class="history__order--confirmation">
+                      <p>Ordered 1/23/18</p>
+                      <p>Order #1234566</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="history__orders--products--container">
+                  <div class="history__orders--product">
+                    <div class="grid">
+                      <div class="grid__item one-fifth">
+                        <div class="history__product-img--container">
+                          <a href="https://placeholder.com"><img src="http://via.placeholder.com/350x150"></a>
+                        </div>
+                      </div>
+                      <div class="grid__item four-fifths">
+                        <div class="history__product-details--container">
+                          <p class="history__product--vendor">Shiseido</p>
+                          <div class="history__product--title--container">
+                            <p>ULTIMUNE Power Infusing Concentrate</p>
+                            <p>$37.00</p>
+                          </div>
+                          <p class="history__product--variant medium-down--hide">50ml</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="history__recipient--details flex-center-between medium-down--hide">
+                  <div class="history__recipient">
+                    <p class="mbot-8">Delivered to:</p>
+                    <p class="history__recipient--name">John Ko</p>
+                  </div>
+                  <div class="flex-center-between">
+                    <p>$164,23</p>
+                    <button class="history__recipient--btn btn medium-down--hide" type="button" name="button">DETAILS</button>
+                  </div>
+                </div>
+                <!-- MOBILE -->
+
+              </div>
+              <div class="history__recipient--details flex-center-between large-up--hide">
+                <div class="history__recipient">
+                  <p class="mbot-8">To:</p>
+                  <p class="history__recipient--name">John Ko</p>
+                </div>
+                <p>$164,23</p>
+                <a href="#"><p class="history__recipient--link">DETAILS</p></a>
+              </div>
+          {% paginate customer.orders by 20 %}
+            {% if customer.orders.size != 0 %}
+
+              <table class="responsive-table">
+                <thead>
+                  <tr>
+                    <th>{{ 'customer.orders.order_number' | t }}</th>
+                    <th>{{ 'customer.orders.date' | t }}</th>
+                    <th>{{ 'customer.orders.payment_status' | t }}</th>
+                    <th>{{ 'customer.orders.fulfillment_status' | t }}</th>
+                    <th>{{ 'customer.orders.total' | t }}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for order in customer.orders %}
+                    <tr class="responsive-table-row">
+                      <td data-label="{{ 'customer.orders.order_number' | t }}">{{ order.name | link_to: order.customer_url }}</td>
+                      <td data-label="{{ 'customer.orders.date' | t }}">{{ order.created_at | date: format: 'month_day_year' }}</td>
+                      <td data-label="{{ 'customer.orders.payment_status' | t }}">{{ order.financial_status_label }}</td>
+                      <td data-label="{{ 'customer.orders.fulfillment_status' | t }}">{{ order.fulfillment_status_label }}</td>
+                      <td data-label="{{ 'customer.orders.total' | t }}">{{ order.total_price | money }}</td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            {% else %}
+              <p>{{ 'customer.orders.none' | t }}</p>
+            {% endif %}
+
+            {% if paginate.pages > 1 %}
+              {% include 'pagination' %}
+            {% endif %}
+
+          {% endpaginate %}
+        </div>
+        </div>
+    </div>
+  </div>
+</div>
+<div id="AddressNewForm" class="hide">
+  {% form 'customer_address', customer.new_address %}
+  <h2>{{ 'customer.addresses.add_new' | t }}</h2>
+
+  <label for="AddressFirstNameNew">
+    {{ 'customer.addresses.first_name' | t }}
+  </label>
+  <input type="text"
+         name="address[first_name]"
+         id="AddressFirstNameNew"
+         value="{{ form.first_name }}"
+         autocapitalize="words">
+
+  <label for="AddressLastNameNew">
+    {{ 'customer.addresses.last_name' | t }}
+  </label>
+  <input type="text"
+         name="address[last_name]"
+         id="AddressLastNameNew"
+         value="{{ form.last_name }}"
+         autocapitalize="words">
+
+  <label for="AddressCompanyNew">
+    {{ 'customer.addresses.company' | t }}
+  </label>
+  <input type="text"
+         name="address[company]"
+         id="AddressCompanyNew"
+         value="{{ form.company }}"
+         autocapitalize="words">
+
+  <label for="AddressAddress1New">
+    {{ 'customer.addresses.address1' | t }}
+  </label>
+  <input type="text"
+         name="address[address1]"
+         id="AddressAddress1New"
+         value="{{ form.address1 }}"
+         autocapitalize="words">
+
+  <label for="AddressAddress2New">
+    {{ 'customer.addresses.address2' | t }}
+  </label>
+  <input type="text"
+         name="address[address2]"
+         id="AddressAddress2New"
+         value="{{ form.address2 }}"
+         autocapitalize="words">
+
+  <label for="AddressCityNew">
+    {{ 'customer.addresses.city' | t }}
+  </label>
+  <input type="text"
+         name="address[city]"
+         id="AddressCityNew"
+         value="{{ form.city }}"
+         autocapitalize="words">
+
+  <label for="AddressCountryNew">
+    {{ 'customer.addresses.country' | t }}
+  </label>
+  <select
+    name="address[country]"
+    id="AddressCountryNew"
+    data-default="{{ form.country }}">
+    {{ country_option_tags }}
+  </select>
+
+  <div id="AddressProvinceContainerNew" style="display: none">
+    <label for="AddressProvinceNew">
+      {{ 'customer.addresses.province' | t }}
+    </label>
+    <select
+      name="address[province]"
+      id="AddressProvinceNew"
+      data-default="{{ form.province }}">
+    </select>
+  </div>
+
+  <label for="AddressZipNew">
+    {{ 'customer.addresses.zip' | t }}
+  </label>
+  <input type="text"
+         name="address[zip]"
+         id="AddressZipNew"
+         value="{{ form.zip }}"
+         autocapitalize="characters">
+
+  <label for="AddressPhoneNew">
+    {{ 'customer.addresses.phone' | t }}
+  </label>
+  <input type="tel"
+         name="address[phone]"
+         id="AddressPhoneNew"
+         value="{{ form.phone }}"
+         pattern="[0-9\-]*">
+
+  {{ form.set_as_default_checkbox }}
+  <label for="address_default_address_new">
+    {{ 'customer.addresses.set_default' | t }}
+  </label>
+
+  <input type="submit" class="btn" value="{{ 'customer.addresses.add' | t }}">
+  <button type="button" class="address-new-toggle">
+    {{ 'customer.addresses.cancel' | t }}
+  </button>
+
+  {% endform %}
+
+</div>
+{%- else -%}
+NOPE
+
+{%- endif -%}

@@ -3,7 +3,7 @@
     <div class="grid">
       <div class="grid__item one-quarter">
         {%- for link in linklists[child_handle].links -%}
-          <p class="sublink">{{link.title | remove: "MEN " | downcase | capitalize }}</p>
+          <a href="{{link.url}}">  <p class="sublink">{{link.title | remove: "MEN " | downcase | capitalize }}</p></a>
         {%- endfor -%}
       </div>
       {% section 'dropdown-shop-men-images' %}

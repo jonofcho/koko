@@ -5,16 +5,18 @@
         <div class="skin-concern__main-links--inner column-2">
           {%- for child_link in linklists['skin-concern'].links -%}
           {% assign child_handle = child_link.title | handle %}
-            <p class="skin-concern__mainlink" data-handle="{{child_handle}}">{{ child_link.title | downcase | capitalize }}</p>
+            <a href="{{child_link.url}}"><p class="skin-concern__mainlink" data-handle="{{child_handle}}">{{ child_link.title | downcase | capitalize }}</p></a>
           {%- endfor -%}
         </div>
       </div>
     </div>
     <div class="grid__item three-fifths">
       <div class="flex align-center justify-around ptop-48">
+        {% comment %}
         <img class="width--full placeholder-img" src="https://news.nationalgeographic.com/content/dam/news/photos/000/755/75552.ngsversion.1422285553360.adapt.1900.1.jpg" alt="">
         <img class="width--full placeholder-img" src="https://news.nationalgeographic.com/content/dam/news/photos/000/755/75552.ngsversion.1422285553360.adapt.1900.1.jpg" alt="">
         <img class="width--full placeholder-img" src="https://news.nationalgeographic.com/content/dam/news/photos/000/755/75552.ngsversion.1422285553360.adapt.1900.1.jpg" alt="">
+        {% endcomment %}
       </div>
     </div>
   </div>

@@ -1,8 +1,15 @@
+{% comment %}
 <div class="" id="textsection">
   <div class="simpletext">
-    <img class="width--full" src="{{ section.settings.teamPhoto | img_url: 'large' }}" >
+    {%- if section.settings.teamPhoto -%}
+      <img class="width--full" src="{{ section.settings.teamPhoto | img_url: 'large' }}" >
+    {%- else -%}
+
+      <img class="width--full" src="{{ collections['cleansers'].products.first | img_url: 'large' }}" alt="">
+    {%- endif -%}
   </div>
 </div>
+{% endcomment %}
 {% schema %}
   {
     "name" : "Skincare Dropdown Image",

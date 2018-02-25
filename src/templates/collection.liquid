@@ -17,7 +17,7 @@
   {% endcomment %}
   <div class="grid">
     <div class="text-center width--full">
-      <h1 class="text-light-grey mbot-30 text--medium text--bold">{{collection.title}}</h1>
+      <h1 class="text-koko-blue mbot-30 text--medium text--bold">{{collection.title}}</h1>
     </div>
   </div>
   <div class="grid">
@@ -27,7 +27,7 @@
   </div>
   <div class="grid">
     <div class="grid__item medium-down--hide large-up--one-fifth">
-      <h3 class="margin-none text-light-grey text--large">{{ collection.title }}</h3>
+      <h3 class="margin-none text-koko-blue text--large">{{ collection.title }}</h3>
       <div class="collection__tags--container">
         {% if collection.all_tags.size > 0 %}
         <ul class="padding-none">
@@ -57,7 +57,7 @@
       </div>
     </div>
     <div class="grid__item large-up--hide">
-      <p class="collection__product--count">65 Items</p>
+      <p class="collection__product--count">{{ collection.products.size }} Item(s)</p>
     </div>
     <div class="grid__item medium-down--one-whole large-up--four-fifths">
       <div class="collection__list--container">
@@ -72,6 +72,7 @@
     </div>
 
   </div>
+
   {% comment %}
   <div>
     {% for product in collection.products %}
@@ -147,6 +148,12 @@
   {% endif %}
 {% endpaginate %}
 </div>
+{% for product in collections.best-sellers.products %}
+{% assign productTitleArr = product.title | split: '_' %}
+{% assign collectionTitle = productTitleArr.first %}
+{% assign productTitleClean = productTitleArr.last %}
+  {%- include 'product-card-modal' -%}
+{%- endfor -%}
 {% comment %}
 <script type="text/javascript">
 /* Product Tag Filters - Good for any number of filters on any type of collection pages */

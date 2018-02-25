@@ -1,0 +1,59 @@
+<div class="modal product-card__modal--container" id="product__modal--{{product.id}}">
+  <div class="product-card__modal--exit js-product-card__modal--exit">
+    <img src="{{ 'icon--close.svg' | asset_url }}" alt="">
+  </div>
+  <div class="grid">
+    <div class="grid__item five-twelfths">
+      <div class="collection__product-image--container--inner">
+        <img class="width--full" src="{{product.images.first.src | img_url: '480x'}}" alt="">
+      </div>
+    </div>
+    <div class="grid__item seven-twelfths">
+      <div class="product-card__modal--details--container">
+        <div class="">
+          <p class="product-card__modal--details--vendor">{{ product.vendor }}</p>
+          <p class="product-card__modal--details--title">{{ productTitleClean}}</p>
+          <p class="product-card__modal--details--price">{{ product.price | money }}</p>
+          <p class="product-card__modal--details--description">{{ product.description }}</p>
+          <div class="text-right">
+            <a href="#"><p class="product-card__modal--details--link">Product Details</p></a>
+          </div>
+        </div>
+        <div class="">
+          <div class="">
+            <p class="mbot-16">Select Size</p>
+            <div class="grid">
+              {%- if product.variants.size < 2 -%}
+                {% assign single = 'single' %}
+              {%- endif -%}
+              {%- for variant in product.variants -%}
+              <div class="grid__item one-quarter">
+                <div class="product-card__modal--variant {{single}}">
+                  <p>{{ variant.title }}</p>
+                </div>
+              </div>
+              {%- endfor -%}
+            </div>
+          </div>
+          <hr class="product-card__modal--hr">
+          <div class="flex">
+            <div class="mright-16">
+              <div class="product-card__modal--quantity-incrementor--container">
+                <div class="js-quantity--decrementor product-card__modal--quantity-incrementor cursor--pointer">
+                  <img src="{{ 'icon--minus.svg' | asset_url }}" alt="">
+                </div>
+                <p class="js-quantity--current" data-product-id="{{product.variants.first.id}}">1</p>
+                <div class="js-quantity--incrementor product-card__modal--quantity-incrementor cursor--pointer">
+                  <img src="{{ 'icon--plus.svg' | asset_url }}" alt="">
+                </div>
+              </div>
+            </div>
+            <div class="product-card__modal--add-to-cart js-product-card__modal--add-to-cart" data-product-id="{{product.variants.first.id}}" data-product-image="{{product.images.first.src | img_url: 'small'}}" data-product-vendor="{{product.vendor}}" data-product-title="{{productTitleClean}}" data-product-quantity="1" data-product-price="{{ product.price | money }}">
+              <p>ADD TO CART</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

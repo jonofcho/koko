@@ -1,16 +1,20 @@
-<div class="page-width">
+<div class="page-width cart__content--container">
   <div class="grid">
     <div class="grid__item one-whole">
-      <div class="">
-        <h2>Shopping Bag ({{ cart.items.size }})</h2>
-        <h3>You qualify for free shipping!</h3>
+      <div class="cart__header--container">
+        <div class="">
+          <h2 class="cart__header">Shopping Bag (<span class="js-cart-count">{{ cart.items.size }}</span>)</h2>
+          <p class="cart__subheader">You qualify for free shipping!</p>
+        </div>
       </div>
     </div>
 
   </div>
   <div class="grid">
       <div class="grid__item large-up--two-thirds medium-down--one-whole">
+        <hr class="cart__item--divider">
         <div class="cart__item-list--container">
+
           {% for item in cart.items %}
             {% include 'cart-item' %}
           {% endfor %}
@@ -26,16 +30,16 @@
       <div class="grid__item large-up--one-third medium-down--hide">
         <div class="cart__payment--details">
           <div class="cart__payment--options">
-            <button class="btn width--full btn--checkout--default text-white" type="button" name="button">CHECKOUT</button>
+            <a href="/checkout"><button class="btn width--full btn--checkout--default text-white" type="button" name="button">CHECKOUT</button></a>
             <div class="text-center">
               <p class="mtop-16 mbot-27">OR</p>
             </div>
-            <button class="btn width--full btn--checkout--paypal" type="button" name="button">CHECKOUT WITH PAYPAL</button>
+            <a href="/checkout"><button class="btn width--full btn--checkout--paypal" type="button" name="button">CHECKOUT WITH PAYPAL</button></a>
             <div class="cart__order-summary--container">
               <h3 class="text-medium-grey">Order Summary</h3>
               <div class="flex justify-between align-center mbot-18 text-medium-grey">
                 <p>Subtotal</p>
-                <p>$250</p>
+                <p>{{cart.total_price | money }}</p>
               </div>
               <div class="flex justify-between align-center mbot-18 text-medium-grey">
                 <p>Tax</p>
@@ -48,7 +52,7 @@
               <hr class="cart__payment-details--divider">
               <div class="flex justify-between align-center">
                 <p class="text--bold">Total</p>
-                <p class="text--bold">$250</p>
+                <p class="text--bold">{{cart.total_price | money }}</p>
               </div>
             </div>
           </div>
@@ -61,5 +65,20 @@
           </div>
         </div>
       </div>
+  </div>
+</div>
+<div class="cart-mobile--checkout-controls--container large-up--hide">
+  <div class="cart-mobile--checkout-controls--details">
+    <p class="text--smaller text-light-grey">2 items</p>
+    <p class="text--smaller text-light-grey">subtotal: {{ cart.total_price | money }}</p>
+  </div>
+    <div class="grid">
+      <div class="grid__item one-half">
+        <a href="/checkout"><button type="button" name="button" class="btn cart-mobile--checkout-controls--btn">PAYPAL</button></a>
+      </div>
+      <div class="grid__item one-half">
+        <a href="/checkout"><button type="button" name="button" class="btn cart-mobile--checkout-controls--btn text-white">CHECKOUT</button></a>
+      </div>
+    </div>
   </div>
 </div>

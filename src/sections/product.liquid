@@ -171,11 +171,15 @@
           <div class="mtop-15">
             {%- if product.variants.size > 0 -%}
             <p class="mbot-15 medium-down--hide">Select Size</p>
-            {%- for variant in product.variants -%}
-              <div class="pdp__variant--container">
-                {{variant.title}}
+            <div class="grid">
+              {%- for variant in product.variants -%}
+              <div class="grid__item one-quarter">
+                <div class="pdp__variant--container">
+                  {{variant.title}}
+                </div>
               </div>
-            {%- endfor -%}
+              {%- endfor -%}
+            </div>
             {%- endif -%}
           </div>
           <hr class="pdp__details--hr">
@@ -191,7 +195,7 @@
             </div>
             <form class="product-form" action="/cart/add" data-productid="{{product.id}}"  method="post">
               <input type="hidden" name="id" data-productid="{{product.id}}" class="product-select" value="{{ product.variants[0].id }}" data-variant-title="{{ product.variants[0].title }}" />
-              <input type="submit" class="btn pdp__add-to-cart">ADD TO CART</input>
+              <input type="submit" class="btn pdp__add-to-cart" value="ADD TO CART">
             </form>
           </div>
         </div>
@@ -203,7 +207,7 @@
 <!-- <div class="page-width"> -->
 <!-- PRODUCT MOBILE -->
 
-<div class="mtop-16 text-light-grey">
+<div class="mtop-16 text-light-grey page-width">
   <div class="grid large-up--hide">
     <div class="grid__item one-whole">
       <div class="text-center">
@@ -236,16 +240,35 @@
         {%- endif -%}
       </div>
     </div>
-  </div>
-  <div class="pdp__add-to-cart--container--mobile large-up--hide">
-
-    <form class="product-form" action="/cart/add" data-productid="{{product.id}}"  method="post">
-      <input type="hidden" name="id" data-productid="{{product.id}}" class="product-select" value="{{ product.variants[0].id }}" data-variant-title="{{ product.variants[0].title }}" />
-      <input type="submit" value="ADD TO CART" class="pdp__add-to-cart" />
-    </form>
-
+    <div class="grid__item one-whole">
+      <div class="pdp__add-to-cart--details--container--mobile">
+        <ul class="collapsible padding-none margin-none" data-collapsible="accordion">
+          <li>
+            <div class="collapsible-header pdp__add-to-cart--details--mobile js-pdp__add-to-cart--details--mobile">
+              <p>Details</p>
+              <div class="">
+                <img src="{{ 'icon--plus.svg' | asset_url }}" alt="">
+              </div>
+            </div>
+            <div class="collapsible-body pdp__add-to-cart--details--text--mobile">
+              <p>{{ product.description }}</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </div>
+<div class="pdp__add-to-cart--container--mobile large-up--hide">
+
+  <form class="product-form" action="/cart/add" data-productid="{{product.id}}"  method="post">
+    <input type="hidden" name="id" data-productid="{{product.id}}" class="product-select" value="{{ product.variants[0].id }}" data-variant-title="{{ product.variants[0].title }}" />
+    <input type="submit" value="ADD TO CART" class="pdp__add-to-cart" />
+  </form>
+
+</div>
+
+
 <!-- </div> -->
 
 {% schema %}

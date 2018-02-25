@@ -1,39 +1,47 @@
 <div class="navigation__cart-dropdown">
-  <div class="flex">
+  <div class="flex mbot-18">
     <div class="navigation__cart-dropdown-check-icon">
       <img class="width--full" src="https://news.nationalgeographic.com/content/dam/news/photos/000/755/75552.ngsversion.1422285553360.adapt.1900.1.jpg" alt="">
     </div>
-    <p>1 Item Added to cart</p>
+    <p>1 Item Added To Cart</p>
   </div>
-  <div class="navigation__cart-dropdown--item-details relative">
-    <div class="navigation__cart-dropdown--added-item-image">
-      <img class="width--full" src="https://news.nationalgeographic.com/content/dam/news/photos/000/755/75552.ngsversion.1422285553360.adapt.1900.1.jpg" alt="">
-    </div>
-    <div class="flex">
-      <div class="mright-8">
-        <div class="flex justify-between text--small text--bold mbot-8">
-          <p>Shiseido</p>
+  <div class="navigation__cart-dropdown--cards--container">
+    {%- for item in cart.items -%}
+
+      {% assign itemSplitTitle = item.title | split: '_' %}
+      {% assign itemTitle = itemSplitTitle.last %}
+      <div class="navigation__cart-dropdown--item-details relative js-navigation__cart-dropdown--card" data-card-id="{{item.id}}">
+        <a href="{{item.url}}">
+          <div class="navigation__cart-dropdown--added-item-image">
+            <img class="width--full" src="{{ item.image |  img_url: 'small' }}" alt="">
+          </div>
+        </a>
+        <div class="navigation__cart-dropdown--item--detail--container">
+          <div class="mright-8">
+            <div class="flex justify-between text--small text--bold mbot-8">
+              <p>{{item.vendor}}</p>
+            </div>
+            <div class="text--semi-small mbot-8">
+              <p class="mbot-8">{{ itemTitle }}</p>
+            </div>
+            <p class="text--smaller text--reduced text-lighter-grey">QTY: <span class="js-navigation__cart-dropdown--card--quantity" data-card-id="{{item.id}}" data-quantity="{{item.quantity}}">{{item.quantity}}</span></p>
+          </div>
+          <div class="">
+            <p class="text--bold text--small">{{item.price | money }}</p>
+          </div>
+          <div class="navigation__cart-dropdown--remove-item js-navigation__cart-dropdown--remove-item" data-card-id="{{item.id}}">
+            <img src="{{ 'icon--close.svg' | asset_url }}" alt="">
+          </div>
         </div>
-        <div class="text--semi-small mbot-8">
-          <p class="mbot-8">ULTIMUNE Power Infusing</p>
-          <p>Concentrate</p>
-        </div>
-        <p class="text--smaller text--reduced text-lighter-grey">QTY: 1</p>
       </div>
-      <div class="">
-        <p class="text--bold text--small">$124</p>
-      </div>
-      <div class="navigation__cart-dropdown--remove-item">
-        <img src="{{ 'icon--close.svg' | asset_url }}" alt="">
-      </div>
-    </div>
+    {%- endfor -%}
   </div>
   <div class="">
     <div class="flex justify-between mbot-24">
       <p>Subtotal</p>
-      <p>$124</p>
+      <p>{{cart.total_price | money }}</p>
     </div>
-    <a href="#">
+    <a href="/checkout">
       <button class="btn navgation__cart-dropdown--cart-btn" type="button" name="button">CHECKOUT</button>
     </a>
   </div>

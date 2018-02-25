@@ -77,18 +77,21 @@
 
   <main role="main" id="MainContent" class="theme__main-content--container">
     {{ content_for_layout }}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </main>
 
   {% section 'footer' %}
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <!-- CUSTOM JS FILES -->
 
   {{ "materializeBuild.js" | asset_url | script_tag }}
   {{ "materializeSidenav.js" | asset_url | script_tag }}
   {{ "materializeCollapsible.js" | asset_url | script_tag }}
+  {{ "kokoUtils.js" | asset_url | script_tag }}
+  {{ "kokoProductCard.js" | asset_url | script_tag }}
   {{ "kokoHeader.js" | asset_url | script_tag }}
   {{ "kokoCollapsible.js" | asset_url | script_tag }}
+  {{ "kokoProduct.js" | asset_url | script_tag }}
   {%- if template == "collection" -%}
     {{"kokoCollection.js" | asset_url | script_tag }}
   {%- endif -%}
@@ -98,6 +101,44 @@
   {% if template == 'index' %}
     <script src="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.min.js"></script>
     {{ "kokoIndex.js" | asset_url | script_tag }}
+    <script type="text/javascript">
+    $('.js-navigation__slider').slick({
+      arrows: true,
+      prevArrow: '<span class="index__header-arrow--container index__carousel-arrow--container--left"><img class="carousel-arrow" src="{{ "carousel-arrow-left.svg" | asset_url }}" alt=""></span>',
+      nextArrow: '<span class="index__header-arrow--container index__carousel-arrow--container--right"><img class="carousel-arrow" src="{{ "carousel-arrow-right.svg" | asset_url }}" alt=""></span>',
+
+    })
+    $('.js-index__hero--container').slick({
+      dots: true,
+      autoplay: true,
+      autoplaySpeed: 7000,
+      infinte: false,
+      arrows: false,
+      slidesToShow: 1,
+
+    })
+    $('.js-index__carousel--container').slick({
+      infinite: false,
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      arrows: true,
+      prevArrow: '<span class="index__carousel-arrow--container index__carousel-arrow--container--left"><img class="carousel-arrow" src="{{ "carousel-arrow-left.svg" | asset_url }}" alt=""></span>',
+      nextArrow: '<span class="index__carousel-arrow--container index__carousel-arrow--container--right"><img class="carousel-arrow" src="{{ "carousel-arrow-right.svg" | asset_url }}" alt=""></span>',
+      responsive: [
+        {
+          breakpoint: 990,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            // infinite: true,
+            arrows: false,
+            variableWidth: true,
+            dots: false,
+          }
+        }
+      ]
+    });
+    </script>
   {% endif %}
 </body>
 </html>
