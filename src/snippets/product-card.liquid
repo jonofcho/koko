@@ -2,26 +2,30 @@
 {% assign collectionTitle = productTitleArr.first %}
 {% assign productTitleClean = productTitleArr.last %}
 
-<a href="{{product.url}}">
     <div class="relative collection__card--hover js-collection__product-card" data-tags="{{product.tags | join: ', ' }}">
       <div class="collection__product--alert">
         <!-- REPLACE WITH LIQUID LATER -->
         <p>Best Seller</p>
       </div>
       <div class="collection__product-image--container">
-        <img class="width--full" src="  {{product.images.first.src | img_url: '480x'}}" alt="">
-        <div class="product__card--controls">
-          <p>Quick View</p>
-          <p>|</p>
-          <p>Add to Cart</p>
+        <a href="{{product.url}}">
+          <div class="collection__product-image--container--inner">
+            <img class="width--full" src="{{product.images.first.src | img_url: '480x'}}" alt="">
+          </div>
+        </a>
+        <div class="product__card--controls medium-down--hide" >
+          <p class="product__card--controls--quick-view js-product__card--controls--quick-view modal-trigger" href="#product__modal--{{product.id}}">Quick View</p>
+          <!-- <p>|</p>
+          <p class="js-product__card--controls-add-to-cart product__card--controls-add-to-cart" data-product-id="{{product.variants.first.id}}" data-product-image="{{product.images.first.src | img_url: 'small'}}" data-product-vendor="{{product.vendor}}" data-product-title="{{productTitleClean}}" data-product-price="{{ product.price | money }}">Add to Cart</p> -->
         </div>
       </div>
       <div class="collection__product-detail--container">
         <div class="collection__product--price">
-          <p>{{ product.vendor }}</p>
-          <p>{{ product.price }}</p>
+          <p class="text--bold">{{ product.vendor }}</p>
+          {% comment %}
+          <p>{{ product.price | money }}</p>
+          {% endcomment %}
         </div>
         <p class="collection__product--title">{{ productTitleClean }}</p>
       </div>
     </div>
-</a>

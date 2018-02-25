@@ -1,0 +1,46 @@
+{% assign itemTitleArr = item.title | split: '_'  %}
+{% assign itemColl = itemTitleArr[0] %}
+{% assign itemTitle = itemTitleArr[1] %}
+
+
+
+<div class="cart__item--container" id="{{item.variant_id}}">
+  <div class="grid">
+    <div class="grid__item large-up--one-quarter medium-down--one-third">
+      <a href="{{item.url}}">
+        <div class="cart__item-img--container">
+          <img class="width--full placeholder-img" src="{{item.image.src | img_url: '480x'}}" alt="">
+        </div>
+      </a>
+    </div>
+    <div class="grid__item large-up--three-quarters medium-down--two-thirds">
+      <div class="cart__item-details--container">
+        <div class="width--full">
+          <div class="">
+            <p class="pbot-5 text--semibold">{{ item.vendor }}</p>
+            <p class="cart__item--collection ">{{ itemColl }}</p>
+            <p class="cart__item--title">{{ itemTitle }}</p>
+          </div>
+          <div class="cart__item-details--quantity">
+            <div class="flex align-center">
+              <p>50ml</p>
+              <div class="cart__item-quantity-incrementor medium-down--hide">
+                <p>{{ item.quantity }}</p>
+                <div class="cart__arrow--container">
+                  <img src="{{ 'icon--arrow-down.svg' | asset_url }}" alt="">
+                </div>
+              </div>
+            </div>
+            <p class="cart__item--price">{{ item.price | money }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cart__item--remove--container js-cart__item--remove" data-remove="{{item.variant_id}}">
+    <div class="cart__item--remove">
+      <img src="{{ 'icon--close.svg' | asset_url }}" alt="">
+    </div>
+  </div>
+</div>
+<hr class="cart__item--divider" data-remove="{{item.variant_id}}">

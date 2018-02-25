@@ -1,63 +1,107 @@
-<div class="grid">
-  <div class="grid__item one-quarter">
+<div class="index__bestseller-title--container">
+  <h3 class="index__bestseller--title">Begin Shopping</h3>
+</div>
+<div class="grid medium-down--hide">
+  <div class="grid__item large-up--one-third medium-down--one-whole mbot-8">
     <div class="index__featured-collection--container">
-      <div class="featured-collection__img--container bg-placeholder">
+      <div class="featured-collection__img--container">
+        {% comment %}
         {%- if section.settings.card_image_one -%}
-          <!-- <img class="width--full" src="{{ section.settings.card_image_one | img_url: 'large' }}" alt=""> -->
+          <img class="width--full" src="{{ section.settings.card_image_one | img_url: 'large' }}" alt="">
         {%- else -%}
           <!-- <img class="width--full" src="https://news.nationalgeographic.com/content/dam/news/photos/000/755/75552.ngsversion.1422285553360.adapt.1900.1.jpg" alt=""> -->
         {%- endif -%}
+        {% endcomment %}
+        <img class="width--full height--full" src="{{ 'ultimune1.jpg' | file_img_url: '1024x768' }}" alt="">
+
       </div>
-      <div class="featured-collection__cover-text">
-        <h2>{{ section.settings.card_title_one }}</h2>
-      </div>
+      <a href="/collections/shiseido">
+        <div class="featured-collection__cover-text--container">
+          <h2 class="featured-collection__cover-text">SHISEIDO</h2>
+          <div class="featured-collection__cover-arrow--outer">
+            <div class="featured-collection__cover-arrow--inner">
+              <img src="{{ 'right-arrow.svg' | asset_url }}" alt="">
+            </div>
+          </div>
+        </div>
+      </a>
     </div>
   </div>
-  <div class="grid__item one-quarter">
+  <div class="grid__item large-up--one-third medium-down--one-whole mbot-8">
     <div class="index__featured-collection--container">
-      <div class="featured-collection__img--container bg-placeholder">
+      <div class="featured-collection__img--container">
+        {% comment %}
         {%- if section.settings.card_image_two -%}
-          <!-- <img class="width--full" src="{{ section.settings.card_image_two | img_url: 'large' }}" alt=""> -->
+          <img class="width--full" src="{{ section.settings.card_image_two | img_url: 'large' }}" alt="">
         {%- else -%}
           <!-- <img class="width--full" src="https://news.nationalgeographic.com/content/dam/news/photos/000/755/75552.ngsversion.1422285553360.adapt.1900.1.jpg" alt=""> -->
         {%- endif -%}
+        {% endcomment %}
+        <img class="width--full height--full" src="{{ 'cle_de_peau.jpg' | file_img_url: '1024x768' }}" alt="">
+
+
       </div>
-      <div class="featured-collection__cover-text">
-        <h2>{{ section.settings.card_title_two }}</h2>
-      </div>
+      <a href="/collections/cle-de-peau">
+        <div class="featured-collection__cover-text--container">
+          <h2 class="featured-collection__cover-text">CLE DE PEAU</h2>
+          <div class="featured-collection__cover-arrow--outer">
+            <div class="featured-collection__cover-arrow--inner">
+              <img src="{{ 'right-arrow.svg' | asset_url }}" alt="">
+            </div>
+          </div>
+        </div>
+      </a>
     </div>
   </div>
-  <div class="grid__item one-quarter">
+
+  <div class="grid__item large-up--one-third medium-down--one-whole mbot-8">
     <div class="index__featured-collection--container">
 
-      <div class="featured-collection__img--container bg-placeholder">
+      <div class="featured-collection__img--container">
+        {% comment %}
         {%- if section.settings.card_image_three -%}
-          <!-- <img class="width--full" src="{{ section.settings.card_image_three | img_url: 'large' }}" alt=""> -->
+          <img class="width--full" src="{{ section.settings.card_image_three | img_url: 'large' }}" alt="">
         {%- else -%}
           <!-- <img class="width--full" src="https://news.nationalgeographic.com/content/dam/news/photos/000/755/75552.ngsversion.1422285553360.adapt.1900.1.jpg" alt=""> -->
         {%- endif -%}
-      </div>
-      <div class="featured-collection__cover-text">
-        <h2>{{ section.settings.card_title_three }}</h2>
+        {% endcomment %}
+        <img class="width--full height--full" src="{{ 'synactif.jpg' | file_img_url: '1024x768' }}" alt="">
 
       </div>
+      <a href="/collections/synactif">
+        <div class="featured-collection__cover-text--container">
+          <h2 class="featured-collection__cover-text">SYNACTIF</h2>
+          <div class="featured-collection__cover-arrow--outer">
+            <div class="featured-collection__cover-arrow--inner">
+              <img src="{{ 'right-arrow.svg' | asset_url }}" alt="">
+            </div>
+          </div>
+        </div>
+      </a>
     </div>
   </div>
-  <div class="grid__item one-quarter">
+  {% comment %}
+  <div class="grid__item large-up--one-third medium-down--one-whole mbot-8">
     <div class="index__featured-collection--container">
 
-      <div class="featured-collection__img--container bg-placeholder">
+      <div class="featured-collection__img--container">
         {%- if section.settings.card_image_four -%}
-          <!-- <img class="width--full" src="{{ section.settings.card_image_four | img_url: 'large' }}" alt=""> -->
+          <img class="width--full" src="{{ section.settings.card_image_four | img_url: 'large' }}" alt="">
         {%- else -%}
           <!-- <img class="width--full" src="https://news.nationalgeographic.com/content/dam/news/photos/000/755/75552.ngsversion.1422285553360.adapt.1900.1.jpg" alt=""> -->
         {%- endif -%}
       </div>
-      <div class="featured-collection__cover-text">
-        <h2>{{ section.settings.card_title_four }}</h2>
+      <div class="featured-collection__cover-text--container">
+        <h2 class="featured-collection__cover-text">{{ section.settings.card_title_four }}</h2>
+        <div class="featured-collection__cover-arrow--outer">
+          <div class="featured-collection__cover-arrow--inner">
+            <img src="{{ 'right-arrow.svg' | asset_url }}" alt="">
+          </div>
+        </div>
       </div>
     </div>
   </div>
+  {% endcomment %}
 </div>
 
 

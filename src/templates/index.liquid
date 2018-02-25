@@ -1,66 +1,91 @@
-<div class="mtop-50 mbot-60">
+<div class="mbot-60">
+  <div class="width--full large-up--hide">
+    <div class="relative">
+      <div class="mobile-index__hero--container">
+        <img class="width--full" src="https://cdn.shopify.com/s/files/1/2526/6552/files/Skincare_Photo.jpg?890236110368558346" alt="">
+      </div>
+      <div class="el-overlay mobile-index__hero-text--container">
+        <div class="mobile-index__hero-text--inner">
+          <h2 class="mobile-index__hero-text">Welcome to Koko Beauté</h2>
+          <a href="#"><button class="mobile-index__hero--cta btn btn-small" type="button" name="button">Shop Now</button></a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  {% include  'index-hero' %}
   <div class="page-width ">
     {% section 'index-featured-collections' %}
-
-    <div class="grid">
-        <div class="grid__item one-whole">
           <div class="index__bestseller-title--container">
             <h3 class="index__bestseller--title">Our Best Sellers</h3>
           </div>
-        </div>
-        <div class="grid__item one-whole">
-          <div class="grid js-index__carousel--container index__carousel--container">
-            {% for product in collections.best-sellers.products %}
-              <div class="grid__item large-up--one-quarter medium-down--one-half">
-                {% include 'product-card' %}
-              </div>
-            {% endfor %}
-              <!-- <div class="grid__item one-quarter">
-                <div class="index__bestseller-image--container">
-                  <img class="width--full" src="https://news.nationalgeographic.com/content/dam/news/photos/000/755/75552.ngsversion.1422285553360.adapt.1900.1.jpg" alt="">
-                </div>
-              </div>
-              <div class="grid__item one-quarter">
-                <div class="index__bestseller-image--container">
-                  <img class="width--full" src="https://news.nationalgeographic.com/content/dam/news/photos/000/755/75552.ngsversion.1422285553360.adapt.1900.1.jpg" alt="">
-                </div>
-              </div>
-              <div class="grid__item one-quarter">
-                <div class="index__bestseller-image--container">
-                  <img class="width--full" src="https://news.nationalgeographic.com/content/dam/news/photos/000/755/75552.ngsversion.1422285553360.adapt.1900.1.jpg" alt="">
-                </div>
-              </div>
-              <div class="grid__item one-quarter">
-                <div class="index__bestseller-image--container">
-                  <img class="width--full" src="https://news.nationalgeographic.com/content/dam/news/photos/000/755/75552.ngsversion.1422285553360.adapt.1900.1.jpg" alt="">
-                </div>
-              </div> -->
 
+          <div class="width--full">
+            <div class="index__carousel--container--outer">
+              <div class="js-index__carousel--container index__carousel--container">
+                {% for product in collections.best-sellers.products %}
+                  <div class="index__carousel--product--container">
+                    {% include 'product-card' %}
+                  </div>
+                  {% endfor %}
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="grid__item one-whole">
+
+
           <div class="index__bestseller-title--container">
             <h3 class="index__bestseller--title">Our Stores</h3>
           </div>
-        </div>
-        <div class="grid__item one-whole">
+
           <div class="grid">
             <div class="grid__item large-up--one-half medium-down--one-whole">
               <div class="index__location--container">
-                <h2>DIAMOND BAR</h2>
+                <div class="index__location--diamond-img--container">
+                  <img src="{{ 'koko_diamond.jpg' | file_img_url: '1024x768' }}" alt="">
+                </div>
+                <div class="index__location--details--container">
+                  <h2 class="text-koko-blue index__location">DIAMOND BAR | 909.598.3835</h2>
+                  <div class="index__location--details--address">
+                    <p>2773 S Diamond Bar Blvd</p>
+                    <p>Diamond Bar, CA 91765</p>
+                  </div>
+                  <div class="index__location--details--times">
+                    <p>Monday-Saturday 10 am – 8 pm</p>
+                    <p>Sunday 11 am – 6 pm</p>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="grid__item large-up--one-half medium-down--one-whole">
               <div class="index__location--container">
-                <h2>TORRANCE</h2>
+                <div class="index__location--torrance-img--container">
+                  <img src="{{ 'koko_torrance.jpg' | file_img_url: '1024x768' }}" alt="">
+                </div>
+                <div class="index__location--details--container">
+                  <h2 class="text-koko-blue index__location">TORRANCE | 310.618.1004</h2>
+                  <div class="index__location--details--address">
+                    <p>2396 Crenshaw Blvd. Ste F</p>
+                    <p>Torrance, CA 90501</p>
+                  </div>
+                  <div class="index__location--details--times">
+                    <p>Monday-Saturday 10 am – 8 pm</p>
+                    <p>Sunday 11 am – 6 pm</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-    </div>
+
   </div>
 </div>
 
+{% for product in collections.best-sellers.products %}
+{% assign productTitleArr = product.title | split: '_' %}
+{% assign collectionTitle = productTitleArr.first %}
+{% assign productTitleClean = productTitleArr.last %}
+  {%- include 'product-card-modal' -%}
+{%- endfor -%}
 {% comment %}
 prevArrow: "<img src='{{ 'icon--arrow-down.svg' | asset_url}}'",
 nextArrow: '<span class="arrows-black slick-next arrows-product-grid-item"></span>',

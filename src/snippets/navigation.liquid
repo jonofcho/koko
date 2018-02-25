@@ -1,15 +1,18 @@
 <div class="is-fixed width--full js-theme__header--container theme__header--container">
-  <div class="theme__promotion-bar bg-grey flex align-center justify-center text-white text--small">
-    <p>Free Shipping on Orders Over $125</p>
+  <div class="theme__promotion-bar text--small">
+    <div class="js-navigation__slider navigation__slider">
+      <p>Free Shipping on Orders Over $100</p>
+      <p>Koko Beauté: Established in 2003</p>
+    </div>
   </div>
   <!-- DESKTOP NAV -->
-  <div class="z-depth-2 medium-down--hide">
+  <div class="medium-down--hide">
     <div class="page-width">
       <div class="theme__navigation">
 
       <div class="flex align-center">
         <div class="navigation__logo--container">
-          <a class="text-light-grey" href="/"><h2 class="text--bold text--extra-large">KOKO BEAUTE</h2></a>
+          <a class="text-koko-blue" href="/"><h2 class="text--bold text--extra-large">KOKO BEAUTÉ</h2></a>
         </div>
         <div class="flex align-center">
           {%- for link in linklists['main-menu'].links -%}
@@ -20,12 +23,12 @@
             {% assign childCount = false %}
           {%- endif -%}
           {%- if linklists[link_handle].links.size > 0 -%}
-            <div class="js-navigation__link navigation__link flex align-center" data-active="{{link_handle}}" data-count="{{childCount}}">
+            <div class="js-navigation__link navigation__link flex align-center cursor--pointer" data-active="{{link_handle}}" data-count="{{childCount}}">
               <p class="navigation__link--text">{{ link.title }}</p>
             </div>
           {%- else -%}
             <a href="{{link.url}}">
-              <div class="js-navigation__link navigation__link flex align-center" data-active="{{link_handle}}" data-count="{{childCount}}">
+              <div class="js-navigation__link navigation__link flex align-center cursor--pointer" data-active="{{link_handle}}" data-count="{{childCount}}">
                 <p class="navigation__link--text">{{ link.title }}</p>
               </div>
             </a>
@@ -34,20 +37,26 @@
         </div>
       </div>
       <div class="navigation__user-controls--container">
-        <p class="nowrap text-light-grey">SIGN IN</p>
+        {%- if customer -%}
+          <a href="/account/logout">  <p class="nowrap text-light-grey cursor--pointer text--semi-small">LOG OUT</p></a>
+        {%- else  -%}
+          <a href="/account/login"><p class="nowrap text-light-grey cursor--pointer text--semi-small">LOG IN</p></a>
+        {%- endif -%}
         <div class="">
           |
         </div>
         <div class="navigation__icons--container">
           <div class="navigation__icon--outer-container">
-            <div class="navigation__search-icon--container">
+            <div class="navigation__search-icon--container cursor--pointer">
               <img src="{{ 'icon--search.svg' | asset_url }}" alt="">
             </div>
           </div>
-          <div class="navigation__icon--outer-container navigation__icon--outer-container--cart">
-            <div class="navigation__bag-icon--container">
-              <img src="{{ 'icon--bag.svg' | asset_url }}" alt="">
-            </div>
+          <div class="navigation__icon--outer-container navigation__icon--outer-container--cart js-navigation__icon--outer-container--cart">
+            <a href="/cart">
+              <div class="navigation__bag-icon--container cursor--pointer">
+                <img src="{{ 'icon--bag.svg' | asset_url }}" alt="">
+              </div>
+            </a>
             {%- include 'navigation-cart-dropdown' -%}
           </div>
         </div>
@@ -60,29 +69,33 @@
 
   <!-- DESKTOPNAV  -->
   <!-- MOBILENAV -->
-  <div class="m-theme__navigation z-depth-2 large-up--hide flex justify-between align-center psides-15">
-    <div class="navigation__search--container">
-      <a href="/search">
-        <div class="navigation__icon--container">
-          <img src="{{ 'icon--search.svg' | asset_url }}" alt="">
+  <div class="m-theme__navigation large-up--hide">
+    <div class="page-width">
+      <div class="flex justify-between align-center">
+        <div class="navigation__search--container">
+          <a href="/search">
+            <div class="navigation__icon--container">
+              <img src="{{ 'icon--search.svg' | asset_url }}" alt="">
+            </div>
+          </a>
+
         </div>
-      </a>
 
-    </div>
+        <a class="text-koko-blue" href="/"><h2 class="text--bold">KOKO BEAUTÉ</h2></a>
 
-    <h2 class="text--bold">KOKO BEAUTE</h2>
-
-    <div class="flex justify-around navigation__user-controller--container align-center">
-      <div class="navigation__cart--container">
-        <a href="/cart">
-          <div class="navigation__icon--container">
-            <img src="{{ 'icon--bag.svg' | asset_url }}" alt="">
+        <div class="flex justify-around navigation__user-controller--container align-center">
+          <div class="navigation__cart--container">
+            <a href="/cart">
+              <div class="navigation__icon--container">
+                <img src="{{ 'icon--bag.svg' | asset_url }}" alt="">
+              </div>
+            </a>
           </div>
-        </a>
-      </div>
-      <div class="navigation__hamburger--container js-navigation__collapse" data-activates="main-menu">
-        <div class="navigation__icon--container">
-          <img src="{{ 'icon--hamburger.svg' | asset_url }}" alt="">
+          <div class="navigation__hamburger--container js-navigation__collapse" data-activates="main-menu">
+            <div class="navigation__icon--container">
+              <img src="{{ 'icon--hamburger.svg' | asset_url }}" alt="">
+            </div>
+          </div>
         </div>
       </div>
     </div>

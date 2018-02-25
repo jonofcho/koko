@@ -1,0 +1,121 @@
+.account__link-section--container{
+  padding-top: 24px;
+  height: 100vh;
+}
+.account__info-section--container{
+  padding-top: 24px;
+  padding-left: 64px;
+  @include media-query($medium-down) {
+    padding-left: 0;
+  }
+  background-color: #fafafa;
+}
+.account__link--container{
+  padding-top: 40px;
+  padding-bottom: 40px;
+  border-bottom:  solid 1px #dddddd;
+  @extend .flex-center-right;
+}
+.account__link{
+  text-decoration: underline;
+  color: black;
+  @extend .text--semi-large;
+}
+.account__info--header{
+  letter-spacing: 3.8px;
+  font-size: 	1.714em;
+  margin-bottom: 32px;
+}
+.account__info--container{
+  width: 100%;
+  margin-bottom: 41px;
+  border: solid 1px #dedfe1;
+}
+.account__subheader--container{
+    background-color: #f4eef3;
+    padding: 17px 32px;
+}
+.account__info{
+
+  padding: 6px 24px 24px 32px;
+  background-color: white;
+  tr{
+    height: 30px;
+    td{
+      min-width: 160px;
+      @include media-query($medium-down) {
+        min-width: 80px;
+      }
+    }
+  }
+}
+.account__address--container--outer{
+   border: solid 1px #dedfe1;
+}
+.account__addresses--container{
+  padding: 24px;
+  background-color: white;
+}
+.account__address--container{
+  padding: 16px;
+  border: solid 1px #979797;
+  border-radius: 5px;
+  min-height: 270px;
+  p{
+    letter-spacing: 2.2px;
+    line-height: 21px;
+  }
+  .account__address--buttons--container{
+    margin-top: 46px;
+    @extend .flex-center-right;
+  }
+  button{
+    background-color: transparent;
+    border: none;
+  }
+}
+.account__address-new--container{
+
+}
+.account__address-new{
+  min-height: 270px;
+  width: 100%;
+  border: solid 1px #979797;
+  border-radius: 5px;
+  @extend .flex-center-center;
+
+}
+.account__add-icon--container{
+  border-radius: 50%;
+  border: 1px solid black;
+  width: 24px;
+  height: 24px;
+  margin: 0 auto;
+  margin-bottom: 16px;
+  @extend .flex-center-center;
+  p{
+    font-size: 21px;
+  }
+}
+.account__link--container{
+  padding-right: 63px;
+}
+.account__content--container{
+  background-color: #fafafa;
+  height: 90vh;
+  @extend .flex-center-center;
+}
+.account__router--container{
+  max-width: 300px;
+  max-height: 100px;
+  margin: 0 auto;
+  margin-top: 36px;
+  background-color: #ffffff;
+  border: solid 1px #979797;
+  @extend .flex-center-center;
+}
+@include media-query($medium-down) {
+  .account__address--container{
+    margin-bottom: 16px;
+  }
+}

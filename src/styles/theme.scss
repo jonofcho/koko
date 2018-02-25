@@ -24,6 +24,8 @@
 @import url('global/forms.scss');
 @import url('global/blank-states.scss');
 @import url('global/materialize.scss');
+@import url('global/materializeModal.scss');
+@import url('global/materializeCheckbox.scss');
 
 
 /*================ MODULES ================*/
@@ -39,4 +41,7 @@
 @import url('koko/product.scss');
 @import url('koko/product-card.scss');
 @import url('koko/sidebar.scss');
+@import url('koko/cart.scss');
 @import url('koko/collapsible.scss');
+@import url('koko/account.scss');
+@import url('koko/order-history.scss');

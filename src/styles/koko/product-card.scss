@@ -4,7 +4,14 @@
 .collection__product-image--container{
   @extend .relative;
 }
+.collection__product-image--container--inner{
+  @extend .flex-center-center;
+  background-color: #FCF8FC;
+  padding: 15%;
+}
 .collection__product-detail--container{
+  padding-top: 16px;
+  line-height: 18px;
   @extend .text-light-grey;
   @extend .text--default;
 }
@@ -16,11 +23,24 @@
 }
 .product__card--controls{
   @extend .width--full;
-  @extend .hidden;
+  // @extend .hidden;
   @extend .absolute;
-  @extend .bg-white;
-  bottom: 0;
-  height: 64px;
+  bottom: 32px;
+  display: none;
+  // height: 64px;
+  // transition: .2s ease all;
+  // opacity: 0;
+}
+.product__card--controls--quick-view{
+  width: 90%;
+  background: white;
+  text-align: center;
+  height: 48px;
+  color: $koko-text-blue;
+  margin: 0 auto;
+  @extend .flex-center-center;
+  font-size: 16px;
+  font-weight: bolder;
 }
 .collection__product--alert{
   width: 113px;
@@ -38,4 +58,67 @@
   @extend .flex;
   @extend .justify-around;
   @extend .align-center;
+  opacity: 1;
+}
+.product__card--controls--quick-view, .product__card--controls-add-to-cart{
+  cursor: pointer;
+}
+@include media-query($medium-down){
+  .collection__product--price{
+    font-size: 12px;
+  }
+  .collection__product--title{
+    font-size: 10px;
+  }
+}
+
+// MODAL
+.product-card__modal--container{
+    background-color: white;
+    padding: 40px;
+    min-height: 500px;
+}
+.product-card__modal--details--vendor{
+  color: $koko-text-blue;
+  @extend .text--semi-large;
+  margin-bottom: 8px;
+}
+.product-card__modal--details--title{
+  color: $koko-text-blue;
+  font-size: 1.714rem;
+  margin-bottom: 32px;
+}
+.product-card__modal--details--price{
+  @extend .text--semi-large;
+  margin-bottom: 24px;
+}
+.product-card__modal--details--description{
+
+}
+.product-card__modal--details--link{
+  margin-bottom: 32px;
+  font-weight: bolder;
+  text-decoration: underline
+}
+.product-card__modal--variant{
+  @extend .pdp__variant--container;
+}
+.product-card__modal--hr{
+  @extend .pdp__details--hr;
+}
+.product-card__modal--quantity-incrementor--container{
+  @extend .pdp__quantity-incrementor--container;
+}
+.product-card__modal--quantity-incrementor{
+  @extend .pdp__quantity-incrementor;
+}
+.product-card__modal--add-to-cart{
+  @extend .pdp__add-to-cart;
+  @extend .flex-center-center;
+}
+.product-card__modal--exit{
+  width: 16px;
+  position: absolute;
+  top: 16px;
+  right: 16px;
 }

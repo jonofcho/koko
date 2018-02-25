@@ -6,7 +6,7 @@
         <h3 class="sublink__title">{{link.title}}</h3>
         <div class="">
           {%- for child_link in linklists[link_handle].links -%}
-            <a href="#"><p class="sublink">{{child_link.title | downcase | capitalize }}</p></a>
+            <a href="{{child_link.url}}"><p class="sublink">{{child_link.title | downcase | capitalize }}</p></a>
           {%- endfor -%}
         </div>
       {%- endfor -%}

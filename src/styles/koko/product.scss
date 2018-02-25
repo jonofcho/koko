@@ -32,6 +32,7 @@
 .pdp__info--description{
   @extend .mtop-40;
   @extend .mbot-40;
+  line-height: 24px;
 }
 .pdp__info--vendor{
   font-size: 1.286em;
@@ -58,6 +59,7 @@
 }
 .pdp__quantity-incrementor{
   width: 10px;
+  height: 100%;
   @extend .flex;
   @extend .justify-center;
   @extend .align-center;
@@ -66,7 +68,7 @@
   height: 48px;
   width: 228px;
   @extend .text-white;
-  background: linear-gradient(to right, #dec1de, #b98dba);
+  background-color: $koko-text-blue;
 }
 .pdp__variant--container{
   width: 104px;
@@ -75,10 +77,13 @@
   @extend .flex;
   @extend .align-center;
   @extend .justify-center;
-  &:hover{
-    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25);
+  :not(.single){    
+    &:hover{
+      box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25);
+    }
   }
 }
+
 .pdp__details--hr{
   margin-top: 46px;
   margin-bottom: 31px;
@@ -118,12 +123,31 @@
   .pdp__add-to-cart--container--mobile{
     padding: 16px 20px;
     box-shadow: 0 -3px 6px 0 rgba(0, 0, 0, 0.25);
-    position: absolute;
+    position: fixed;
     width: 100%;
     bottom: 0;
     display: block;
   }
   .pdp__add-to-cart{
     width: 100%;
+  }
+  .pdp__add-to-cart--details--container--mobile{
+    padding-top: 16px;
+    padding-bottom: 16px;
+    border-top: 1px solid #d9d9d9;
+    border-bottom: 1px solid #d9d9d9;
+    margin-top: 24px;
+    margin-bottom: 60px;
+  }
+  .pdp__add-to-cart--details--mobile{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .pdp__add-to-cart--details--text--mobile{
+    height: 0px;
+  }
+  .pdp__add-to-cart--details--text--mobile.active{
+    height: auto;
   }
 }

@@ -1,4 +1,4 @@
-<div id="main-menu" class="side-nav bg-white">
+<div id="main-menu" class="side-nav bg-white large-up--hide">
 
   <div class="sidebar__close">
     <a href="#close">
@@ -8,6 +8,13 @@
     </a>
   </div>
   <ul class="pleft-30 collapsible" data-collapsible="accordion">
+    <div class="sidebar__link">
+      {%- if customer -%}
+        <a href="/account/logout"><p class="text-black">LOGOUT</p></a>
+        {%- else  -%}
+          <a href="/account/login"><p class="text-black">LOGIN</p></a>
+      {%- endif -%}
+    </div>
     {%- for link in linklists['main-menu'].links -%}
     {% assign link_handle = link.title | handle %}
     <li data-toggle="{{ link_handle }}">
