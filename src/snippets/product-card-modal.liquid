@@ -14,7 +14,7 @@
           <p class="product-card__modal--details--vendor">{{ product.vendor }}</p>
           <p class="product-card__modal--details--title">{{ productTitleClean}}</p>
           <p class="product-card__modal--details--price">{{ product.price | money }}</p>
-          <p class="product-card__modal--details--description">{{ product.description }}</p>
+          <p class="product-card__modal--details--description">{{ product.description | truncate: 70 }}</p>
           <div class="text-right">
             <a href="#"><p class="product-card__modal--details--link">Product Details</p></a>
           </div>
@@ -25,7 +25,11 @@
             <div class="grid">
               {%- if product.variants.size < 2 -%}
                 {% assign single = 'single' %}
+              {%- else -%}
+                {% assign single = 'not' %}
+
               {%- endif -%}
+              {%- if product.variants.size > 0 -%}
               {%- for variant in product.variants -%}
               <div class="grid__item one-quarter">
                 <div class="product-card__modal--variant {{single}}">
@@ -33,6 +37,7 @@
                 </div>
               </div>
               {%- endfor -%}
+              {%- endif -%}
             </div>
           </div>
           <hr class="product-card__modal--hr">

@@ -9,10 +9,9 @@
   <div class="medium-down--hide">
     <div class="page-width">
       <div class="theme__navigation">
-
       <div class="flex align-center">
         <div class="navigation__logo--container">
-          <a class="text-koko-blue" href="/"><h2 class="text--bold text--extra-large">KOKO BEAUTÉ</h2></a>
+          <a class="text-koko-blue" href="/"><img src="https://cdn.shopify.com/s/files/1/2526/6552/files/KoKo_Logo.jpg?12989210517360532989"></a>
         </div>
         <div class="flex align-center">
           {%- for link in linklists['main-menu'].links -%}
@@ -26,6 +25,12 @@
             <div class="js-navigation__link navigation__link flex align-center cursor--pointer" data-active="{{link_handle}}" data-count="{{childCount}}">
               <p class="navigation__link--text">{{ link.title }}</p>
             </div>
+          {% elsif link.title == 'SHOP' %}
+          <a href="{{link.url}}">
+            <div class="js-navigation__link navigation__link flex align-center cursor--pointer" data-active="{{link_handle}}" data-count="{{childCount}}">
+              <p class="navigation__link--text">{{ link.title }}</p>
+            </div>
+          </a>
           {%- else -%}
             <a href="{{link.url}}">
               <div class="js-navigation__link navigation__link flex align-center cursor--pointer" data-active="{{link_handle}}" data-count="{{childCount}}">

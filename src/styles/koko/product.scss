@@ -77,10 +77,10 @@
   @extend .flex;
   @extend .align-center;
   @extend .justify-center;
-  :not(.single){    
-    &:hover{
-      box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25);
-    }
+}
+.pdp__variant--container.not{
+  &:hover{
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25);
   }
 }
 

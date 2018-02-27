@@ -58,7 +58,7 @@
 .navigation__logo--container{
   // margin-left: 26px;
   margin-right: 26px;
-
+  max-width: 100px;
 }
 .navigation__user-controls--container{
   @extend .flex;

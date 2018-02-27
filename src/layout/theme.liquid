@@ -62,10 +62,9 @@
 
   <!-- import scripts -->
   <!-- import font -->
-  {%- if template == "index" -%}
+
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.css"/>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick-theme.min.css"/>
-  {%- endif -%}
   <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 </head>
 
@@ -82,6 +81,7 @@
   {% section 'footer' %}
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.min.js"></script>
   <!-- CUSTOM JS FILES -->
 
   {{ "materializeBuild.js" | asset_url | script_tag }}
@@ -89,9 +89,18 @@
   {{ "materializeCollapsible.js" | asset_url | script_tag }}
   {{ "kokoUtils.js" | asset_url | script_tag }}
   {{ "kokoProductCard.js" | asset_url | script_tag }}
-  {{ "kokoHeader.js" | asset_url | script_tag }}
   {{ "kokoCollapsible.js" | asset_url | script_tag }}
   {{ "kokoProduct.js" | asset_url | script_tag }}
+  {{ "kokoHeader.js" | asset_url | script_tag }}
+  <script type="text/javascript">
+  $('.js-navigation__slider').slick({
+    arrows: true,
+    prevArrow: '<span class="index__header-arrow--container index__carousel-arrow--container--left"><img class="carousel-arrow" src="{{ "carousel-arrow-left.svg" | asset_url }}" alt=""></span>',
+    nextArrow: '<span class="index__header-arrow--container index__carousel-arrow--container--right"><img class="carousel-arrow" src="{{ "carousel-arrow-right.svg" | asset_url }}" alt=""></span>',
+    infinite: false,
+    slidesToShow: 1,
+  })
+  </script>
   {%- if template == "collection" -%}
     {{"kokoCollection.js" | asset_url | script_tag }}
   {%- endif -%}
@@ -99,15 +108,9 @@
     {{"kokoCart.js" | asset_url | script_tag }}
   {% endif %}
   {% if template == 'index' %}
-    <script src="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.min.js"></script>
     {{ "kokoIndex.js" | asset_url | script_tag }}
     <script type="text/javascript">
-    $('.js-navigation__slider').slick({
-      arrows: true,
-      prevArrow: '<span class="index__header-arrow--container index__carousel-arrow--container--left"><img class="carousel-arrow" src="{{ "carousel-arrow-left.svg" | asset_url }}" alt=""></span>',
-      nextArrow: '<span class="index__header-arrow--container index__carousel-arrow--container--right"><img class="carousel-arrow" src="{{ "carousel-arrow-right.svg" | asset_url }}" alt=""></span>',
 
-    })
     $('.js-index__hero--container').slick({
       dots: true,
       autoplay: true,

@@ -1,5 +1,4 @@
   // $(".js-navigation__collapse").sideNav();
-
     $('.js-navigation__collapse').sideNav({
       menuWidth: 335, // Default is 300
       edge: 'right', // Choose the horizontal origin
