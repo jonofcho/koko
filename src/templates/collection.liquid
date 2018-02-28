@@ -27,7 +27,7 @@
   </div>
   <div class="grid">
     <div class="grid__item medium-down--hide large-up--one-fifth">
-      <h3 class="margin-none text-koko-blue text--large">{{ collection.title }}</h3>
+      <h3 class="margin-none text--large">{{ collection.title }}</h3>
       <div class="collection__tags--container">
         {% if collection.all_tags.size > 0 %}
         <ul class="padding-none">
@@ -148,12 +148,14 @@
   {% endif %}
 {% endpaginate %}
 </div>
-{% for product in collections.best-sellers.products %}
+<div class="modal product-card__modal--container" id="product__modal">
+{% for product in collection.products %}
 {% assign productTitleArr = product.title | split: '_' %}
 {% assign collectionTitle = productTitleArr.first %}
 {% assign productTitleClean = productTitleArr.last %}
   {%- include 'product-card-modal' -%}
 {%- endfor -%}
+</div>
 {% comment %}
 <script type="text/javascript">
 /* Product Tag Filters - Good for any number of filters on any type of collection pages */

@@ -6,6 +6,17 @@
           <a href="{{link.url}}">  <p class="sublink">{{link.title | remove: "MEN " | downcase | capitalize }}</p></a>
         {%- endfor -%}
       </div>
+      {%- for product in collections['men'].products | limit: 3 -%}
+        <div class="grid__item one-quarter">
+          <div class="sublinks__suncare--image--container">
+            <a href="{{product.url}}">
+              <img src="{{product.images.first.src | img_url: '480x'}}" alt="">
+            </a>
+          </div>
+        </div>
+      {%- endfor -%}
+      {% comment %}
       {% section 'dropdown-shop-men-images' %}
+      {% endcomment %}
     </div>
   </div>

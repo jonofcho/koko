@@ -2,7 +2,7 @@
   <div class="width--full large-up--hide">
     <div class="relative">
       <div class="mobile-index__hero--container">
-        <img class="width--full" src="https://cdn.shopify.com/s/files/1/2526/6552/files/Skincare_Photo.jpg?890236110368558346" alt="">
+        <img class="width--full" src="https://cdn.shopify.com/s/files/1/2526/6552/files/shiseido-mobile.jpg?14472709686627158476" alt="">
       </div>
       <div class="el-overlay mobile-index__hero-text--container">
         <div class="mobile-index__hero-text--inner">
@@ -40,9 +40,11 @@
           <div class="grid">
             <div class="grid__item large-up--one-half medium-down--one-whole">
               <div class="index__location--container">
-                <div class="index__location--diamond-img--container">
-                  <img src="{{ 'koko_diamond.jpg' | file_img_url: '1024x768' }}" alt="">
-                </div>
+                <a href="https://www.yelp.com/biz/koko-shiseido-cosmetics-diamond-bar">
+                  <div class="index__location--diamond-img--container">
+                    <img src="{{ 'koko_diamond.jpg' | file_img_url: '1024x768' }}" alt="">
+                  </div>
+                </a>
                 <div class="index__location--details--container">
                   <h2 class="text-koko-blue index__location">DIAMOND BAR | 909.598.3835</h2>
                   <div class="index__location--details--address">
@@ -58,9 +60,11 @@
             </div>
             <div class="grid__item large-up--one-half medium-down--one-whole">
               <div class="index__location--container">
-                <div class="index__location--torrance-img--container">
-                  <img src="{{ 'koko_torrance.jpg' | file_img_url: '1024x768' }}" alt="">
-                </div>
+                <a href="https://www.yelp.com/biz/koko-shiseido-cosmetics-torrance-2">
+                  <div class="index__location--torrance-img--container">
+                    <img src="{{ 'koko_torrance.jpg' | file_img_url: '1024x768' }}" alt="">
+                  </div>
+                </a>
                 <div class="index__location--details--container">
                   <h2 class="text-koko-blue index__location">TORRANCE | 310.618.1004</h2>
                   <div class="index__location--details--address">
@@ -79,6 +83,7 @@
 
   </div>
 </div>
+<div class="modal product-card__modal--container" id="product__modal">
 
 {% for product in collections.best-sellers.products %}
 {% assign productTitleArr = product.title | split: '_' %}
@@ -86,6 +91,7 @@
 {% assign productTitleClean = productTitleArr.last %}
   {%- include 'product-card-modal' -%}
 {%- endfor -%}
+</div>
 {% comment %}
 prevArrow: "<img src='{{ 'icon--arrow-down.svg' | asset_url}}'",
 nextArrow: '<span class="arrows-black slick-next arrows-product-grid-item"></span>',

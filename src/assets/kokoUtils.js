@@ -1,6 +1,15 @@
 function openCartDropdown(){
   var $dropdown = $('.navigation__cart-dropdown');
   $dropdown.addClass('active');
+  if (!$dropdown.is(":hover")) {
+    timeOut = setTimeout(function(){
+      console.log('timeOut');
+      $dropdown.removeClass('active');
+    }, 3000);
+  }
+  $dropdown.on('mouseenter', function(){
+    clearTimeout(timeOut);
+  })
 }
 function closeCartDropdown(){
   var $dropdown = $('.navigation__cart-dropdown');
@@ -12,10 +21,11 @@ function addToCart(obj, that){
 
     that.attr('disabled', true);
     var productId = obj.productId;
+    var variantTitle = obj.variantTitle;
     var productImage = obj.productImage;
     var productVendor = obj.productVendor;
     var productTitle = obj.productTitle;
-    var productPrice = obj.price;
+    var productPrice = obj.productPrice;
     var productQuantity = obj.productQuantity;
     var postData = {
       quantity: productQuantity,
@@ -56,8 +66,9 @@ function addToCart(obj, that){
               </div>
               <div class="text--semi-small mbot-8">
                 <p class="mbot-8 js-navigation__cart-dropdown--item--title">${productTitle}</p>
+                <p>${variantTitle}</p>
               </div>
-              <p class="text--smaller text--reduced text-lighter-grey js-navigation__cart-dropdown--item--quantity">QTY: ${producttQuantity}</p>
+              <p class="text--smaller text--reduced text-lighter-grey js-navigation__cart-dropdown--item--quantity">QTY: ${productQuantity}</p>
             </div>
             <div class="">
               <p class="text--bold text--small js-navigation__cart-dropdown--item--price">${productPrice}</p>
@@ -88,5 +99,13 @@ function addToCart(obj, that){
     }).always(function(data){
       console.log('post complete');
     })
+
+}
+function updateProductQuantity($currentDiv , quantity){
+
+  var that = $currentDiv
+  var targetId = that.data('product-id');
+
+  $(`.js-product-card__modal--add-to-cart[data-product-id="${targetId}"]`).attr('data-product-quantity', quantity);
 
 }
