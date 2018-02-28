@@ -163,7 +163,7 @@
             <h2 class="pdp__info--title">{{ productTitleClean }}</h2>
           </div>
           <div class="">
-            <h2 class="pdp__info--price">{{ product.price }}</h2>
+            <h2 class="pdp__info--price">{{ product.price | money }}</h2>
           </div>
           <div class="pdp__info--description medium-down--hide">
             <p>{{ product.description }}</p>
@@ -172,10 +172,16 @@
             {%- if product.variants.size > 0 -%}
             <p class="mbot-15 medium-down--hide">Select Size</p>
             <div class="grid">
+              {%- if product.variants.size < 2 -%}
+                {% assign single = 'single' %}
+              {%- else -%}
+                {% assign single = 'not' %}
+
+              {%- endif -%}
               {%- for variant in product.variants -%}
               <div class="grid__item one-quarter">
-                <div class="pdp__variant--container">
-                  {{variant.title}}
+                <div class="pdp__variant--container {{single}}" data-product-id="{{product.id}}" data-variant-id="{{ variant.id }}">
+                  <p>  {{variant.title}}</p>
                 </div>
               </div>
               {%- endfor -%}
@@ -185,18 +191,23 @@
           <hr class="pdp__details--hr">
           <div class="flex align-center ">
             <div class="pdp__quantity-incrementor--container">
-              <div class="pdp__quantity-incrementor">
+              <div class="pdp__quantity-incrementor js-quantity--decrementor">
                 <img src="{{ 'icon--minus.svg' | asset_url }}" alt="">
               </div>
-              <p>1</p>
-              <div class="pdp__quantity-incrementor">
+              <p class="js-quantity--current" data-product-id="{{product.variants.first.id}}">1</p>
+              <div class="pdp__quantity-incrementor js-quantity--incrementor">
                 <img src="{{ 'icon--plus.svg' | asset_url }}" alt="">
               </div>
             </div>
+            <div class="product-card__modal--add-to-cart js-product-card__modal--add-to-cart" data-product-id="{{product.id}}" data-variant-id="{{product.variants.first.id}}" data-product-image="{{product.images.first.src | img_url: 'small'}}" data-product-vendor="{{product.vendor}}" data-product-title="{{productTitleClean}}" data-product-quantity="1" data-product-price="{{ product.price | money }}">
+              <p>ADD TO CART</p>
+            </div>
+            {% comment %}
             <form class="product-form" action="/cart/add" data-productid="{{product.id}}"  method="post">
               <input type="hidden" name="id" data-productid="{{product.id}}" class="product-select" value="{{ product.variants[0].id }}" data-variant-title="{{ product.variants[0].title }}" />
               <input type="submit" class="btn pdp__add-to-cart" value="ADD TO CART">
             </form>
+            {% endcomment %}
           </div>
         </div>
       </div>
@@ -261,10 +272,11 @@
 </div>
 <div class="pdp__add-to-cart--container--mobile large-up--hide">
 
-  <form class="product-form" action="/cart/add" data-productid="{{product.id}}"  method="post">
-    <input type="hidden" name="id" data-productid="{{product.id}}" class="product-select" value="{{ product.variants[0].id }}" data-variant-title="{{ product.variants[0].title }}" />
-    <input type="submit" value="ADD TO CART" class="pdp__add-to-cart" />
-  </form>
+  <!-- <form class="product-form" action="/cart/add" data-productid="{{product.id}}"  method="post"> -->
+  <div class="product-card__modal--add-to-cart js-product-card__modal--add-to-cart" data-product-id="{{product.variants.first.id}}" data-product-image="{{product.images.first.src | img_url: 'small'}}" data-product-vendor="{{product.vendor}}" data-product-title="{{productTitleClean}}" data-product-quantity="1" data-product-price="{{ product.price | money }}">
+    <p>ADD TO CART</p>
+  </div>
+  <!-- </form> -->
 
 </div>
 

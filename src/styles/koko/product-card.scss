@@ -100,7 +100,8 @@
 .product-card__modal--details--link{
   margin-bottom: 32px;
   font-weight: bolder;
-  text-decoration: underline
+  text-decoration: underline;
+  color: #757474;
 }
 .product-card__modal--variant{
   @extend .pdp__variant--container;

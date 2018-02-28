@@ -1,9 +1,14 @@
 
   <div class="sublinks__skincare--container">
     <div class="column-3">
+      {% comment %}
+      {{ linklists[child_handle].links[0].title }}
+      {% endcomment %}
       {%- for link in linklists[child_handle].links -%}
         {% assign link_handle = link.title | handle %}
-        <h3 class="sublink__title">{{link.title}}</h3>
+        <a href="{{ link.url }}">
+          <h3 class="sublink__title">{{link.title}}</h3>
+        </a>
         <div class="">
           {%- for child_link in linklists[link_handle].links -%}
             <a href="{{child_link.url}}"><p class="sublink">{{child_link.title | downcase | capitalize }}</p></a>
@@ -11,5 +16,16 @@
         </div>
       {%- endfor -%}
     </div>
+    {%- for product in collections['skincare'].products | limit: 1 -%}
+      <div class="grid__item one-quarter">
+        <div class="sublinks__suncare--image--container">
+          <a href="{{product.url}}">
+            <img src="{{product.images.first.src | img_url: '480x'}}" alt="">
+          </a>
+        </div>
+      </div>
+    {%- endfor -%}
+    {% comment %}
     {% section 'dropdown-shop-skincare-img'%}
+    {% endcomment %}
   </div>

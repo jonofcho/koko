@@ -21,11 +21,11 @@
     @extend .justify-around;
   }
   .sublink__title{
-    cursor: default;
+    cursor: pointer;
     @extend .text-dark-grey;
     @extend .flex;
     @extend .align-center;
-    margin-bottom: 16px;
+    // margin-bottom: 16px;
     height: 34px;
   }
   .sublink{

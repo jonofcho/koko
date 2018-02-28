@@ -7,9 +7,9 @@ $(document).ready(function(){
     var $quantity = that.siblings('.js-quantity--current');
     var currentQuantity = parseInt($quantity.text());
     currentQuantity += 1;
+    console.log(currentQuantity);
     updateProductQuantity($quantity , currentQuantity)
     $quantity.text(currentQuantity);
-    console.log('click');
   })
   $('.js-quantity--decrementor').on('click', function(){
     var that = $(this);
@@ -20,26 +20,20 @@ $(document).ready(function(){
     }
     updateProductQuantity($quantity, currentQuantity)
     $quantity.text(currentQuantity);
-    console.log('click');
-  })
-  function updateProductQuantity($currentDiv , quantity){
-    console.log('changed');
-    var that = $currentDiv
-    var targetId = that.data('product-id');
-    console.log(quantity);
-    $(`.js-product-card__modal--add-to-cart[data-product-id="${targetId}"]`).attr('data-product-quantity', quantity);
 
-  }
+  })
+
 
 
 
   $('.js-product-card__modal--add-to-cart').on('click', function(){
     var that = $(this);
     product = {
-      productId : that.data("product-id"),
+      productId : that.data("variant-id"),
       productImage :   that.data('product-image'),
       productVendor : that.data('product-vendor'),
       productTitle : that.data('product-title'),
+      variantTitle: that.data('variant-title'),
       productPrice : that.data('product-price'),
       productQuantity: that.data('product-quantity'),
     }
@@ -83,7 +77,7 @@ $(document).ready(function(){
   $('.js-product-card__modal--exit').on('click', function(){
     $('.modal-overlay').trigger('click');
   })
-})
-$('.modal').modal({
+  $('.modal').modal({
 
-});
+  });
+})

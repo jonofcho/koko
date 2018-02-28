@@ -83,6 +83,7 @@
 
   </div>
 </div>
+<div class="modal product-card__modal--container" id="product__modal">
 
 {% for product in collections.best-sellers.products %}
 {% assign productTitleArr = product.title | split: '_' %}
@@ -90,6 +91,7 @@
 {% assign productTitleClean = productTitleArr.last %}
   {%- include 'product-card-modal' -%}
 {%- endfor -%}
+</div>
 {% comment %}
 prevArrow: "<img src='{{ 'icon--arrow-down.svg' | asset_url}}'",
 nextArrow: '<span class="arrows-black slick-next arrows-product-grid-item"></span>',

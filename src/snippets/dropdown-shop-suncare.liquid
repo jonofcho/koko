@@ -9,6 +9,17 @@
         {%- endfor -%}
       </div>
     </div>
+    {%- for product in collections['suncare'].products | limit: 3 -%}
+      <div class="grid__item one-quarter">
+        <div class="sublinks__suncare--image--container">
+          <a href="{{product.url}}">
+            <img src="{{product.images.first.src | img_url: '480x'}}" alt="">
+          </a>
+        </div>
+      </div>
+    {%- endfor -%}
+    {% comment %}
     {% section 'dropdown-shop-suncare-images' %}
+    {% endcomment %}
   </div>
 </div>

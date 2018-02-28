@@ -93,12 +93,14 @@
   {{ "kokoProduct.js" | asset_url | script_tag }}
   {{ "kokoHeader.js" | asset_url | script_tag }}
   <script type="text/javascript">
-  $('.js-navigation__slider').slick({
-    arrows: true,
-    prevArrow: '<span class="index__header-arrow--container index__carousel-arrow--container--left"><img class="carousel-arrow" src="{{ "carousel-arrow-left.svg" | asset_url }}" alt=""></span>',
-    nextArrow: '<span class="index__header-arrow--container index__carousel-arrow--container--right"><img class="carousel-arrow" src="{{ "carousel-arrow-right.svg" | asset_url }}" alt=""></span>',
-    infinite: false,
-    slidesToShow: 1,
+  $(document).ready(function(){
+    $('.js-navigation__slider').slick({
+      arrows: true,
+      prevArrow: '<span class="index__header-arrow--container index__carousel-arrow--container--left"><img class="carousel-arrow" src="{{ "carousel-arrow-left.svg" | asset_url }}" alt=""></span>',
+      nextArrow: '<span class="index__header-arrow--container index__carousel-arrow--container--right"><img class="carousel-arrow" src="{{ "carousel-arrow-right.svg" | asset_url }}" alt=""></span>',
+      infinite: false,
+      slidesToShow: 1,
+    })
   })
   </script>
   {%- if template == "collection" -%}
@@ -110,36 +112,38 @@
   {% if template == 'index' %}
     {{ "kokoIndex.js" | asset_url | script_tag }}
     <script type="text/javascript">
+    $(document).ready(function(){
 
-    $('.js-index__hero--container').slick({
-      dots: true,
-      autoplay: true,
-      autoplaySpeed: 7000,
-      infinte: false,
-      arrows: false,
-      slidesToShow: 1,
+      $('.js-index__hero--container').slick({
+        dots: true,
+        autoplay: true,
+        autoplaySpeed: 7000,
+        infinte: false,
+        arrows: false,
+        slidesToShow: 1,
 
-    })
-    $('.js-index__carousel--container').slick({
-      infinite: false,
-      slidesToShow: 4,
-      slidesToScroll: 1,
-      arrows: true,
-      prevArrow: '<span class="index__carousel-arrow--container index__carousel-arrow--container--left"><img class="carousel-arrow" src="{{ "carousel-arrow-left.svg" | asset_url }}" alt=""></span>',
-      nextArrow: '<span class="index__carousel-arrow--container index__carousel-arrow--container--right"><img class="carousel-arrow" src="{{ "carousel-arrow-right.svg" | asset_url }}" alt=""></span>',
-      responsive: [
-        {
-          breakpoint: 990,
-          settings: {
-            slidesToShow: 2,
-            slidesToScroll: 1,
-            // infinite: true,
-            arrows: false,
-            variableWidth: true,
-            dots: false,
+      })
+      $('.js-index__carousel--container').slick({
+        infinite: false,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        arrows: true,
+        prevArrow: '<span class="index__carousel-arrow--container index__carousel-arrow--container--left"><img class="carousel-arrow" src="{{ "carousel-arrow-left.svg" | asset_url }}" alt=""></span>',
+        nextArrow: '<span class="index__carousel-arrow--container index__carousel-arrow--container--right"><img class="carousel-arrow" src="{{ "carousel-arrow-right.svg" | asset_url }}" alt=""></span>',
+        responsive: [
+          {
+            breakpoint: 990,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+              // infinite: true,
+              arrows: false,
+              variableWidth: true,
+              dots: false,
+            }
           }
-        }
-      ]
+        ]
+      })
     });
     </script>
   {% endif %}

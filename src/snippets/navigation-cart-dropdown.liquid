@@ -9,6 +9,7 @@
 
       {% assign itemSplitTitle = item.title | split: '_' %}
       {% assign itemTitle = itemSplitTitle.last %}
+      {% assign itemTitleArr = itemTitle | split: '-' %}
       <div class="navigation__cart-dropdown--item-details relative js-navigation__cart-dropdown--card" data-card-id="{{item.id}}">
         <a href="{{item.url}}">
           <div class="navigation__cart-dropdown--added-item-image">
@@ -21,7 +22,8 @@
               <p>{{item.vendor}}</p>
             </div>
             <div class="text--semi-small mbot-8">
-              <p class="mbot-8">{{ itemTitle }}</p>
+              <p class="mbot-8">{{ itemTitleArr.first }}</p>
+              <p>{{ itemTitleArr.last }}</p>
             </div>
             <p class="text--smaller text--reduced text-lighter-grey">QTY: <span class="js-navigation__cart-dropdown--card--quantity" data-card-id="{{item.id}}" data-quantity="{{item.quantity}}">{{item.quantity}}</span></p>
           </div>
