@@ -125,7 +125,7 @@
 {% assign collectionTitle = productTitleArr.first %}
 {% assign productTitleClean = productTitleArr.last %}
 <div class="pdp__detail--container medium-down--hide">
-  <div class="page-width ">
+  <div class="page-width " style="padding: 0 60px;">
     <div class="grid pdp__grid medium-down--hide">
       <div class="grid__item pdp__grid-item one-half">
         <div class="pdp__breadcrumbs--container">
@@ -179,7 +179,7 @@
 
               {%- endif -%}
               {%- for variant in product.variants -%}
-              <div class="grid__item one-quarter">
+              <div class="grid__item one-third">
                 <div class="pdp__variant--container {{single}}" data-product-id="{{product.id}}" data-variant-id="{{ variant.id }}">
                   <p>  {{variant.title}}</p>
                 </div>
@@ -238,7 +238,7 @@
     </div>
     <div class="grid__item one-whole">
       <div class="">
-        <h2 class="pdp__info--price">{{ product.price }}</h2>
+        <h2 class="pdp__info--price">{{ product.price | money }}</h2>
         {%- if product.variants.size > 0 -%}
         <p class="mbot-15 medium-down--hide">Select Size</p>
         <div class="pdp__variants--container">

@@ -155,6 +155,12 @@
 @include media-query($medium-down){
   // .index__carousel--container{
   //   padding: u nset;.
+  .index__carousel-arrow--container--left{
+    left: -10px;
+  }
+  .index__carousel-arrow--container--right{
+    right: -10px;
+  }
   .index__bestseller-title--container, .index__bestseller-title--container{
     margin-top: 24px;
   }
