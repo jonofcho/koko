@@ -18,15 +18,19 @@
     {%- for link in linklists['main-menu'].links -%}
     {% assign link_handle = link.title | handle %}
     <li data-toggle="{{ link_handle }}">
+      {%- if linklists[link_handle].links.size > 0 -%}
       <div class="sidebar__link js-sidebar__submenu--trigger" data-activates="{{link_handle}}">
         <p>{{link.title}}</p>
 
-        {%- if linklists[link_handle].links.size > 0 -%}
         <div class="icon--submenu-expansion" data-open="{{ link_handle }}">
           <img src="{{ 'icon--arrow-right.svg' | asset_url }}" alt="">
         </div>
-        {%- endif -%}
       </div>
+      {%- else  -%}
+      <div class="sidebar__link">
+        <a href="{{link.url}}"><p class="text-default">{{link.title}}</p></a>
+      </div>
+      {%- endif -%}
 
 
       <div id="{{link_handle}}" class="side-nav">
@@ -50,15 +54,18 @@
           {% assign child_handle = child_link.title | handle %}
           <li data-toggle="{{child_handle}}">
             <div class="sidebar__link collapsible-header">
-              <p class="text--semibold text-light-grey">{{ child_link.title }}</p>
+
 
               {%- if linklists[child_handle].links.size > 0 -%}
+              <p class="text--semibold text-light-grey">{{ child_link.title }}</p>
               <div class="icon--expansion--container js-expansion--open" data-open="{{ child_handle }}">
                 <img src="{{ 'icon--plus.svg' | asset_url }}" alt="">
               </div>
               <div class="icon--expansion--container js-expansion--close hide" data-close="{{ child_handle }}">
                 <img src="{{ 'icon--minus.svg' | asset_url }}" alt="">
               </div>
+              {%- else -%}
+                <a href="{{ child_link.url }}"><p class="text--semibold text-light-grey">{{ child_link.title }}</p></a>
               {%- endif -%}
             </div>
 
@@ -68,26 +75,32 @@
                 {% assign grand_child_handle = grand_child_link.title | handle %}
                 <li data-toggle="{{ grand_child_handle }}">
                   <div class="sidebar__link collapsible-header">
-                    <p class="text-light-grey">{{ grand_child_link.title }}</p>
 
                     {%- if linklists[grand_child_handle].links.size > 0 -%}
+                    <p class="text-light-grey">{{ grand_child_link.title }}</p>
                     <div class="icon--expansion--container js-expansion--open" data-open="{{ grand_child_handle }}">
                       <img src="{{ 'icon--plus.svg' | asset_url }}" alt="">
                     </div>
                     <div class="icon--expansion--container js-expansion--close hide" data-close="{{ grand_child_handle }}">
                       <img src="{{ 'icon--minus.svg' | asset_url }}" alt="">
                     </div>
+                    {%- else  -%}
+                      <a href="{{ grand_child_link.url }}"><p class="text-light-grey">{{ grand_child_link.title }}</p></a>
                     {%- endif -%}
                   </div>
                   <div class="pleft-20 collapsible-body">
                     {%- if linklists[grand_child_handle].links.size > 0 -%}
                     {%- for great_grand_child_link in linklists[grand_child_handle].links -%}
                     <div class="sidebar__link">
-                      <p class="text-light-grey">{{ great_grand_child_link.title }}</p>
+                      <a href="{{ great_grand_child_link.url }}"><p class="text-light-grey">{{ great_grand_child_link.title }}</p></a>
                     </div>
                     {%- endfor -%}
                     {% else %}
-
+                    {%- for great_grand_child_link in linklists[grand_child_handle].links -%}
+                    <div class="sidebar__link">
+                      <a href="{{ great_grand_child_link.url }}"><p class="text-light-grey">asdf{{ great_grand_child_link.title }}</p></a>
+                    </div>
+                    {%- endfor -%}
                     {%- endif -%}
                   </div>
                 </li>
