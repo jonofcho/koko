@@ -5,6 +5,7 @@
 .account__info-section--container{
   padding-top: 24px;
   padding-left: 64px;
+  padding-bottom: 24px;
   @include media-query($medium-down) {
     padding-left: 0;
   }
@@ -32,8 +33,9 @@
   border: solid 1px #dedfe1;
 }
 .account__subheader--container{
-    background-color: #f4eef3;
+    background-color: $koko-bg-blue;
     padding: 17px 32px;
+    color: $koko-text-blue;
 }
 .account__info{
 

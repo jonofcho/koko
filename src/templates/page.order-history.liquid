@@ -4,13 +4,14 @@
     <div class="grid__item medium-down--hide large-up--one-third bg-white">
       <div class="account__link-section--container">
         <div class="account__link--container">
-          <a href="#"><p class="account__link">My Details</p></a>
+          <a href="/account/addresses"><p class="account__link">My Details</p></a>
         </div>
         <div class="account__link--container">
-          <a href="#"><p class="account__link">Order History</p></a>
+          <a href="/pages/order-history"><p class="account__link">Order History</p></a>
         </div>
       </div>
     </div>
+
     <div class="grid__item medium-down--one-whole large-up--two-thirds">
         <div class="history__content--container">
           <div class="grid">
@@ -19,44 +20,57 @@
                 <p class="account__info--header text--bold">Order History</p>
               </div>
             </div>
+            {% if customer.orders.size != 0 %}
+            {%- for order in customer.orders -%}
             <div class="grid__item">
               <div class="history__orders--container">
                 <div class="grid">
                   <div class="grid__item">
                     <div class="history__order--confirmation">
-                      <p>Ordered 1/23/18</p>
-                      <p>Order #1234566</p>
+                      <p>Ordered: {{order.created_at | date: "%b %d, %y"}}</p>
+                      <p>Order #{{ order.order_number }}</p>
                     </div>
                   </div>
                 </div>
                 <div class="history__orders--products--container">
+                  {%- for item in order.line_items -%}
+                  {% assign itemTitleColArr = item.title | split: '_' %}
+                  {%- if itemTitleColArr.last contains "-" -%}
+                    {% assign itemTitleVarArr = itemTitleColArr.last | split: '-' %}
+                    {% assign itemTitle = itemTitleVarArr.first %}
+                    {% assign itemVar = itemTitleVarArr.last %}
+                  {%- else  -%}
+                  {% assign itemTitle = itemTitleColArr.last %}
+
+                  {%- endif -%}
                   <div class="history__orders--product">
                     <div class="grid">
                       <div class="grid__item one-fifth">
                         <div class="history__product-img--container">
-                          <a href="https://placeholder.com"><img src="http://via.placeholder.com/350x150"></a>
+                          <a href="{{ item.url }}"><img src="{{item.image.src | img_url: '480x480'}}"></a>
                         </div>
                       </div>
                       <div class="grid__item four-fifths">
                         <div class="history__product-details--container">
-                          <p class="history__product--vendor">Shiseido</p>
+                          <p class="history__product--vendor">{{item.vendor}}</p>
                           <div class="history__product--title--container">
-                            <p>ULTIMUNE Power Infusing Concentrate</p>
-                            <p>$37.00</p>
+                            <p>{{ itemTitle }}</p>
+                            <p>{{ item.price | money }}</p>
                           </div>
-                          <p class="history__product--variant medium-down--hide">50ml</p>
+                          <p class="history__product--variant medium-down--hide">{{ itemVar }}</p>
                         </div>
                       </div>
                     </div>
                   </div>
+                  {%- endfor -%}
                 </div>
                 <div class="history__recipient--details flex-center-between medium-down--hide">
                   <div class="history__recipient">
                     <p class="mbot-8">Delivered to:</p>
-                    <p class="history__recipient--name">John Ko</p>
+                    <p class="history__recipient--name text--bold">{{ order.customer.first_name }} {{ order.customer.last_name}}</p>
                   </div>
                   <div class="flex-center-between">
-                    <p>$164,23</p>
+                    <p>{{ order.total_price | money }}</p>
                     <button class="history__recipient--btn btn medium-down--hide" type="button" name="button">DETAILS</button>
                   </div>
                 </div>
@@ -66,50 +80,56 @@
               <div class="history__recipient--details flex-center-between large-up--hide">
                 <div class="history__recipient">
                   <p class="mbot-8">To:</p>
-                  <p class="history__recipient--name">John Ko</p>
+                  <p class="history__recipient--name">{{ order.customer.first_name }}</p>
                 </div>
-                <p>$164,23</p>
+                <p>{{ order.total_price | money }}</p>
                 <a href="#"><p class="history__recipient--link">DETAILS</p></a>
               </div>
-          {% paginate customer.orders by 20 %}
-            {% if customer.orders.size != 0 %}
 
-              <table class="responsive-table">
-                <thead>
-                  <tr>
-                    <th>{{ 'customer.orders.order_number' | t }}</th>
-                    <th>{{ 'customer.orders.date' | t }}</th>
-                    <th>{{ 'customer.orders.payment_status' | t }}</th>
-                    <th>{{ 'customer.orders.fulfillment_status' | t }}</th>
-                    <th>{{ 'customer.orders.total' | t }}</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {% for order in customer.orders %}
-                    <tr class="responsive-table-row">
-                      <td data-label="{{ 'customer.orders.order_number' | t }}">{{ order.name | link_to: order.customer_url }}</td>
-                      <td data-label="{{ 'customer.orders.date' | t }}">{{ order.created_at | date: format: 'month_day_year' }}</td>
-                      <td data-label="{{ 'customer.orders.payment_status' | t }}">{{ order.financial_status_label }}</td>
-                      <td data-label="{{ 'customer.orders.fulfillment_status' | t }}">{{ order.fulfillment_status_label }}</td>
-                      <td data-label="{{ 'customer.orders.total' | t }}">{{ order.total_price | money }}</td>
-                    </tr>
-                  {% endfor %}
-                </tbody>
-              </table>
-            {% else %}
-              <p>{{ 'customer.orders.none' | t }}</p>
-            {% endif %}
-
-            {% if paginate.pages > 1 %}
-              {% include 'pagination' %}
-            {% endif %}
-
-          {% endpaginate %}
         </div>
+        {%- endfor -%}
+        {% else %}
+          No orders placed
+        {% endif %}
         </div>
     </div>
   </div>
 </div>
+{% paginate customer.orders by 20 %}
+  {% if customer.orders.size != 0 %}
+
+    <table class="responsive-table">
+      <thead>
+        <tr>
+          <th>{{ 'customer.orders.order_number' | t }}</th>
+          <th>{{ 'customer.orders.date' | t }}</th>
+          <th>{{ 'customer.orders.payment_status' | t }}</th>
+          <th>{{ 'customer.orders.fulfillment_status' | t }}</th>
+          <th>{{ 'customer.orders.total' | t }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for order in customer.orders %}
+          <tr class="responsive-table-row">
+            <td data-label="{{ 'customer.orders.order_number' | t }}">{{ order.name | link_to: order.customer_url }}</td>
+            <td data-label="{{ 'customer.orders.date' | t }}">{{ order.created_at | date: format: 'month_day_year' }}</td>
+            <td data-label="{{ 'customer.orders.payment_status' | t }}">{{ order.financial_status_label }}</td>
+            <td data-label="{{ 'customer.orders.fulfillment_status' | t }}">{{ order.fulfillment_status_label }}</td>
+            <td data-label="{{ 'customer.orders.total' | t }}">{{ order.total_price | money }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>{{ 'customer.orders.none' | t }}</p>
+  {% endif %}
+
+  {% if paginate.pages > 1 %}
+    {% include 'pagination' %}
+  {% endif %}
+
+{% endpaginate %}
+{% comment %}
 <div id="AddressNewForm" class="hide">
   {% form 'customer_address', customer.new_address %}
   <h2>{{ 'customer.addresses.add_new' | t }}</h2>
@@ -220,6 +240,7 @@
   {% endform %}
 
 </div>
+{% endcomment %}
 {%- else -%}
 NOPE
 

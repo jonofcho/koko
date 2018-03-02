@@ -6,7 +6,7 @@
   padding: 24px;
 }
 .history__recipient--details{
-    background-color: #f4eef3;
+    background-color: $koko-bg-blue;
     padding: 24px;
 }
 .history__product-details--container{
@@ -38,7 +38,7 @@
   height: 42px;
   margin-left: 24px;
   color: white;
-  background-image: linear-gradient(to right, #dec1de, #b98dba);
+  background-color: $koko-text-blue;
   border: none;
 }
 .history__orders--product{
