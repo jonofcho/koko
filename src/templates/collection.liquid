@@ -3,6 +3,15 @@
 </div>
 <div class="page-width">
 
+{% capture arr %}
+{%- for product in collection.products -%}
+  {% assign colArr = product.title | split: '_' %}
+  {{ colArr.first }}
+{%- endfor -%}
+{% endcapture %}
+
+{% assign tagFilter = arr | split: " " | uniq  %}
+
 {% paginate collection.products by 12 %}
 {% comment %}
   <header role="banner">
@@ -42,13 +51,17 @@
           </li>
             {% for tag in collection.all_tags %}
               {% if current_tags contains tag %}
-                <li class="open pbot-15 collection__tags">
-                  {{ tag | link_to_remove_tag: tag }}
-                </li>
+              {%- if tagFilter contains tag -%}
+              <li class="open pbot-15 collection__tags">
+                {{ tag | link_to_remove_tag: tag }}
+              </li>
+              {%- endif -%}
               {% else %}
+              {%- if tagFilter contains tag -%}
                 <li class="pbot-15 collection__tags">
                   {{ tag | link_to_tag: tag }}
                 </li>
+                {% endif %}
               {% endif %}
             {% endfor %}
           </ul>
