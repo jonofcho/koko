@@ -1,3 +1,15 @@
+$('.js-user__modal--exit').on('click', function(){
+  $('.modal-overlay').trigger('click');
+})
+$('.js-user__register--open').on('click', function(){
+  $('.modal-overlay').trigger('click');
+  $('#register-modal').modal('open');
+})
+$('.js-user__login--open').on('click', function(){
+  $('.modal-overlay').trigger('click');
+  $('#login-modal').modal('open');
+})
+
   // $(".js-navigation__collapse").sideNav();
     $('.js-navigation__collapse').sideNav({
       menuWidth: 335, // Default is 300

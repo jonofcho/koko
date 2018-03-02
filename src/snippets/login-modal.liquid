@@ -1,5 +1,7 @@
-<div class="page-width">
-  <div class="user__form--container">
+<div class="product-card__modal--exit js-user__modal--exit">
+  <img src="{{ 'icon--close.svg' | asset_url }}" alt="">
+</div>
+
     <div class="user__form--wrapper">
       <div class="form-success hide" id="ResetSuccess">
         {{ 'customer.recover_password.success' | t }}
@@ -53,12 +55,12 @@
                 <a href="#recover" id="RecoverPassword">{{ 'customer.login.forgot_password' | t }}</a>
                 {% endif %}
               </div>
-              <div class="">
-                <a href="/account/register">
+
+                <p class="js-user__register--open text-center text-underline">
                   {{ 'layout.customer.create_account' | t }}
-                </a>
+                </p>
               </div>
-            </div>
+
           </div>
         </div>
 
@@ -109,5 +111,3 @@
       {% endform %}
       {% endif %}
     </div>
-  </div>
-</div>

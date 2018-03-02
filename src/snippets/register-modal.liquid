@@ -1,9 +1,10 @@
-<div class="page-width">
-  <div class="user__form--container">
+<div class="product-card__modal--exit js-user__modal--exit">
+  <img src="{{ 'icon--close.svg' | asset_url }}" alt="">
+</div>
     <div class="user__form--wrapper">
 
       <h2 class="text-center">Welcome to Koko Beaute!</h2>
-      <p class="text-center text--medium mbot-16">Create Account</p>
+      <p class="text-center text--medium">Create Account</p>
 
       {% form 'create_customer' %}
         {{ form.errors | default_errors }}
@@ -70,11 +71,9 @@
           </div>
           <div class="grid__item">
             <div class="flex-center-center">
-              <a href="/account/login"><p class="text-default user-form--login--link">Log in with an existing account</p></a>
+              <p class="text-default user-form--login--link js-user__login--open text-underline">Log in with an existing account</p>
             </div>
           </div>
         </div>
       {% endform %}
     </div>
-  </div>
-</div>

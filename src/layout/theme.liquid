@@ -78,6 +78,16 @@
 
   <main role="main" id="MainContent" class="theme__main-content--container">
     {{ content_for_layout }}
+    <div class="user-modal modal medium-down--hide" id="login-modal">
+        <div class="user__form--modal--container">
+          {%- include 'login-modal' -%}
+        </div>
+    </div>
+    <div class="user-modal user-register modal medium-down--hide" id="register-modal">
+      <div class="user__form--modal--container ">
+        {%- include 'register-modal' -%}
+      </div>
+    </div>
   </main>
 
   {% section 'footer' %}
@@ -96,6 +106,15 @@
   {{ "kokoHeader.js" | asset_url | script_tag }}
   <script type="text/javascript">
   $(document).ready(function(){
+    $('.user-modal').modal({
+      dismissible: true, // Modal can be dismissed by clicking outside of the modal
+      opacity: .5, // Opacity of modal background
+      inDuration: 300, // Transition in duration
+      outDuration: 200, // Transition out duration
+      startingTop: '4%', // Starting top style attribute
+      endingTop: '10%', // Ending top style attribute
+    });
+    // $('.modal').modal();
     $('.js-navigation__slider').slick({
       arrows: true,
       prevArrow: '<span class="index__header-arrow--container index__carousel-arrow--container--left"><img class="carousel-arrow" src="{{ "carousel-arrow-left.svg" | asset_url }}" alt=""></span>',

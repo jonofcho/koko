@@ -45,7 +45,8 @@
         {%- if customer -%}
           <a href="/account/logout">  <p class="nowrap text-light-grey cursor--pointer text--semi-small">LOG OUT</p></a>
         {%- else  -%}
-          <a href="/account/login"><p class="nowrap text-light-grey cursor--pointer text--semi-small">LOG IN</p></a>
+          <p class="nowrap text-light-grey cursor--pointer text--semi-small modal-trigger" href="#login-modal">LOG IN</p>
+          <!-- <a href="/account/login"><p class="nowrap text-light-grey cursor--pointer text--semi-small">LOG IN</p></a> -->
         {%- endif -%}
         <div class="">
           |
