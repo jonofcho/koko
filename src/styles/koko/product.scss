@@ -100,6 +100,22 @@
   display: none;
 }
 @include media-query($medium-down) {
+  .pdp__add-to-cart--details--mobile{
+    .pdp__details-opened--mobile--icon{
+      display: none;
+    }
+    .pdp__details-closed--mobile--icon{
+      display: block;
+    }
+  }
+  .pdp__add-to-cart--details--mobile.active{
+    .pdp__details-opened--mobile--icon{
+      display: block;
+    }
+    .pdp__details-closed--mobile--icon{
+      display: none;
+    }
+  }
   .pdp__grid{
     margin-left: -15px;
   }

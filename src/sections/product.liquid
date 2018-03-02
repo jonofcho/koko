@@ -258,11 +258,18 @@
             <div class="collapsible-header pdp__add-to-cart--details--mobile js-pdp__add-to-cart--details--mobile">
               <p>Details</p>
               <div class="">
-                <img src="{{ 'icon--plus.svg' | asset_url }}" alt="">
+                <div class="pdp__details-closed--mobile--icon">
+                  <img src="{{ 'icon--plus.svg' | asset_url }}" alt="">
+                </div>
+                <div class="pdp__details-opened--mobile--icon">
+                  <img src="{{ 'icon--minus.svg' | asset_url }}" alt="">
+                </div>
               </div>
             </div>
             <div class="collapsible-body pdp__add-to-cart--details--text--mobile">
-              <p>{{ product.description }}</p>
+              <div class="mtop-16">
+                <p>{{ product.description }}</p>
+              </div>
             </div>
           </li>
         </ul>
