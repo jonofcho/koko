@@ -77,6 +77,17 @@
   {%- include 'navigation' -%}
 
   <main role="main" id="MainContent" class="theme__main-content--container">
+    <div class="search--container large-up--hide">
+      <div class="search__form--container--outter">
+        <form class="search__form--container--mobile" action="/search">
+          <input class="width--full" type="text" placeholder="What can we help you find?" name="q" value="{{ search.terms | escape }}"  />
+          <input class="hide" type="submit" value="Search" />
+        </form>
+        <div class="search__close--container">
+          <img src="//cdn.shopify.com/s/files/1/2526/6552/t/2/assets/icon--close.svg?5336051900686237504" alt="">
+        </div>
+      </div>
+    </div>
     {{ content_for_layout }}
     <div class="user-modal modal medium-down--hide" id="login-modal">
         <div class="user__form--modal--container">

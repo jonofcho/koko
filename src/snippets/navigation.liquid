@@ -47,10 +47,18 @@
         <div class="">
           |
         </div>
-        <div class="navigation__icons--container">
-          <div class="navigation__icon--outer-container">
-            <div class="navigation__search-icon--container cursor--pointer">
+        <div class="navigation__icons--container ">
+          <div class="navigation__icon--outer-container relative">
+            <div class="navigation__search-icon--container js-navigation__search-icon--container cursor--pointer">
               <img src="{{ 'icon--search.svg' | asset_url }}" alt="">
+            </div>
+            <div class="navigation__searchbar--container--outer hide">
+              <div class="navigation__searchbar--container">
+                <form class="navigation__search--form search" action="/search">
+                  <input class="width--full" type="text" placeholder="What can we help you find?" name="q" value="{{ search.terms | escape }}"  />
+                  <input class="hide" type="submit" value="Search" />
+                </form>
+              </div>
             </div>
           </div>
           <div class="navigation__icon--outer-container navigation__icon--outer-container--cart js-navigation__icon--outer-container--cart">
@@ -61,9 +69,11 @@
             </a>
             {%- include 'navigation-cart-dropdown' -%}
           </div>
+
         </div>
       </div>
     </div>
+
     </div>
   </div>
 
@@ -74,13 +84,10 @@
   <div class="m-theme__navigation large-up--hide">
     <div class="page-width">
       <div class="flex justify-between align-center">
-        <div class="navigation__search--container">
-          <a href="/search">
+        <div class="navigation__search--container js-navigation__search-icon--container">
             <div class="navigation__icon--container">
               <img src="{{ 'icon--search.svg' | asset_url }}" alt="">
             </div>
-          </a>
-
         </div>
 
         <a class="text-koko-blue" href="/"><h2 class="text--bold">KOKO BEAUTÉ</h2></a>

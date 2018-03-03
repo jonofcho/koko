@@ -1,6 +1,9 @@
-{% paginate search.results by 10 %}
+{% paginate search.results by 50 %}
 
-  <h1>
+
+{%- if search.performed -%}
+<div class="page-width">
+  <h1 class="text-center mbot-32">
     {% if search.performed %}
       {% if search.results_count == 0 %}
         {{ 'general.search.no_results_html' | t: terms: search.terms }}
@@ -11,7 +14,7 @@
       {{ 'general.search.title' | t }}
     {% endif %}
   </h1>
-
+  {% comment %}
   <form action="/search" method="get" role="search">
     <label for="Search" class="label-hidden">
       {{ 'general.search.placeholder' | t }}
@@ -26,8 +29,49 @@
       <span class="icon-fallback-text">{{ 'general.search.submit' | t }}</span>
     </button>
   </form>
+  {% endcomment %}
+{% capture arr %}
+{%- for product in search.results -%}
+  {% assign colArr = product.title | split: '_' %}
+  {{ colArr.first }}
+{%- endfor -%}
+{% endcapture %}
+
+{% assign tagFilter = arr | split: " " | uniq  %}
 
 
+
+  <div class="grid">
+    <div class="grid__item medium-down--one-whole large-up--one-whole">
+      <div class="collection__list--container">
+        <div class="grid">
+          {%- for product in search.results -%}
+          <div class="grid__item medium-down--one-half large-up--one-quarter medium-down--one-half">
+            {% include 'product-card' %}
+          </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+<div class="modal product-card__modal--container" id="product__modal">
+{% for product in search.results %}
+{% assign productTitleArr = product.title | split: '_' %}
+{% assign collectionTitle = productTitleArr.first %}
+{% assign productTitleClean = productTitleArr.last %}
+  {%- include 'product-card-modal' -%}
+{%- endfor -%}
+</div>
+
+{%- endif -%}
+
+
+
+
+{% comment %}
 {% if search.performed %}
     <ul>
       {% for item in search.results %}
@@ -77,5 +121,6 @@
       {% include 'pagination' %}
     {% endif %}
   {% endif %}
+{% endcomment %}
 
 {% endpaginate %}

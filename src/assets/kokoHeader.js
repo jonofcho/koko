@@ -1,35 +1,54 @@
-$('.js-user__modal--exit').on('click', function(){
-  $('.modal-overlay').trigger('click');
-})
-$('.js-user__register--open').on('click', function(){
-  $('.modal-overlay').trigger('click');
-  $('#register-modal').modal('open');
-})
-$('.js-user__login--open').on('click', function(){
-  $('.modal-overlay').trigger('click');
-  $('#login-modal').modal('open');
-})
+
+
+$(document).ready(function(){
+  $('.js-navigation__search-icon--container').on('click', function () {
+    $('.search--container').addClass('active');
+  })
+  $('.search__close--container').on('click', function () {
+    $('.search--container').removeClass('active');
+  })
+
+  $('.navigation__search-icon--container').on('mouseenter', function () {
+    $('.navigation__searchbar--container--outer').removeClass('hide');
+  })
+  $('.theme__navigation').on('mouseleave', function () {
+    $('.navigation__searchbar--container--outer').addClass('hide');
+  })
+  // $('.navigation__searchbar--container').on('mouseleave', function () {
+  //   $('.navigation__searchbar--container').addClass('hide');
+  // })
+
+  $('.js-user__modal--exit').on('click', function(){
+    $('.modal-overlay').trigger('click');
+  })
+  $('.js-user__register--open').on('click', function(){
+    $('.modal-overlay').trigger('click');
+    $('#register-modal').modal('open');
+  })
+  $('.js-user__login--open').on('click', function(){
+    $('.modal-overlay').trigger('click');
+    $('#login-modal').modal('open');
+  })
 
   // $(".js-navigation__collapse").sideNav();
-    $('.js-navigation__collapse').sideNav({
-      menuWidth: 335, // Default is 300
-      edge: 'right', // Choose the horizontal origin
-      closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-      draggable: true, // Choose whether you can drag to open on touch screens,
-    });
+  $('.js-navigation__collapse').sideNav({
+    menuWidth: 335, // Default is 300
+    edge: 'right', // Choose the horizontal origin
+    closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+    draggable: true, // Choose whether you can drag to open on touch screens,
+  });
 
-    $('.js-sidebar__submenu--trigger').sideNav({
-      menuWidth: 335, // Default is 300
-      edge: 'right', // Choose the horizontal origin
-      closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-      draggable: true, // Choose whether you can drag to open on touch screens,
-    });
-    $('.js-sub-side-nav-close').on('click', function(){
-        var $this = $(this);
-        var handle = $this.data('target');
-      $(`.drag-target[data-sidenav='${handle}']`).trigger('click');
-    })
-$(document).ready(function(){
+  $('.js-sidebar__submenu--trigger').sideNav({
+    menuWidth: 335, // Default is 300
+    edge: 'right', // Choose the horizontal origin
+    closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+    draggable: true, // Choose whether you can drag to open on touch screens,
+  });
+  $('.js-sub-side-nav-close').on('click', function(){
+    var $this = $(this);
+    var handle = $this.data('target');
+    $(`.drag-target[data-sidenav='${handle}']`).trigger('click');
+  })
   $('.js-navigation__link').on('mouseenter', function(){
 
     var that = $(this);

@@ -1,3 +1,4 @@
+
 .theme__header--container{
   z-index: 100;
   @extend .bg-white;
@@ -87,9 +88,13 @@
 }
 .navigation__search-icon--container{
   width: 16px;
+  &:hover + .navigation__searchbar--container{
+    display: block;
+  }
 }
 .navigation__search-bag--container{
   width: 16px;
+
 }
 .navigation__dropdown--container{
   font-size: 13px;
@@ -98,6 +103,28 @@
   @extend .hidden;
 }
 
+.navigation__search--form{
+  width: 100%;
+  input{
+    outline: none;
+    letter-spacing: 1.8px;
+    border: none;
+    @extend .text--medium;
+  }
+}
+.navigation__searchbar--container--outer{
+  position: absolute;
+  top: 45px;
+}
+.navigation__searchbar--container{
+  height: 75px;
+  @extend .flex-center;
+  background-color: white;
+  box-shadow: 0 -3px 6px 0 rgba(183, 183, 183, 0.23);
+  border: solid 1px #d9d9d9;
+  width: 400px;
+  padding: 22px 32px;
+}
 .navigation__cart-dropdown{
   @extend .absolute;
   @extend .bg-white;
