@@ -156,7 +156,7 @@
         <div class="pdp__info--container">
           <div class="medium-down--hide">
             <h3 class="pdp__info--vendor">{{ product.vendor }}</h3>
-            {{product.collections[1].title}}
+
             {% comment %}
             <h3>{{collectionTitle}}</h3>
             {% endcomment %}
@@ -170,7 +170,7 @@
           </div>
           <div class="mtop-15">
             {%- if product.variants.size > 0 -%}
-            <p class="mbot-15 medium-down--hide">Select Size</p>
+            <p class="mbot-15 medium-down--hide">Select Size:</p>
             <div class="grid">
               {%- if product.variants.size < 2 -%}
                 {% assign single = 'single' %}
@@ -178,13 +178,20 @@
                 {% assign single = 'not' %}
 
               {%- endif -%}
+
               {%- for variant in product.variants -%}
+              {%- if variant.title == "Default Title" -%}
+              {%- else -%}
               <div class="grid__item one-third">
                 <div class="pdp__variant--container {{single}}" data-product-id="{{product.id}}" data-variant-id="{{ variant.id }}">
-                  <p>  {{variant.title}}</p>
+
+                    <p>{{variant.title}}</p>
+
                 </div>
               </div>
+              {%- endif -%}
               {%- endfor -%}
+
             </div>
             {%- endif -%}
           </div>
@@ -280,7 +287,7 @@
 <div class="pdp__add-to-cart--container--mobile large-up--hide">
 
   <!-- <form class="product-form" action="/cart/add" data-productid="{{product.id}}"  method="post"> -->
-  <div class="product-card__modal--add-to-cart js-product-card__modal--add-to-cart" data-product-id="{{product.variants.first.id}}" data-product-image="{{product.images.first.src | img_url: 'small'}}" data-product-vendor="{{product.vendor}}" data-product-title="{{productTitleClean}}" data-product-quantity="1" data-product-price="{{ product.price | money }}">
+  <div class="product-card__modal--add-to-cart js-product-card__modal--add-to-cart" data-mobile="true" data-product-id="{{product.id}}" data-variant-id="{{ product.variants.first.id }}" data-product-image="{{product.images.first.src | img_url: 'small'}}" data-product-vendor="{{product.vendor}}" data-product-title="{{productTitleClean}}" data-product-quantity="1" data-product-price="{{ product.price | money }}">
     <p>ADD TO CART</p>
   </div>
   <!-- </form> -->

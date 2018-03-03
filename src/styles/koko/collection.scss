@@ -135,3 +135,9 @@ input[type=checkbox] {
     -webkit-transform:rotateX(180deg);
   }
 }
+.pagination{
+  text-align: center;
+  span a{
+    color: $koko-text-blue;
+  }
+}

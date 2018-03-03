@@ -2,6 +2,10 @@
 
 $(document).ready(function(){
 
+  $('.js-added-to-cart__modal--exit').on('click', function(){
+    closeMobileCartAlert();
+  })
+
   $('.js-quantity--incrementor').on('click', function(){
     var that = $(this);
     var $quantity = that.siblings('.js-quantity--current');
@@ -38,7 +42,8 @@ $(document).ready(function(){
       productQuantity: that.data('product-quantity'),
     }
     console.log(product);
-    addToCart(product, that)
+    var mobile = that.data('mobile');
+    addToCart(product, that , mobile)
   })
   var $dropdown = $('.navigation__cart-dropdown');
   var timeOut;

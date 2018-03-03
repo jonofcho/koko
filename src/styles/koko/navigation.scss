@@ -171,7 +171,7 @@
 .navgation__cart-dropdown--cart-btn{
   @extend .width--full;
   @extend .text-white;
-  background: linear-gradient(to right, #dec1de, #b98dba);
+  background-color: $koko-text-blue;
   height: 48px;
 }
 .navigation__cart-dropdown--remove-item{

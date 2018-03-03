@@ -17,8 +17,20 @@ function closeCartDropdown(){
 
 }
 
-function addToCart(obj, that){
+function openMobileCartAlert(){
+  $('.product__added-to-cart--alert--container').addClass('active');
+  // timeOut = setTimeout(function(){
+  //   console.log('timeOut');
+  //   $('.product__added-to-cart--alert--container').removeClass('active');
+  // }, 4000);
+}
+function closeMobileCartAlert(){
+  $('.product__added-to-cart--alert--container').removeClass('active');
 
+}
+
+function addToCart(obj, that, mobile){
+  console.log(mobile);
     that.attr('disabled', true);
     var productId = obj.productId;
     var variantTitle = obj.variantTitle;
@@ -31,13 +43,15 @@ function addToCart(obj, that){
       quantity: productQuantity,
       id: productId,
     }
-    console.log(productPrice);
+    // console.log(productPrice);
     $.ajax({
       url: '/cart/add.js',
       type: 'POST',
       data: postData,
       dataType:"json",
     }).done(function(data){
+      openMobileCartAlert();
+
       that.removeAttr('disabled');
       var existCheck = [];
       $('.js-navigation__cart-dropdown--card').each(function(){
@@ -45,8 +59,8 @@ function addToCart(obj, that){
         var cardId = $(this).data('card-id');
         existCheck.push(cardId)
       })
-      console.log(productId);
-      console.log(existCheck);
+      // console.log(productId);
+      // console.log(existCheck);
       if (existCheck.indexOf(productId) > -1) {
         var $currentProductQuantity = $(`.js-navigation__cart-dropdown--card--quantity[data-card-id="${productId}"]`);
         var currentQuantity = $currentProductQuantity.data('quantity');
@@ -54,7 +68,7 @@ function addToCart(obj, that){
         $currentProductQuantity.text(currentQuantity + productQuantity);
       }
       else {
-        console.log(productPrice);
+        // console.log(productPrice);
       $('.navigation__cart-dropdown--cards--container').append(`<div class="navigation__cart-dropdown--item-details relative js-navigation__cart-dropdown--card">
           <div class="navigation__cart-dropdown--added-item-image">
             <img class="width--full" src="${productImage}" alt="">

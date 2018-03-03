@@ -77,6 +77,22 @@
   {%- include 'navigation' -%}
 
   <main role="main" id="MainContent" class="theme__main-content--container">
+    <div class="product__added-to-cart--alert--container">
+      <div class="">
+        <div class="page-width">
+          <div class="product__added-to-cart--alert">
+            <div class="product__added-to-cart--alert--close js-added-to-cart__modal--exit">
+              <img src="{{ 'icon--close.svg' | asset_url }}" alt="">
+            </div>
+            <div class="">
+              <p class="mbot-24">1 item Added to Cart</p>
+              <a href="/cart"><button type="button" name="button" class="btn cart-mobile--checkout-controls--btn text-white">TO CART</button></a>
+              <p class="text-center mtop-16">Free shipping on orders over $75!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="search--container large-up--hide">
       <div class="search__form--container--outter">
         <form class="search__form--container--mobile" action="/search">
