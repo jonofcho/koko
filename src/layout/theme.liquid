@@ -106,6 +106,25 @@
   {{ "kokoHeader.js" | asset_url | script_tag }}
   <script type="text/javascript">
   $(document).ready(function(){
+    Shopify.queryParams = {};
+    if (location.search.length) {
+      for (var aKeyValue, i = 0, aCouples = location.search.substr(1).split('&'); i < aCouples.length; i++) {
+        aKeyValue = aCouples[i].split('=');
+        if (aKeyValue.length > 1) {
+          Shopify.queryParams[decodeURIComponent(aKeyValue[0])] = decodeURIComponent(aKeyValue[1]);
+        }
+      }
+    }
+    $(function() {
+      $('#SortBy')
+        .val('{{ collection.sort_by | default: collection.default_sort_by }}')
+        .bind('change', function() {
+          Shopify.queryParams.sort_by = jQuery(this).val();
+          location.search = jQuery.param(Shopify.queryParams);
+        }
+      );
+    });
+
     $('.user-modal').modal({
       dismissible: true, // Modal can be dismissed by clicking outside of the modal
       opacity: .5, // Opacity of modal background
@@ -142,7 +161,6 @@
         infinte: false,
         arrows: false,
         slidesToShow: 1,
-
       })
       $('.js-index__carousel--container').slick({
         infinite: false,

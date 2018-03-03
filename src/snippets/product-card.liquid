@@ -2,7 +2,7 @@
 {% assign collectionTitle = productTitleArr.first %}
 {% assign productTitleClean = productTitleArr.last %}
 
-    <div class="relative collection__card--hover js-collection__product-card" data-tags="{{product.tags | join: ', ' }}">
+    <div class="relative collection__card--hover js-collection__product-card" data-tags="{{product.tags | join: ', ' | downcase }}" data-vendor="{{ product.vendor }}">
       <div class="collection__product--alert">
         <!-- REPLACE WITH LIQUID LATER -->
         <p>Best Seller</p>

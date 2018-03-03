@@ -22,12 +22,27 @@
     @extend .hover-underline;
 
 }
+.collection__filter--selection--mobile{
+  @extend .text-medium-grey;
+  @extend .text--default;
+  @extend .flex;
+  @extend .align-center;
+  @extend .justify-between;
+  font-size: 11px;
+  height: 42px;
+  width: 100%;
+  margin-right: 16px;
+  border: solid 1px #d9d9d9;
+  padding-left: 24px;
+  padding-right: 24px;
+}
 .collection__filter--selection{
   @extend .text-medium-grey;
   @extend .text--default;
   @extend .flex;
   @extend .align-center;
   @extend .justify-between;
+  font-size: 14px;
   height: 42px;
   width: 189px;
   margin-right: 16px;
@@ -39,8 +54,10 @@
     width: 100%;
   }
 }
+
 .collection__filter-indicator--container{
-  width: 8px;
+  display: flex;
+  width: 7px;
 }
 .collection__filter--clear{
   @extend .text-medium-grey;

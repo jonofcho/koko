@@ -21,13 +21,9 @@
           {%- else condition -%}
             {% assign childCount = false %}
           {%- endif -%}
-          {%- if link.title == 'SHOP' -%}
-            <a href="{{link.url}}">
-              <div class="js-navigation__link navigation__link flex align-center cursor--pointer" data-active="{{link_handle}}" data-count="{{childCount}}">
-                <p class="navigation__link--text">{{ link.title }}</p>
-              </div>
-            </a>
-          {% elsif linklists[link_handle].links.size > 0 %}
+
+
+          {% if linklists[link_handle].links.size > 0 %}
           <div class="js-navigation__link navigation__link flex align-center cursor--pointer" data-active="{{link_handle}}" data-count="{{childCount}}">
             <p class="navigation__link--text">{{ link.title }}</p>
           </div>

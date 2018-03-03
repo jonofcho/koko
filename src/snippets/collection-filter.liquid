@@ -10,48 +10,55 @@
           <h3 class="text-medium-grey text--semibold">Sort By</h3>
         </div>
       </div>
+      {% assign skinConcerns = 'Acne & Oil Control, All Signs of Aging, Dark Spots & Sun Spots, Dryness & Dehydration, Redness & Discoloartion, Uneven Skin Tone, Lifting & Firming' %}
       <div class="collection__filters">
         <div class="flex align-center space-between">
-          <select class="collection__filter--selection js-collection__filter--selection" name="skin-type">
-            <option default value="">All</option>
+          <!-- <select class="collection__filter--selection js-collection__filter--selection" name="skin-type">
+            <option default value="">Skin Type</option>
             <option value="oily">Oily</option>
             <option value="dry">Dry</option>
             <option value="combination">Combination</option>
             <option value="normal">Normal</option>
             <option value="sensitive">Sensitive</option>
-          </select>
+          </select> -->
           <select class="collection__filter--selection js-collection__filter--selection" name="skin-concern">
-            <option default>All</option>
-            <option value="acne">Acne</option>
-            <option value="anti-aging">Anti-aging</option>
-            <option value="pores">Pores</option>
+            <option default value="">Skin concern</option>
+            {%- for tag in collection.all_tags -%}
+              {%- if skinConcerns contains tag -%}
+                <option value="{{ tag | downcase }}">{{ tag }}</option>
+              {%- endif -%}
+            {%- endfor -%}
+            <!-- <option value="acne">Acne & Oil Control</option>
+            <option value="anti-aging">All Signs of Aging</option>
+            <option value="pores">Dark Spots & Sun Spots</option>
             <option value="dryness">Dryness</option>
             <option value="pigmentation">Pigmentation</option>
-            <option value="sensitive-skin">Sensitive Skin</option>
+            <option value="sensitive-skin">Sensitive Skin</option> -->
           </select>
           <select class="collection__filter--selection js-collection__filter--selection" name="brand">
-            <option default>All</option>
-            <option value="brand-1">Brand</option>
-            <option value="brand-2">Brand</option>
-            <option value="brand-3">Brand</option>
+            <option default value="">Brand</option>
+            {%- for vendor in collection.all_vendors -%}
+              {{vendor}}
+              <option value="{{ vendor | downcase }}">{{ vendor }}</option>
+            {%- endfor -%}
           </select>
         </div>
         <div class="">
           <select class="collection__filter--selection margin-none" name="" id="SortBy">
-              <option value="best-selling">{{ 'collections.sorting.best_selling' }}</option>
-              <option value="title-ascending">{{ 'collections.sorting.az' }}</option>
-              <option value="title-descending">{{ 'collections.sorting.za' }}</option>
-              <option value="price-ascending">{{ 'collections.sorting.price_ascending' }}</option>
-              <option value="price-descending">{{ 'collections.sorting.price_descending' }}</option>
+              <option value="best-selling">Best Selling</option>
+              <option value="title-ascending">A-Z</option>
+              <option value="title-descending">Z-A</option>
+              <option value="price-ascending">Price Ascending</option>
+              <option value="price-descending">Price Descending</option>
           </select>
         </div>
       </div>
     </div>
     <div class="large-up--hide">
       <div class="grid">
-        <div class="grid__item one-half">
+        <div class="grid__item one-whole">
           <div class="">
-            <div class="collection__filter--selection js-collection__filter--selection" data-activates="collection__filter--slideout--mobile" name="">
+            <div class="collection__filter--selection--mobile js-collection__filter--selection--mobile" data-activates="collection__filter--slideout--mobile" name="">
               <p>Sort By</p>
               <div class="collection__filter-indicator--container">
                 <img class="width--full" src="{{ 'icon--triangle-down.svg' | asset_url }}" alt="">
@@ -59,16 +66,21 @@
             </div>
           </div>
         </div>
+        {% comment %}
         <div class="grid__item one-half">
           <div class="">
-            <div class="collection__filter--selection js-collection__filter--selection"  data-activates="collection__filter--slideout--mobile" name="">
-              <p>Filter By</p>
-              <div class="collection__filter-indicator--container">
-                <img class="width--full" src="{{ 'icon--triangle-down.svg' | asset_url }}" alt="">
-              </div>
-            </div>
+            <!-- <div class="collection__filter--selection"  name=""> -->
+              <select class="collection__filter--selection--mobile margin-none" name="" id="SortBy">
+                  <option value="best-selling">Best Selling</option>
+                  <option value="title-ascending">A-Z</option>
+                  <option value="title-descending">Z-A</option>
+                  <option value="price-ascending">Price Ascending</option>
+                  <option value="price-descending">Price Descending</option>
+              </select>
+            <!-- </div> -->
           </div>
         </div>
+        {% endcomment %}
       </div>
     </div>
     <div class="collection__filter--slideout--mobile large-up--hide side-nav width--full" id="collection__filter--slideout--mobile">
@@ -88,7 +100,7 @@
         </div>
       </div>
       <ul class="collapsible collection__filter-options--mobile--container" data-collapsible="accordion">
-        <li class="">
+        <!-- <li class="">
           <div class="collapsible-header collection__filter--mobile">
             <div class="collection__filter-options--mobile--header">
               <h3>Skin Type</h3>
@@ -121,7 +133,7 @@
               </div>
             </div>
           </div>
-        </li>
+        </li> -->
         <li class="">
           <div class="collapsible-header collection__filter--mobile">
             <div class="flex align-center justify-between">
@@ -133,7 +145,16 @@
             </div>
           </div>
           <div class="collapsible-body">
-
+            <div class="">
+              {%- for tag in collection.all_tags -%}
+                {%- if skinConcerns contains tag -%}
+                <div class="flex align-center mbot-24">
+                  <input id="checkbox-{{tag | downcase}}" class="mright-16 collection__tag--checkbox--mobile" type="checkbox" name="skin-concern" value="{{ tag | downcase }}">
+                  <label for="checkbox-{{tag | downcase}}">{{ tag }}</label>
+                </div>
+                {% endif %}
+              {% endfor %}
+            </div>
           </div>
         </li>
         <li class="">
@@ -147,7 +168,14 @@
             </div>
           </div>
           <div class="collapsible-body">
-
+            <div class="">
+              {%- for vendor in collection.all_vendors -%}
+              <div class="flex align-center mbot-24">
+                <input id="checkbox-{{ vendor | downcase }}" class="mright-16 collection__vendor--checkbox--mobile" type="checkbox" name="brand" value="{{ vendor | downcase }}">
+                <label for="checkbox-{{ vendor | downcase }}">{{ vendor }}</label>
+              </div>
+              {%- endfor -%}
+            </div>
           </div>
         </li>
       </ul>
