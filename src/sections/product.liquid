@@ -191,8 +191,8 @@
                   {%- if variant.title == "Default Title" -%}
                   {%- else -%}
 
-                  <div class="grid__item one-third">
-                    <div class="pdp__variant--container color-palette {{single}}" data-product-id="{{product.id}}" data-variant-id="{{ variant.id }}" data-variant-price="{{ variant.price }}" data-variant-img="{{ variant.image.src | img_url: '480x' }}">
+                  <div class="grid__item one-sixth">
+                    <div class="mbot-8 js-pdp__variant--container pdp__variant--palette--container {{single}}" data-product-id="{{product.id}}" data-variant-id="{{ variant.id }}" data-variant-price="{{ variant.price }}" data-variant-img="{{ variant.image.src | img_url: '480x' }}">
                         <img src="{{ variant.image.src | img_url: '480x' }}" alt="">
                         {% comment %}
                         <p class="text-center">{{ varTitle }}</p>
@@ -287,17 +287,15 @@
             {%- if product.type == "Lipstick" -%}
             <div class="grid">
               {%- for variant in product.variants -%}
-              {%- if variant.title contains '/' -%}
-                {% assign varArr = variant.title | split: '/' %}
-                {% assign varTitle = varArr.first %}
-                {%- else -%}
-                  {% assign varTitle = variant.title %}
-              {%- endif -%}
+
               {%- if variant.title == "Default Title" -%}
               {%- else -%}
-              <div class="grid__item one-third">
-                <div class="pdp__variant--container {{single}}" data-product-id="{{product.id}}" data-variant-id="{{ variant.id }}" data-variant-price="{{ variant.price }}">
-                    <p class="text-center">{{varTitle}}</p>
+              <div class="grid__item one-sixth">
+                <div class="mbot-8 js-pdp__variant--container pdp__variant--palette--container {{single}}" data-product-id="{{product.id}}" data-variant-id="{{ variant.id }}" data-variant-price="{{ variant.price }}" data-variant-img="{{ variant.image.src | img_url: '480x' }}">
+                    <img src="{{ variant.image.src | img_url: '480x' }}" alt="">
+                    {% comment %}
+                    <p class="text-center">{{ varTitle }}</p>
+                    {% endcomment %}
                 </div>
               </div>
               {% endif %}

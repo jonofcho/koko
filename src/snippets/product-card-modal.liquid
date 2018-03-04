@@ -30,16 +30,33 @@
 
               {%- endif -%}
               {%- if product.variants.size > 0 -%}
-              {%- for variant in product.variants -%}
-              {%- if variant.title == "Default Title" -%}
-              {%- else -%}
-              <div class="grid__item one-quarter">
-                <div class="product-card__modal--variant pdp__variant--container {{single}}" data-product-id="{{product.id}}" data-variant-id="{{variant.id}}" data-variant-title="{{ variant.title }}" data-variant-price="{{ variant.price }}">
-                  <p>{{ variant.title }}</p>
-                </div>
-              </div>
-              {%- endif -%}
-              {%- endfor -%}
+                {%- if product.type == "Lipstick" -%}
+
+                  {%- for variant in product.variants -%}
+                    {%- if variant.title == "Default Title" -%}
+                    {%- else -%}
+                    <div class="grid__item one-sixth">
+                      <div class="mbot-8 js-pdp__variant--container pdp__variant--palette--container {{single}}" data-product-id="{{product.id}}" data-variant-id="{{ variant.id }}" data-variant-price="{{ variant.price }}" data-variant-img="{{ variant.image.src | img_url: '480x' }}">
+                          <img src="{{ variant.image.src | img_url: '480x' }}" alt="">
+                          {% comment %}
+                          <p class="text-center">{{ varTitle }}</p>
+                          {% endcomment %}
+                      </div>
+                    </div>
+                    {%- endif -%}
+                  {%- endfor -%}
+                {%- else -%}
+                  {%- for variant in product.variants -%}
+                    {%- if variant.title == "Default Title" -%}
+                    {%- else -%}
+                      <div class="grid__item one-quarter">
+                        <div class="product-card__modal--variant pdp__variant--container {{single}}" data-product-id="{{product.id}}" data-variant-id="{{variant.id}}" data-variant-title="{{ variant.title }}" data-variant-price="{{ variant.price }}">
+                          <p>{{ variant.title }}</p>
+                        </div>
+                      </div>
+                    {%- endif -%}
+                  {%- endfor -%}
+                {% endif %}
               {% endif %}
             </div>
           </div>

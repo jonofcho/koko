@@ -11,7 +11,7 @@ $(document).ready(function(){
     $('.pdp__add-to-cart--details--text--mobile').addClass('active');
   })
 
-  $('.pdp__variant--container.not').on('click', function(){
+  $('.js-pdp__variant--container.not , .pdp__variant--container.not').on('click', function(){
     var that = $(this);
     var productId = that.data('product-id');
     var variantId = that.data('variant-id');
@@ -22,7 +22,7 @@ $(document).ready(function(){
     if (variantPrice.toFixed(2) % 1 == 0) {
       variantPrice = "$" + variantPrice.toFixed(2);
     }
-    $('.pdp__variant--container.not').removeClass('active');
+    $('.js-pdp__variant--container.not, .pdp__variant--container.not').removeClass('active');
     that.addClass('active');
     $(`.pdp__info--price[data-product-id="${productId}"]`).text(variantPrice);
     $(`.js-product-card__modal--add-to-cart[data-product-id="${productId}"]`).attr('data-variant-id', variantId);
