@@ -59,7 +59,13 @@
 .navigation__logo--container{
   // margin-left: 26px;
   margin-right: 26px;
-  max-width: 100px;
+  width: 100px;
+
+}
+.collection__main-links--subheader{
+  margin-bottom: 32px !important;
+  max-width: 200px;
+  text-decoration: underline;
 }
 .navigation__user-controls--container{
   @extend .flex;
@@ -115,6 +121,7 @@
 .navigation__searchbar--container--outer{
   position: absolute;
   top: 45px;
+  right: 0;
 }
 .navigation__searchbar--container{
   height: 75px;

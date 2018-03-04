@@ -137,9 +137,11 @@
     </div>
     <div class="grid large-up--hide">
       <div class="grid__item medium-down--one-whole">
-        <h3 class="pdp__info--vendor">{{ product.vendor }}</h3>
-        <h3>{{ product.collections }}</h3>
-        <h2 class="pdp__info--title">{{ productTitleClean }}</h2>
+        <div class="">
+          <h3 class="pdp__info--vendor">{{ product.vendor }}</h3>
+          <h3>{{ product.collections }}</h3>
+          <h2 class="pdp__info--title">{{ productTitleClean }}</h2>
+        </div>
       </div>
     </div>
     <div class="grid pdp__grid">
@@ -155,21 +157,21 @@
       <div class="grid__item pdp__grid-item large-up--one-half medium-down--one-whole">
         <div class="pdp__info--container">
           <div class="medium-down--hide">
-            <h3 class="pdp__info--vendor">{{ product.vendor }}</h3>
-
             {% comment %}
-            <h3>{{collectionTitle}}</h3>
+            <h3 class="pdp__info--vendor">{{ product.vendor }}</h3>
             {% endcomment %}
+            <h3 class="pdp__col--title">{{ collectionTitle }}</h3>
+
             <h2 class="pdp__info--title">{{ productTitleClean }}</h2>
-          </div>
-          <div class="">
-            <h2 class="pdp__info--price">{{ product.price | money }}</h2>
           </div>
           <div class="pdp__info--description medium-down--hide">
             <p>{{ product.description }}</p>
           </div>
+          <div class="">
+            <h2 class="pdp__info--price" data-product-id="{{product.id}}">{{ product.price | money }}</h2>
+          </div>
           <div class="mtop-15">
-            {%- if product.variants.size > 0 -%}
+            {%- if product.variants.size > 1 -%}
             <p class="mbot-15 medium-down--hide">Select Size:</p>
             <div class="grid">
               {%- if product.variants.size < 2 -%}
@@ -178,20 +180,42 @@
                 {% assign single = 'not' %}
 
               {%- endif -%}
+              {%- if product.type == "Lipstick" -%}
+                {%- for variant in product.variants -%}
+                  {%- if variant.title contains '/' -%}
+                    {% assign varArr = variant.title | split: '/' %}
+                    {% assign varTitle = varArr.first %}
+                    {%- else -%}
+                      {% assign varTitle = variant.title %}
+                  {%- endif -%}
+                  {%- if variant.title == "Default Title" -%}
+                  {%- else -%}
 
+                  <div class="grid__item one-third">
+                    <div class="pdp__variant--container color-palette {{single}}" data-product-id="{{product.id}}" data-variant-id="{{ variant.id }}" data-variant-price="{{ variant.price }}" data-variant-img="{{ variant.image.src | img_url: '480x' }}">
+                        <img src="{{ variant.image.src | img_url: '480x' }}" alt="">
+                        {% comment %}
+                        <p class="text-center">{{ varTitle }}</p>
+                        {% endcomment %}
+                    </div>
+                  </div>
+                  {%- endif -%}
+                {%- endfor -%}
+              {%- else  -%}
               {%- for variant in product.variants -%}
               {%- if variant.title == "Default Title" -%}
               {%- else -%}
-              <div class="grid__item one-third">
-                <div class="pdp__variant--container {{single}}" data-product-id="{{product.id}}" data-variant-id="{{ variant.id }}">
 
-                    <p>{{variant.title}}</p>
+              <div class="grid__item one-third">
+                <div class="pdp__variant--container {{single}}" data-product-id="{{product.id}}" data-variant-id="{{ variant.id }}" data-variant-price="{{ variant.price }}">
+
+                    <p class="text-center">{{variant.title}}</p>
 
                 </div>
               </div>
               {%- endif -%}
               {%- endfor -%}
-
+              {% endif %}
             </div>
             {%- endif -%}
           </div>
@@ -226,60 +250,98 @@
 <!-- PRODUCT MOBILE -->
 
 <div class="mtop-16 text-light-grey page-width">
-  <div class="grid large-up--hide">
-    <div class="grid__item one-whole">
-      <div class="text-center">
-        <h3 class="pdp__info--vendor">{{ product.vendor }}</h3>
-        <h2 class="pdp__info--title">{{ productTitleClean }}</h2>
-      </div>
-    </div>
-    <div class="grid__item one-whole">
-      <div class="">
-        <div class="pdp__image">
-          <img class="width--full" src="{{product.images.first.src | img_url: '480x'}}" alt="">
-        </div>
-      </div>
-    </div>
-    <div class="grid__item one-whole">
+  <div class="mbot-60">
+    <div class="grid large-up--hide">
+      <div class="grid__item one-whole">
+        <div class="text-center">
+          {% comment %}
+          <h3 class="pdp__info--vendor">{{ product.vendor }}</h3>
+          {% endcomment %}
+          <h3 class="pdp__col--title">{{ collectionTitle }}</h3>
 
-    </div>
-    <div class="grid__item one-whole">
-      <div class="">
-        <h2 class="pdp__info--price">{{ product.price | money }}</h2>
-        {%- if product.variants.size > 0 -%}
-        <p class="mbot-15 medium-down--hide">Select Size</p>
-        <div class="pdp__variants--container">
-          {%- for variant in product.variants -%}
-          <div class="pdp__variant--container">
-              {{variant.title}}
-          </div>
-          {%- endfor -%}
+          <h2 class="pdp__info--title">{{ productTitleClean }}</h2>
         </div>
-        {%- endif -%}
       </div>
-    </div>
-    <div class="grid__item one-whole">
-      <div class="pdp__add-to-cart--details--container--mobile">
-        <ul class="collapsible padding-none margin-none" data-collapsible="accordion">
-          <li>
-            <div class="collapsible-header pdp__add-to-cart--details--mobile js-pdp__add-to-cart--details--mobile">
-              <p>Details</p>
-              <div class="">
-                <div class="pdp__details-closed--mobile--icon">
-                  <img src="{{ 'icon--plus.svg' | asset_url }}" alt="">
-                </div>
-                <div class="pdp__details-opened--mobile--icon">
-                  <img src="{{ 'icon--minus.svg' | asset_url }}" alt="">
+      <div class="grid__item one-whole">
+        <div class="">
+          <div class="pdp__image">
+            <img class="width--full" src="{{product.images.first.src | img_url: '480x'}}" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="grid__item one-whole">
+
+      </div>
+      <div class="grid__item one-whole">
+        <div class="">
+          <h2 class="pdp__info--price" data-product-id="{{ product.id }}">{{ product.price | money }}</h2>
+          {%- if product.variants.size < 2 -%}
+            {% assign single = 'single' %}
+          {%- else -%}
+            {% assign single = 'not' %}
+
+          {%- endif -%}
+          {%- if product.variants.size > 0 -%}
+          <p class="mbot-15 medium-down--hide">Select Size</p>
+          <div class="pdp__variants--container">
+            {%- if product.type == "Lipstick" -%}
+            <div class="grid">
+              {%- for variant in product.variants -%}
+              {%- if variant.title contains '/' -%}
+                {% assign varArr = variant.title | split: '/' %}
+                {% assign varTitle = varArr.first %}
+                {%- else -%}
+                  {% assign varTitle = variant.title %}
+              {%- endif -%}
+              {%- if variant.title == "Default Title" -%}
+              {%- else -%}
+              <div class="grid__item one-third">
+                <div class="pdp__variant--container {{single}}" data-product-id="{{product.id}}" data-variant-id="{{ variant.id }}" data-variant-price="{{ variant.price }}">
+                    <p class="text-center">{{varTitle}}</p>
                 </div>
               </div>
+              {% endif %}
+              {%- endfor -%}
             </div>
-            <div class="collapsible-body pdp__add-to-cart--details--text--mobile">
-              <div class="mtop-16">
-                <p>{{ product.description }}</p>
+            {%- else  -%}
+            <div class="grid">
+              {%- for variant in product.variants -%}
+              <div class="grid__item one-third">
+                <div class="pdp__variant--container {{single}}" data-product-id="{{product.id}}" data-variant-id="{{ variant.id }}" data-variant-price="{{ variant.price }}">
+                    {{variant.title}}
+                </div>
               </div>
+              {%- endfor -%}
             </div>
-          </li>
-        </ul>
+            {%- endif -%}
+
+          </div>
+          {%- endif -%}
+        </div>
+      </div>
+      <div class="grid__item one-whole">
+        <div class="pdp__add-to-cart--details--container--mobile">
+          <ul class="collapsible padding-none margin-none" data-collapsible="accordion">
+            <li>
+              <div class="collapsible-header pdp__add-to-cart--details--mobile js-pdp__add-to-cart--details--mobile">
+                <p>Details</p>
+                <div class="">
+                  <div class="pdp__details-closed--mobile--icon">
+                    <img src="{{ 'icon--plus.svg' | asset_url }}" alt="">
+                  </div>
+                  <div class="pdp__details-opened--mobile--icon">
+                    <img src="{{ 'icon--minus.svg' | asset_url }}" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="collapsible-body pdp__add-to-cart--details--text--mobile">
+                <div class="mtop-16">
+                  <p>{{ product.description }}</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>

@@ -34,7 +34,7 @@
   height: -moz-calc(100%); //Temporary Firefox Fix
   padding-bottom: 60px;
   background-color: $sidenav-bg-color;
-  z-index: 999;
+  z-index: -1;
   overflow-y: auto;
   will-change: transform;
   backface-visibility: hidden;
@@ -164,7 +164,9 @@
     }
   }
 }
-
+.side-nav.active{
+  z-index: 999;
+}
 
 // Touch interaction
 .drag-target {
@@ -190,7 +192,7 @@
 }
 
 // Fixed sideNav hide on smaller
-@media #{$medium-down} {
+@include media-query($medium-down) {
   .side-nav {
     &.fixed {
       transform: translateX(-105%);
@@ -198,10 +200,6 @@
       &.right-aligned {
         transform: translateX(105%);
       }
-    }
-
-    a {
-      padding: 0 $sidenav-padding;
     }
 
     .user-view,

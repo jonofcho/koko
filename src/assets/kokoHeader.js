@@ -36,6 +36,13 @@ $(document).ready(function(){
     edge: 'right', // Choose the horizontal origin
     closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
     draggable: true, // Choose whether you can drag to open on touch screens,
+    onOpen: function(el) {
+      $('.side-nav').addClass('active');
+    },
+    onClose: function(el) {
+      $('.side-nav').removeClass('active');
+    }
+
   });
 
   $('.js-sidebar__submenu--trigger').sideNav({
@@ -43,6 +50,13 @@ $(document).ready(function(){
     edge: 'right', // Choose the horizontal origin
     closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
     draggable: true, // Choose whether you can drag to open on touch screens,
+    onOpen: function(el) {
+      $('.side-nav').addClass('active');
+    },
+    onClose: function(el) {
+      $('.side-nav').removeClass('active');
+    }
+
   });
   $('.js-sub-side-nav-close').on('click', function(){
     var $this = $(this);

@@ -29,6 +29,7 @@
 .pdp__grid-item{
   padding-left: 105px;
 }
+
 .pdp__breadcrumbs--container{
   max-width: 455px;
   margin-bottom: 16px;
@@ -44,7 +45,7 @@
 .pdp__image{
   @extend .flex-center-center;
   background-color: #FCF8FC;
-  padding: 15%;
+  padding: 65px;
   // height: 565px;
   // width: 455px;
 }
@@ -63,14 +64,19 @@
   font-size: 1.286em;
   @extend .mtop-0;
 }
+.pdp__col--title{
+  margin-bottom: 0;
+  font-size: 20px;
+}
 .pdp__info--title{
-  font-weight: normal;
+  font-weight: bolder;
   font-size: 1.714em;
+  margin-top: 5px;
   @extend .mbot-60;
 }
 .pdp__info--price{
   font-size: 1.286em;
-  font-weight: normal;
+  font-weight: bolder;
 }
 .pdp__quantity-incrementor--container{
   width: 104px;
@@ -91,7 +97,7 @@
 }
 .pdp__add-to-cart{
   height: 48px;
-  width: 228px;
+  width: 180px;
   @extend .text-white;
   background-color: $koko-text-blue;
   cursor: pointer;
@@ -103,6 +109,12 @@
   @extend .flex;
   @extend .align-center;
   @extend .justify-center;
+  margin-bottom: 16px;
+}
+.pdp__variant--container.color-pallete{
+  height: 25px !important;
+  width: 25px !important;
+  min-width: 25px;
 }
 .pdp__variant--container.not{
   &:hover{
@@ -156,15 +168,20 @@
     max-width: 270px;
     height: auto;
     margin: 0 auto;
+    padding: 10px;
   }
   .pdp__info--price{
+    font-weight: bolder;
     text-align: center;
   }
   .pdp__variants--container{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+    // display: flex;
+    // justify-content: space-around;
+    // align-items: center;
 
+  }
+  .pdp__variant--container{
+    @extend .flex-center-center;
   }
   .pdp__add-to-cart--container--mobile{
     padding: 16px 20px;
@@ -193,6 +210,7 @@
   }
   .pdp__add-to-cart--details--text--mobile{
     height: 0px;
+    font-size: 12px;
   }
   .pdp__add-to-cart--details--text--mobile.active{
     height: auto;

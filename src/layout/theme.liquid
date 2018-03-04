@@ -66,6 +66,8 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.css"/>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick-theme.min.css"/>
   <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  <!-- <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet"></head> -->
+
 </head>
 
 <body class="template-{{ template.name | handle }}">
@@ -77,7 +79,9 @@
   {%- include 'navigation' -%}
 
   <main role="main" id="MainContent" class="theme__main-content--container">
-    <div class="product__added-to-cart--alert--container">
+    {% include 'sidebar' %}
+
+    <div class="product__added-to-cart--alert--container large-up--hide">
       <div class="">
         <div class="page-width">
           <div class="product__added-to-cart--alert">
@@ -87,12 +91,13 @@
             <div class="">
               <p class="mbot-24">1 item Added to Cart</p>
               <a href="/cart"><button type="button" name="button" class="btn cart-mobile--checkout-controls--btn text-white">TO CART</button></a>
-              <p class="text-center mtop-16">Free shipping on orders over $75!</p>
+              <p class="text-center mtop-16">Free shipping on orders over $50!</p>
             </div>
           </div>
         </div>
       </div>
     </div>
+
     <div class="search--container large-up--hide">
       <div class="search__form--container--outter">
         <form class="search__form--container--mobile" action="/search">
@@ -105,6 +110,7 @@
       </div>
     </div>
     {{ content_for_layout }}
+
     <div class="user-modal modal medium-down--hide" id="login-modal">
         <div class="user__form--modal--container">
           {%- include 'login-modal' -%}
@@ -115,6 +121,7 @@
         {%- include 'register-modal' -%}
       </div>
     </div>
+
   </main>
 
   {% section 'footer' %}

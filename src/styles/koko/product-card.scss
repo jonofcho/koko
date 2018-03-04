@@ -7,7 +7,7 @@
 .collection__product-image--container--inner{
   @extend .flex-center-center;
   background-color: #FCF8FC;
-  padding: 15%;
+  padding: 65px;
 }
 .collection__product-detail--container{
   padding-top: 16px;
@@ -54,6 +54,9 @@
   @extend .absolute;
   @extend .text-white;
 }
+.collection__card--hover{
+  margin-bottom: 32px;
+}
 .collection__card--hover:hover .product__card--controls{
   @extend .flex;
   @extend .justify-around;
@@ -69,6 +72,9 @@
   }
   .collection__product--title{
     font-size: 10px;
+  }
+  .collection__product-image--container--inner{
+    padding: 10px;
   }
 }
 

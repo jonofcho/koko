@@ -1,3 +1,4 @@
+
 <nav class="breadcrumb" role="navigation" aria-label="breadcrumbs">
   <a href="/" title="Home">Home</a>
   {% if template contains 'page' %}
@@ -9,7 +10,13 @@
       {{ collection.title | link_to: collection.url }}
     {% endif %}
     <span aria-hidden="true">&rsaquo;</span>
-    <span>{{ product.title }}</span>
+    {%- if product.title contains "_" -%}
+      {% assign prodArr =  product.title | split: '_' %}
+      {% assign newProd = prodArr.last %}
+      <span>{{ newProd }}</span>
+      {%- else -%}
+      <span>{{ product.title }}</span>
+    {%- endif -%}
   {% elsif template contains 'collection' and collection.handle %}
     <span aria-hidden="true">&rsaquo;</span>
     {% if current_tags %}

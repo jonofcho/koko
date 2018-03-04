@@ -1,6 +1,11 @@
-{% assign productTitleArr = product.title | split: '_' %}
-{% assign collectionTitle = productTitleArr.first %}
-{% assign productTitleClean = productTitleArr.last %}
+  {%- if product.title contains '_' -%}
+  {% assign productTitleArr = product.title | split: '_' %}
+  {% assign collectionTitle = productTitleArr.first %}
+  {% assign productTitleClean = productTitleArr.last %}
+  {%- else -%}
+    {% assign collectionTitle = product.vendor %}
+    {% assign productTitleClean = product.title %}
+  {%- endif -%}
 
     <div class="relative collection__card--hover js-collection__product-card" data-tags="{{product.tags | join: ', ' | downcase }}" data-vendor="{{ product.vendor }}">
       <div class="collection__product--alert">
@@ -21,11 +26,10 @@
       </div>
       <div class="collection__product-detail--container">
         <div class="collection__product--price">
-          <p class="text--bold">{{ product.vendor }}</p>
-          {% comment %}
-          <p>{{ product.price | money }}</p>
-          {% endcomment %}
+          <p class="text--bold">{{ collectionTitle }}</p>
+
         </div>
         <p class="collection__product--title">{{ productTitleClean }}</p>
+        <p>{{ product.price | money }}</p>
       </div>
     </div>

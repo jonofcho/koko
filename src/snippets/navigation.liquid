@@ -1,7 +1,7 @@
 <div class="is-fixed width--full js-theme__header--container theme__header--container">
   <div class="theme__promotion-bar text--small">
     <div class="js-navigation__slider navigation__slider">
-      <p>Free Shipping on Orders Over $100</p>
+      <p>Free Shipping on Orders Over $50</p>
       <p>Koko Beauté: Established in 2003</p>
     </div>
   </div>
@@ -11,9 +11,14 @@
       <div class="theme__navigation">
       <div class="flex align-center">
         <div class="navigation__logo--container">
-          <a class="text-koko-blue" href="/"><img src="https://cdn.shopify.com/s/files/1/2526/6552/files/KoKo_Logo.jpg?12989210517360532989"></a>
+          <a class="text-koko-blue" href="/"><img src="https://cdn.shopify.com/s/files/1/2526/6552/files/KOKO-Shiseido-logo.jpg?15089997905800923753"></a>
         </div>
         <div class="flex align-center">
+          <a href="/">
+            <div class="js-navigation__link navigation__link flex align-center cursor--pointer" data-active="{{link_handle}}" data-count="{{childCount}}">
+              <p class="navigation__link--text">HOME</p>
+            </div>
+          </a>
           {%- for link in linklists['main-menu'].links -%}
           {% assign link_handle = link.title | handle %}
           {%- if linklists[link_handle].links.size > 0 -%}
@@ -111,5 +116,5 @@
   </div>
 
 </div>
-  {% include 'sidebar' %}
+
 <!-- MOBILENAV -->

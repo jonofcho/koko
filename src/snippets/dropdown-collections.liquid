@@ -1,19 +1,33 @@
 <div class="page-width height--full">
-  <div class="grid height--full">
-    <div class="grid__item two-fifths height--full">
-      <div class="collections__main-links--container height--full">
-        <div class="collection__main-links--inner column-2">
-          {%- for child_link in linklists['collections'].links -%}
-          {% assign child_handle = child_link.title | handle %}
-            <a href="{{child_link.url}}"><h3 class="collections__mainlink" data-handle="{{child_handle}}">{{ child_link.title }}</h3></a>
-          {%- endfor -%}
+  <div class="">
+    <div class="">
+      <div class="grid height--full">
+        <div class="grid__item one-half height--full">
+          <div class="collections__main-links--container height--full">
+            <h2 class="collection__main-links--subheader">Shiseido</h2>
+            <div class="collection__main-links--inner column-2">
+              {%- for child_link in linklists['collections'].links -%}
+              {% assign child_handle = child_link.title | handle %}
+                <a href="{{child_link.url}}"><h3 class="collections__mainlink" data-handle="{{child_handle}}">{{ child_link.title }}</h3></a>
+              {%- endfor -%}
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="grid__item three-fifths">
-      <div class="flex align-center justify-around ptop-48">
-        {% comment %}
-        {% endcomment %}
+        <div class="grid__item one-half">
+          <div class="ptop-48">
+            <h2 class="collection__main-links--subheader">Clé de Peau Beauté</h2>
+            <div class="collection__main-links--inner ">
+              <a href="/collections/cpb-skincare"><h3 class="collections__mainlink">{{"Skincare" | upcase }}</h3></a>
+              <a href="/collections/cpb-makeup"><h3 class="collections__mainlink">{{"Makeup" | upcase }}</h3></a>
+
+              <h2 class="collection__main-links--subheader">Synactif</h2>
+              <div class="collection__main-links--inner">
+                <a href="/collections/synactif"><h3 class="collections__mainlink">SYNACTIF</h3></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>

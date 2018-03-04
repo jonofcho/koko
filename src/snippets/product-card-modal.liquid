@@ -11,9 +11,9 @@
     <div class="grid__item seven-twelfths">
       <div class="product-card__modal--details--container">
         <div class="">
-          <p class="product-card__modal--details--vendor">{{ product.vendor }}</p>
+          <p class="product-card__modal--details--vendor">{{ collectionTitle }}</p>
           <p class="product-card__modal--details--title">{{ productTitleClean}}</p>
-          <p class="product-card__modal--details--price">{{ product.price | money }}</p>
+          <p class="product-card__modal--details--price pdp__info--price"  data-product-id="{{ product.id }}">{{ product.price | money }}</p>
           <p class="product-card__modal--details--description">{{ product.description | truncate: 70 }}</p>
           <div class="text-right">
             <a href="{{product.url}}"><p class="product-card__modal--details--link">Product Details</p></a>
@@ -31,13 +31,16 @@
               {%- endif -%}
               {%- if product.variants.size > 0 -%}
               {%- for variant in product.variants -%}
+              {%- if variant.title == "Default Title" -%}
+              {%- else -%}
               <div class="grid__item one-quarter">
-                <div class="product-card__modal--variant pdp__variant--container {{single}}" data-product-id="{{product.id}}" data-variant-id="{{variant.id}}" data-variant-title="{{ variant.title }}">
+                <div class="product-card__modal--variant pdp__variant--container {{single}}" data-product-id="{{product.id}}" data-variant-id="{{variant.id}}" data-variant-title="{{ variant.title }}" data-variant-price="{{ variant.price }}">
                   <p>{{ variant.title }}</p>
                 </div>
               </div>
-              {%- endfor -%}
               {%- endif -%}
+              {%- endfor -%}
+              {% endif %}
             </div>
           </div>
           <hr class="product-card__modal--hr">

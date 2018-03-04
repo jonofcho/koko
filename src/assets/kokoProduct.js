@@ -16,8 +16,15 @@ $(document).ready(function(){
     var productId = that.data('product-id');
     var variantId = that.data('variant-id');
     var variantTitle = that.data('variant-title');
+    var variantPrice = that.data('variant-price');
+    variantPrice = variantPrice/100;
+    console.log(variantPrice.toFixed(2));
+    if (variantPrice.toFixed(2) % 1 == 0) {
+      variantPrice = "$" + variantPrice.toFixed(2);
+    }
     $('.pdp__variant--container.not').removeClass('active');
     that.addClass('active');
+    $(`.pdp__info--price[data-product-id="${productId}"]`).text(variantPrice);
     $(`.js-product-card__modal--add-to-cart[data-product-id="${productId}"]`).attr('data-variant-id', variantId);
     $(`.js-product-card__modal--add-to-cart[data-product-id="${productId}"]`).attr('data-variant-title', variantTitle);
   })
