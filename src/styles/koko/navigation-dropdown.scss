@@ -71,6 +71,8 @@
     @extend .text-light-grey;
     @extend .flex;
     @extend .align-center;
+    justify-content: flex-end;
+    padding-right: 16px;
   }
   .shop__mainlink.open-flex{
     @extend .flex;
