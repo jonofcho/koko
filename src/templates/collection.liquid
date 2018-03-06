@@ -161,6 +161,9 @@
   </div>
   {% endcomment %}
 
+  {% if paginate.pages > 1 %}
+  {% include 'pagination' %}
+  {% endif %}
 {% endpaginate %}
 </div>
 <div class="modal product-card__modal--container" id="product__modal">
@@ -172,6 +175,3 @@
   {%- include 'product-card-modal' -%}
 {%- endfor -%}
 </div>
-{% if paginate.pages > 1 %}
-{% include 'pagination' %}
-{% endif %}
