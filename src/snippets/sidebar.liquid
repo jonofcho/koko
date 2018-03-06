@@ -1,4 +1,3 @@
-
 <div id="main-menu" class="side-nav bg-white large-up--hide">
 
   <div class="sidebar__close">
@@ -16,8 +15,112 @@
           <a href="/account/login"><p class="text-black">LOGIN</p></a>
       {%- endif -%}
     </div>
+    <div class="sidebar__link">
+      {%- if customer -%}
+        {%- else  -%}
+          <a href="/account/register"><p class="text-black">REGISTER</p></a>
+      {%- endif -%}
+    </div>
     {%- for link in linklists['main-menu'].links -%}
     {% assign link_handle = link.title | handle %}
+    {%- if link.title == 'BRANDS' -%}
+    <li data-toggle="{{ link_handle }}">
+      <div class="sidebar__link js-sidebar__submenu--trigger" data-activates="{{link_handle}}">
+        <p>{{link.title}}</p>
+
+        <div class="icon--submenu-expansion" data-open="{{ link_handle }}">
+          <img src="{{ 'icon--arrow-right.svg' | asset_url }}" alt="">
+        </div>
+      </div>
+      <div id="{{link_handle}}" class="side-nav">
+        <div class="sidebar__close--submenu test">
+          <div data-target="{{link_handle}}" class="js-sub-side-nav-close">
+            <div class="sidebar__submenu--icon-close-container sidenav-close " data-target="{{link_handle}}">
+              <img src="{{ 'icon--arrow-left.svg' | asset_url }}" alt="">
+            </div>
+          </div>
+
+
+          <div class="sidebar__submenu--title">
+            <h3 class="text--reduced text-light-grey ">{{link.title}}</h3>
+          </div>
+          <div class="sidebar__submenu--placeholder">
+
+          </div>
+        </div>
+        <ul class="pleft-30 collapsible" data-collapsible="accordion">
+          <li data-toggle="shiseido">
+            <div class="sidebar__link collapsible-header">
+
+
+
+              <p class="text--semibold text-light-grey">SHISEIDO</p>
+              <div class="icon--expansion--container js-expansion--open" data-open="shiseido">
+                <img src="{{ 'icon--plus.svg' | asset_url }}" alt="">
+              </div>
+              <div class="icon--expansion--container js-expansion--close hide" data-close="shiseido">
+                <img src="{{ 'icon--minus.svg' | asset_url }}" alt="">
+              </div>
+
+
+            </div>
+            <div class="collapsible-body">
+              <ul class="pleft-30 collapsible" data-collapsible="accordion">
+
+                {%- for link in linklists['brands'].links -%}
+                <li data-toggle="{{ grand_child_handle }}">
+                  <div class="sidebar__link collapsible-header">
+                    <a href="{{ link.url }}"><p class="text-light-grey">{{ link.title }}</p></a>
+                  </div>
+                </li>
+                {%- endfor -%}
+              </ul>
+            </div>
+          </li>
+          <li>
+            <div class="sidebar__link collapsible-header">
+              <p class="text--semibold text-light-grey">{{'Clé de Peau Beauté' | upcase }}</p>
+              <div class="icon--expansion--container js-expansion--open" data-open="cdp">
+                <img src="{{ 'icon--plus.svg' | asset_url }}" alt="">
+              </div>
+              <div class="icon--expansion--container js-expansion--close hide" data-close="cdp">
+                <img src="{{ 'icon--minus.svg' | asset_url }}" alt="">
+              </div>
+            </div>
+            <div class="collapsible-body">
+              <ul class="pleft-30 collapsible" data-collapsible="accordion">
+
+
+                <li data-toggle="{{ grand_child_handle }}">
+                  <div class="sidebar__link collapsible-header">
+                    <a href="/collections/cpb-skincare"><p class="text-light-grey">SKINCARE</p></a>
+                  </div>
+                </li>
+                <li data-toggle="{{ grand_child_handle }}">
+                  <div class="sidebar__link collapsible-header">
+                    <a href="/collections/cpb-makeup"><p class="text-light-grey">MAKEUP</p></a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <div class="sidebar__link collapsible-header">
+              <a href="/collections/synactif"><p class="text--semibold text-light-grey">SYNACTIF</p></a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </li>
+
+
+
+
+
+
+
+    {%- else  -%}
+
     <li data-toggle="{{ link_handle }}">
       {%- if linklists[link_handle].links.size > 0 -%}
       <div class="sidebar__link js-sidebar__submenu--trigger" data-activates="{{link_handle}}">
@@ -113,6 +216,7 @@
         </ul>
       </div>
     </li>
+    {%- endif -%}
     {%- endfor -%}
   </ul>
 </div>

@@ -48,7 +48,9 @@ $(document).ready(function(){
      console.log(filteredCards);
 
      filteredCards.addClass('open');
-
+     if (filteredCard.length() == 0) {
+       console.log('none found');
+     }
   });
 
   $('.collection__tag--checkbox--mobile').on('change', function() {

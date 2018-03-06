@@ -3,6 +3,7 @@
 }
 .collection__product-image--container{
   @extend .relative;
+  max-height: 400px;
 }
 .collection__product-image--container--inner{
   @extend .flex-center-center;
@@ -42,16 +43,19 @@
   font-size: 16px;
   font-weight: bolder;
 }
-.collection__product--alert{
-  width: 113px;
+.collection__product--alert--container{
+  @extend .absolute;
   top: 20px;
   left: 16px;
+  background-color: $koko-text-blue;
+  z-index: 2;
+}
+.collection__product--alert{
+  width: 113px;
   height: 34px;
   @extend .flex;
   @extend .align-center;
   @extend .justify-center;
-  @extend .bg-red-orange;
-  @extend .absolute;
   @extend .text-white;
 }
 .collection__card--hover{
@@ -67,6 +71,17 @@
   cursor: pointer;
 }
 @include media-query($medium-down){
+  .collection__product--alert--container{
+    top: 10px;
+    left: 8px;
+    z-index: 2;
+  }
+  .collection__product--alert{
+    width: 62px;
+    font-size: 8px;
+    height: 23px;
+    font-weight: bolder;
+  }
   .collection__product--price{
     font-size: 12px;
   }

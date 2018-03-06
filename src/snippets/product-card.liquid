@@ -6,12 +6,16 @@
     {% assign collectionTitle = product.vendor %}
     {% assign productTitleClean = product.title %}
   {%- endif -%}
-
+  {% assign productTags = product.tags | join: ', ' | downcase %}
     <div class="relative collection__card--hover js-collection__product-card" data-tags="{{product.tags | join: ', ' | downcase }}" data-vendor="{{ product.vendor }}">
-      <div class="collection__product--alert">
-        <!-- REPLACE WITH LIQUID LATER -->
-        <p>Best Seller</p>
+      {%- if productTags contains 'best seller' -%}
+      <div class="collection__product--alert--container">
+        <div class="collection__product--alert">
+          <!-- REPLACE WITH LIQUID LATER -->
+          <p>Best Seller</p>
+        </div>
       </div>
+      {%- endif -%}
       <div class="collection__product-image--container">
         <a href="{{product.url}}">
           <div class="collection__product-image--container--inner">

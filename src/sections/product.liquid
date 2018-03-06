@@ -121,9 +121,16 @@
 
 
 {% endcomment %}
+{%- if product.title contains '_' -%}
 {% assign productTitleArr = product.title | split: '_' %}
 {% assign collectionTitle = productTitleArr.first %}
 {% assign productTitleClean = productTitleArr.last %}
+{%- else -%}
+  {% assign collectionTitle = product.vendor %}
+  {% assign productTitleClean = product.title %}
+{%- endif -%}
+{% assign productTags = product.tags | join: ', ' | downcase %}
+
 <div class="pdp__detail--container medium-down--hide">
   <div class="page-width " style="padding: 0 60px;">
     <div class="grid pdp__grid medium-down--hide">
@@ -139,7 +146,6 @@
       <div class="grid__item medium-down--one-whole">
         <div class="">
           <h3 class="pdp__info--vendor">{{ product.vendor }}</h3>
-          <h3>{{ product.collections }}</h3>
           <h2 class="pdp__info--title">{{ productTitleClean }}</h2>
         </div>
       </div>
@@ -167,12 +173,9 @@
           <div class="pdp__info--description medium-down--hide">
             <p>{{ product.description }}</p>
           </div>
-          <div class="">
-            <h2 class="pdp__info--price" data-product-id="{{product.id}}">{{ product.price | money }}</h2>
-          </div>
+
           <div class="mtop-15">
             {%- if product.variants.size > 1 -%}
-            <p class="mbot-15 medium-down--hide">Select Size:</p>
             <div class="grid">
               {%- if product.variants.size < 2 -%}
                 {% assign single = 'single' %}
@@ -180,7 +183,12 @@
                 {% assign single = 'not' %}
 
               {%- endif -%}
-              {%- if product.type == "Lipstick" -%}
+              {%- if productTags contains 'color_pallette' -%}
+              <div class="grid__item">
+                <div class="">
+                    <p class="mbot-15 medium-down--hide">Select Color:</p>
+                </div>
+              </div>
                 {%- for variant in product.variants -%}
                   {%- if variant.title contains '/' -%}
                     {% assign varArr = variant.title | split: '/' %}
@@ -192,22 +200,37 @@
                   {%- else -%}
 
                   <div class="grid__item one-sixth">
-                    <div class="mbot-8 js-pdp__variant--container pdp__variant--palette--container {{single}}" data-product-id="{{product.id}}" data-variant-id="{{ variant.id }}" data-variant-price="{{ variant.price }}" data-variant-img="{{ variant.image.src | img_url: '480x' }}">
+                    <div class="mbot-8 js-pdp__variant--container pdp__variant--palette--container {{single}} {% if forloop.first == true %}active{% endif %}" data-product-id="{{product.id}}" data-variant-id="{{ variant.id }}" data-variant-price="{{ variant.price }}" data-variant-img="{{ variant.image.src | img_url: '480x' }}">
                         <img src="{{ variant.image.src | img_url: '480x' }}" alt="">
                         {% comment %}
                         <p class="text-center">{{ varTitle }}</p>
                         {% endcomment %}
+                        {%- if variant.title contains '/' -%}
+                          {% assign varArr = variant.title | split: '/' %}
+                          {% assign varNum = varArr.last %}
+                        {%- else  -%}
+                          {% assign varNum = variant.title %}
+                        {%- endif -%}
+                        <div class="pallette-title--container">
+                          <p class="pallette-title text-white">{{ varNum }}</p>
+                        </div>
                     </div>
                   </div>
                   {%- endif -%}
                 {%- endfor -%}
               {%- else  -%}
+              <div class="grid__item">
+                <div class="">
+                  <p class="mbot-15">Select Size:</p>
+                </div>
+              </div>
+
               {%- for variant in product.variants -%}
               {%- if variant.title == "Default Title" -%}
               {%- else -%}
 
-              <div class="grid__item one-third">
-                <div class="pdp__variant--container {{single}}" data-product-id="{{product.id}}" data-variant-id="{{ variant.id }}" data-variant-price="{{ variant.price }}">
+              <div class="grid__item one-quarter">
+                <div class="pdp__variant--container {{single}} {% if forloop.first == true %}active{% endif %}" data-product-id="{{product.id}}" data-variant-id="{{ variant.id }}" data-variant-price="{{ variant.price }}">
 
                     <p class="text-center">{{variant.title}}</p>
 
@@ -218,6 +241,9 @@
               {% endif %}
             </div>
             {%- endif -%}
+          </div>
+          <div class="">
+            <h2 class="pdp__info--price" data-product-id="{{product.id}}">{{ product.price | money }}</h2>
           </div>
           <hr class="pdp__details--hr">
           <div class="flex align-center ">
@@ -257,7 +283,7 @@
           {% comment %}
           <h3 class="pdp__info--vendor">{{ product.vendor }}</h3>
           {% endcomment %}
-          <h3 class="pdp__col--title">{{ collectionTitle }}</h3>
+          <h3 class="pdp__col--title pdp__info--vendor">{{ collectionTitle }}</h3>
 
           <h2 class="pdp__info--title">{{ productTitleClean }}</h2>
         </div>
@@ -274,38 +300,48 @@
       </div>
       <div class="grid__item one-whole">
         <div class="">
-          <h2 class="pdp__info--price" data-product-id="{{ product.id }}">{{ product.price | money }}</h2>
           {%- if product.variants.size < 2 -%}
             {% assign single = 'single' %}
           {%- else -%}
             {% assign single = 'not' %}
 
           {%- endif -%}
-          {%- if product.variants.size > 0 -%}
-          <p class="mbot-15 medium-down--hide">Select Size</p>
+          {%- if product.variants.size > 1 -%}
           <div class="pdp__variants--container">
-            {%- if product.type == "Lipstick" -%}
+            {%- if productTags contains 'color_pallette' -%}
+            <p class="mbot-15">Select Color:</p>
             <div class="grid">
               {%- for variant in product.variants -%}
 
               {%- if variant.title == "Default Title" -%}
               {%- else -%}
               <div class="grid__item one-sixth">
-                <div class="mbot-8 js-pdp__variant--container pdp__variant--palette--container {{single}}" data-product-id="{{product.id}}" data-variant-id="{{ variant.id }}" data-variant-price="{{ variant.price }}" data-variant-img="{{ variant.image.src | img_url: '480x' }}">
+                <div class="mbot-8 js-pdp__variant--container pdp__variant--palette--container {{single}} {% if forloop.first == true %}active{% endif %}" data-product-id="{{product.id}}" data-variant-id="{{ variant.id }}" data-variant-price="{{ variant.price }}" data-variant-img="{{ variant.image.src | img_url: '480x' }}">
                     <img src="{{ variant.image.src | img_url: '480x' }}" alt="">
                     {% comment %}
                     <p class="text-center">{{ varTitle }}</p>
                     {% endcomment %}
+                    {%- if variant.title contains '/' -%}
+                      {% assign varArr = variant.title | split: '/' %}
+                      {% assign varNum = varArr.last %}
+                    {%- else  -%}
+                      {% assign varNum = variant.title %}
+                    {%- endif -%}
+                    <div class="pallette-title--container">
+                      <p class="pallette-title text-white">{{ varNum }}</p>
+                    </div>
                 </div>
               </div>
               {% endif %}
               {%- endfor -%}
             </div>
             {%- else  -%}
+            <p class="mbot-15">Select Size:</p>
+
             <div class="grid">
               {%- for variant in product.variants -%}
-              <div class="grid__item one-third">
-                <div class="pdp__variant--container {{single}}" data-product-id="{{product.id}}" data-variant-id="{{ variant.id }}" data-variant-price="{{ variant.price }}">
+              <div class="grid__item one-quarter">
+                <div class="pdp__variant--container {{single}} {% if forloop.first == true %}active{% endif %} " data-product-id="{{product.id}}" data-variant-id="{{ variant.id }}" data-variant-price="{{ variant.price }}">
                     {{variant.title}}
                 </div>
               </div>
@@ -315,6 +351,8 @@
 
           </div>
           {%- endif -%}
+          <h2 class="pdp__info--price" data-product-id="{{ product.id }}">{{ product.price | money }}</h2>
+
         </div>
       </div>
       <div class="grid__item one-whole">

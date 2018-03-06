@@ -46,7 +46,7 @@
                   </div>
                 </a>
                 <div class="index__location--details--container">
-                  <h2 class="text-koko-blue index__location">DIAMOND BAR | 909.598.3835</h2>
+                  <h2 class="text-koko-blue index__location">DIAMOND BAR | 909.282.5382</h2>
                   <div class="index__location--details--address">
                     <p>2773 S Diamond Bar Blvd</p>
                     <p>Diamond Bar, CA 91765</p>
@@ -66,7 +66,7 @@
                   </div>
                 </a>
                 <div class="index__location--details--container">
-                  <h2 class="text-koko-blue index__location">TORRANCE | 310.618.1004</h2>
+                  <h2 class="text-koko-blue index__location">TORRANCE | 310.343.3393</h2>
                   <div class="index__location--details--address">
                     <p>2396 Crenshaw Blvd. Ste F</p>
                     <p>Torrance, CA 90501</p>
@@ -89,6 +89,7 @@
 {% assign productTitleArr = product.title | split: '_' %}
 {% assign collectionTitle = productTitleArr.first %}
 {% assign productTitleClean = productTitleArr.last %}
+{% assign productTags = product.tags | join: ', ' | downcase %}
   {%- include 'product-card-modal' -%}
 {%- endfor -%}
 </div>

@@ -1,0 +1,22 @@
+<div class="">
+  <ul class="collapsible" data-collapsible="accordion">
+    {%- for link in linklists['makeup'].links -%}
+    {% assign linkHandle = link.title | handle %}
+    <li class="collection-nav--link--container">
+      <div class="collapsible-header">
+          <div class="collection__nav--header--container">
+            <p class="collection__nav--header">{{ link.title }}</p>
+          </div>
+      </div>
+      <div class="collapsible-body">
+        {%- for childLink in linklists[linkHandle].links -%}
+        <div class="collection__nav--subheader--container">
+          <a href="{{childLink.url}}"><p class="collection__nav--subheader">{{ childLink.title }}</p></a>
+
+        </div>
+        {%- endfor -%}
+      </div>
+    </li>
+    {%- endfor -%}
+  </ul>
+</div>

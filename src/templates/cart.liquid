@@ -3,10 +3,14 @@
     <div class="grid__item one-whole">
       <div class="cart__header--container">
         <div class="">
-          <h2 class="cart__header">Shopping Bag (<span class="js-cart-count">{{ cart.items.size }}</span>)</h2>
-          {%- if cart.total_price > 7500 -%}
+          <h2 class="cart__header">Shopping Bag (<span class="js-cart-count">{{ cart.items.size }} item(s)</span>)</h2>
+          {%- if cart.total_price > 5000 -%}
             <p class="cart__subheader">You qualify for free shipping!</p>
+            {%- else -%}
+              {% assign remainder = 5000 | minus: cart.total_price %}
+              <p class="cart__subheader">You're {{remainder | money }} off from free shipping!</p>
           {%- endif -%}
+          <p class="cart__subheader">We will match any on or offline promotional Offers from any Authorized Shiseido dealers</p>
         </div>
       </div>
     </div>
@@ -86,7 +90,9 @@
   </div>
     <div class="grid">
       <div class="grid__item">
-        <a href="/checkout"><button type="button" name="button" class="btn cart-mobile--checkout-controls--btn text-white">CHECKOUT</button></a>
+        <form class="" action="cart" method="post">
+          <button type="button" name="checkout" class="btn cart-mobile--checkout-controls--btn text-white">CHECKOUT</button></a>
+        </form>
       </div>
     </div>
   </div>

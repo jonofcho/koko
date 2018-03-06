@@ -11,6 +11,12 @@
         </div>
       </div>
       {% assign skinConcerns = 'Acne & Oil Control, All Signs of Aging, Dark Spots & Sun Spots, Dryness & Dehydration, Redness & Discoloartion, Uneven Skin Tone, Lifting & Firming' %}
+      {%- for tag in collection.all_tags -%}
+        {%- if skinConcerns contains tag -%}
+        {%- else -%}
+          {% assign hide = 'hide' %}
+        {% endif %}
+      {% endfor %}
       <div class="collection__filters">
         <div class="flex align-center space-between">
           <!-- <select class="collection__filter--selection js-collection__filter--selection" name="skin-type">
@@ -21,7 +27,7 @@
             <option value="normal">Normal</option>
             <option value="sensitive">Sensitive</option>
           </select> -->
-          <select class="collection__filter--selection js-collection__filter--selection" name="skin-concern">
+          <select class="collection__filter--selection js-collection__filter--selection {{hide}}" name="skin-concern">
             <option default value="">Skin concern</option>
             {%- for tag in collection.all_tags -%}
               {%- if skinConcerns contains tag -%}
@@ -93,7 +99,7 @@
           </a>
         </div>
         <div class="collection__filter--mobile--control--normalize">
-          <h3>Filter By</h3>
+          <h3>Sort By</h3>
         </div>
         <div class="collection__filter--mobile--control--normalize text-right">
           <h4 class="text--reduced">Reset</h4>
@@ -148,7 +154,13 @@
             <div class="">
               {%- for tag in collection.all_tags -%}
                 {%- if skinConcerns contains tag -%}
-                <div class="flex align-center mbot-24">
+                {%- else -%}
+                  {% assign hide = 'hide' %}
+                {% endif %}
+              {% endfor %}
+              {%- for tag in collection.all_tags -%}
+                {%- if skinConcerns contains tag -%}
+                <div class="flex align-center mbot-24 {{hide}}">
                   <input id="checkbox-{{tag | downcase}}" class="mright-16 collection__tag--checkbox--mobile" type="checkbox" name="skin-concern" value="{{ tag | downcase }}">
                   <label for="checkbox-{{tag | downcase}}">{{ tag }}</label>
                 </div>

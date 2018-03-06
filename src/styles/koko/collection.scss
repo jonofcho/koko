@@ -141,3 +141,24 @@ input[type=checkbox] {
     color: $koko-text-blue;
   }
 }
+.collection-nav--link--container{
+  margin-bottom: 16px;
+}
+.collection__nav--header--container{
+  width: 100%;
+  border-bottom: 1px solid #757474;
+  margin-bottom: 16px;
+  color: $koko-text-blue;
+}
+.collection__nav--header{
+  font-weight: bolder;
+  @extend .text--semi-large;
+  // height: 24px;
+}
+.collection__nav--subheader{
+  padding-left: 16px;
+  @extend .text--default;
+  height: 18px;
+  margin-bottom: 8px;
+  @extend .text-default;
+}

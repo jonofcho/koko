@@ -63,6 +63,7 @@
 
 }
 .collection__main-links--subheader{
+  margin: 0 auto !important;
   margin-bottom: 32px !important;
   max-width: 200px;
   text-decoration: underline;
@@ -186,4 +187,7 @@
   width: 9px;
   top: 12px;
   right: 0;
+}
+.collection__main-link--subheader--link{
+  @extend .text-dark-grey;
 }

@@ -4,25 +4,27 @@
       <div class="grid height--full">
         <div class="grid__item one-half height--full">
           <div class="collections__main-links--container height--full">
-            <h2 class="collection__main-links--subheader">Shiseido</h2>
-            <div class="collection__main-links--inner column-2">
-              {%- for child_link in linklists['collections'].links -%}
-              {% assign child_handle = child_link.title | handle %}
-                <a href="{{child_link.url}}"><h3 class="collections__mainlink" data-handle="{{child_handle}}">{{ child_link.title }}</h3></a>
-              {%- endfor -%}
+            <h2 class="collection__main-links--subheader text-center"><a class="collection__main-link--subheader--link" href="/collections/shiseido">Shiseido</a></h2>
+            <div class="width--full ">
+              <div class="collection__main-links--inner column-2">
+                {%- for child_link in linklists['brands'].links -%}
+                {% assign child_handle = child_link.title | handle %}
+                  <a href="{{child_link.url}}"><h3 class="collections__mainlink" data-handle="{{child_handle}}">{{ child_link.title }}</h3></a>
+                {%- endfor -%}
+              </div>
             </div>
           </div>
         </div>
         <div class="grid__item one-half">
           <div class="ptop-48">
-            <h2 class="collection__main-links--subheader">Clé de Peau Beauté</h2>
+            <h2 class="collection__main-links--subheader"><a class="collection__main-link--subheader--link" href="/collections/cle-de-peau">Clé de Peau Beauté</a></h2>
             <div class="collection__main-links--inner ">
-              <a href="/collections/cpb-skincare"><h3 class="collections__mainlink">{{"Skincare" | upcase }}</h3></a>
-              <a href="/collections/cpb-makeup"><h3 class="collections__mainlink">{{"Makeup" | upcase }}</h3></a>
+              <a href="/collections/cpb-skincare"><h3 class="collections__mainlink text-center">{{"Skincare" | upcase }}</h3></a>
+              <a href="/collections/cpb-makeup"><h3 class="collections__mainlink text-center">{{"Makeup" | upcase }}</h3></a>
 
-              <h2 class="collection__main-links--subheader">Synactif</h2>
+              <h2 class="collection__main-links--subheader text-center"><a class="collection__main-link--subheader--link" href="/collections/synactif">Synactif</a></h2>
               <div class="collection__main-links--inner">
-                <a href="/collections/synactif"><h3 class="collections__mainlink">SYNACTIF</h3></a>
+                <a href="/collections/synactif"><h3 class="collections__mainlink text-center">SYNACTIF</h3></a>
               </div>
             </div>
           </div>

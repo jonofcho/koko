@@ -1,11 +1,12 @@
 
+{% paginate collection.products by 36 %}
 <div class="theme__breadcrumbs--container medium-down--hide">
   {%- include 'breadcrumbs' -%}
 </div>
 <div class="page-width">
 
 {% capture arr %}
-{%- for product in products -%}
+{%- for product in collection.products -%}
   {% assign colArr = product.title | split: '_' %}
   {{ colArr.first }}
 {%- endfor -%}
@@ -13,7 +14,6 @@
 
 {% assign tagFilter = arr | split: " " | uniq  %}
 
-{% paginate collection.products by 50 %}
 {% comment %}
   <header role="banner">
 
@@ -37,8 +37,11 @@
   </div>
   <div class="grid">
     <div class="grid__item medium-down--hide large-up--one-fifth">
+      {% comment %}
       <h3 class="margin-none text--large">{{ collection.title }}</h3>
+      {% endcomment %}
       <div class="collection__tags--container">
+        {% comment %}
         {% if collection.all_tags.size > 0 %}
         <ul class="padding-none">
           <li {% unless current_tags %} class="active pbot-15" {%- else -%} class="pbot-15"{% endunless %}>
@@ -66,17 +69,18 @@
               {% endif %}
             {% endfor %}
           </ul>
-
         {% endif %}
+        {% endcomment %}
+        {%- include 'collection-nav' -%}
       </div>
     </div>
     <div class="grid__item large-up--hide">
-      <p class="collection__product--count">{{ collection.products.size }} Item(s) out of {{ collection.products_count }}</p>
+      <p class="collection__product--count">{{ collection.products.size }} Item(s)</p>
     </div>
     <div class="grid__item medium-down--one-whole large-up--four-fifths">
       <div class="collection__list--container">
         <div class="grid">
-          {%- for product in products -%}
+          {%- for product in collection.products -%}
           <div class="grid__item medium-down--one-half large-up--one-third">
             {% include 'product-card' %}
           </div>
@@ -157,9 +161,6 @@
   </div>
   {% endcomment %}
 
-  {% if paginate.pages > 1 %}
-    {% include 'pagination' %}
-  {% endif %}
 {% endpaginate %}
 </div>
 <div class="modal product-card__modal--container" id="product__modal">
@@ -167,6 +168,10 @@
 {% assign productTitleArr = product.title | split: '_' %}
 {% assign collectionTitle = productTitleArr.first %}
 {% assign productTitleClean = productTitleArr.last %}
+{% assign productTags = product.tags | join: ', ' | downcase %}
   {%- include 'product-card-modal' -%}
 {%- endfor -%}
 </div>
+{% if paginate.pages > 1 %}
+{% include 'pagination' %}
+{% endif %}

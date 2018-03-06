@@ -1,5 +1,5 @@
 .navigation__dropdown--container{
-  height: 400px;
+  height: 350px;
   @extend .hidden;
   @extend .z-depth-2;
   h1,h2,h3,h4,h5{
@@ -26,10 +26,11 @@
     @extend .flex;
     @extend .align-center;
     // margin-bottom: 16px;
-    height: 34px;
+    height: 50px;
   }
   .sublink{
-    margin-bottom: 16px;
+    // margin-bottom: 16px;
+    height: 25px;
     @extend .text-light-grey;
   }
   // skin-concern specific
@@ -39,9 +40,12 @@
   }
   .skin-concern__main-links--inner{
     height: 300px;
+    width: 500px;
+    margin: 0 auto;
     @extend .is-block;
   }
   .skin-concern__main-links--container{
+    @extend flex-center-center;
     padding-top: 48px;
   }
 
@@ -56,6 +60,8 @@
   }
   .collections__main-links--container{
     padding-top: 48px;
+    width: 500px;
+    margin: 0 auto;
   }
   // shop specific
   .shop__mainlink{

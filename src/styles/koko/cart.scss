@@ -1,3 +1,6 @@
+.cart__subheader{
+  @extend .text--semi-large;
+}
 .cart__item-list--container{
   // margin-top: 75px;
 }
@@ -119,6 +122,7 @@
     position: fixed;
     height: 90px;
     bottom: 0;
+    background-color: white;
     width: 100%;
       box-shadow: 0 -3px 6px 0 rgba(0, 0, 0, 0.23);
     padding: 8px 20px;
