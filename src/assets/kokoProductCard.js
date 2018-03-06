@@ -34,11 +34,6 @@ $(document).ready(function(){
     var that = $(this);
     product = {
       productId : that.data("variant-id"),
-      productImage :   that.data('product-image'),
-      productVendor : that.data('product-vendor'),
-      productTitle : that.data('product-title'),
-      variantTitle: that.data('variant-title'),
-      productPrice : that.data('product-price'),
       productQuantity: that.data('product-quantity'),
     }
     console.log(product);
