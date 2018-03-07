@@ -194,7 +194,7 @@
     }
 
     {% if template contains 'cart' %}
-    document.getElementById("continue-shopping").href = sessionStorage.collection;
+    $('.continue-shopping').attr('href', sessionStorage.collection);
     {% endif %}
 
     }
