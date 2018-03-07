@@ -182,6 +182,24 @@
   {%- endif -%}
   {% if template == 'cart' %}
     {{"kokoCart.js" | asset_url | script_tag }}
+    <script type="text/javascript">
+    if(Storage !== undefined) {
+
+    {% if template contains 'collection' %}
+    sessionStorage.collection = "{{ collection.url }}";
+    {% endif %}
+
+    if(sessionStorage.collection === undefined){
+      sessionStorage.collection = "/collections/all";
+    }
+
+    {% if template contains 'cart' %}
+    document.getElementById("continue-shopping").href = sessionStorage.collection;
+    {% endif %}
+
+    }
+
+    </script>
   {% endif %}
   {% if template == 'index' %}
     {{ "kokoIndex.js" | asset_url | script_tag }}

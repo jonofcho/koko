@@ -79,6 +79,11 @@
 .btn--checkout--default{
     background-color: $koko-text-blue;
 }
+.btn--checkout--continue{
+  background-color: white;
+  border: 1px solid $koko-text-blue;
+  color: $koko-text-blue;
+}
 .cart__order-summary--container{
   margin-top: 57px;
 }
@@ -120,7 +125,7 @@
   }
   .cart-mobile--checkout-controls--container{
     position: fixed;
-    height: 90px;
+    // height: 90px;
     bottom: 0;
     background-color: white;
     width: 100%;
@@ -134,6 +139,12 @@
   background: transparent;
   border: none;
   background-color: $koko-text-blue;
+}
+.cart-mobile--checkout-controls--btn.continue{
+  width: 98%;
+  background: white;
+  border: 1px solid $koko-text-blue;
+  color: $koko-text-blue;
 }
 .cart-mobile--checkout-controls--details{
   height: 28px;
