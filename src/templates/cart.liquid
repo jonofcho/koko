@@ -3,7 +3,7 @@
     <div class="grid__item one-whole">
       <div class="cart__header--container">
         <div class="">
-          <h2 class="cart__header">Shopping Bag (<span class="js-cart-count">{{ cart.items.size }} item(s)</span>)</h2>
+          <h2 class="cart__header">Shopping Bag: <span class="js-cart-count">{{ cart.items.size }} item(s)</span></h2>
           {%- if cart.total_price > 5000 -%}
             <p class="cart__subheader">You qualify for free shipping!</p>
             {%- else -%}
@@ -72,6 +72,7 @@
               </div>
             </div>
           </div>
+          {% comment %}
           <!-- <div class="cart__payment--promo medium-down--hide">
             <p class="text--bold text-medium-grey mbot-8">Promo Code</p>
             <div class="payment__promo--input">
@@ -79,6 +80,7 @@
               <button class="payment__promo--btn " type="button" name="button">Apply</button>
             </div>
           </div> -->
+          {% endcomment %}
         </div>
       </div>
   </div>
@@ -90,9 +92,14 @@
   </div>
     <div class="grid">
       <div class="grid__item">
-        <form class="" action="cart" method="post">
+        <!-- <form class="" action="checkout" method="post">
           <button type="button" name="checkout" class="btn cart-mobile--checkout-controls--btn text-white">CHECKOUT</button></a>
-        </form>
+        </form> -->
+        <div class="">
+          <a href="/checkout">
+            <button type="button" name="checkout" class="btn cart-mobile--checkout-controls--btn text-white">CHECKOUT</button></a>
+          </a>
+        </div>
       </div>
     </div>
   </div>

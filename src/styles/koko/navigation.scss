@@ -183,6 +183,7 @@
   height: 48px;
 }
 .navigation__cart-dropdown--remove-item{
+  cursor: pointer;
   @extend .absolute;
   width: 9px;
   top: 12px;

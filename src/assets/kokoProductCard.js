@@ -55,9 +55,10 @@ $(document).ready(function(){
   //   clearTimeout(timeOut);
   // })
 
-  $('.js-navigation__cart-dropdown--remove-item').on('click', function(){
+  $('.navigation__cart-dropdown--cards--container').on('click', '.js-navigation__cart-dropdown--remove-item', function(){
     var that = $(this);
     var productId = that.data('card-id');
+    console.log('asdfsadf');
     $.post('/cart/change.js', {
       quantity: 0,
       id: productId,

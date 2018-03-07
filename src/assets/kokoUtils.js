@@ -8,6 +8,9 @@ function openCartDropdown(){
       console.log('timeOut');
       $dropdown.removeClass('active');
     }, 3000);
+    $dropdown.on('mouseenter', function(){
+      clearTimeout(timeOut);
+    })
   }
   $dropdown.on('mouseenter', function(){
     clearTimeout(timeOut);
@@ -65,6 +68,7 @@ function addToCart(obj, that, mobile){
         var items = data.items;
         for (var i = 0; i < items.length; i++) {
           var item = items[i];
+          var itemId = item.id;
           var productTitle = item.product_title;
           var variantTitle = item.variant_title;
           var productImage = item.image;
@@ -74,11 +78,11 @@ function addToCart(obj, that, mobile){
           productPrice = "$" + productPrice.toFixed(2);
 
           var productQuantity = item.quantity;
-          cartItems += `<div class="navigation__cart-dropdown--item-details relative js-navigation__cart-dropdown--card">
+          cartItems += `<div class="navigation__cart-dropdown--item-details relative js-navigation__cart-dropdown--card" data-card-id="${itemId}">
               <div class="navigation__cart-dropdown--added-item-image">
                 <img class="width--full" src="${productImage}" alt="">
               </div>
-              <div class="navigation__cart-dropdown--item--detail--container">
+              <div class="navigation__cart-dropdown--item--detail--container js-navigation__cart-dropdown--item--detail--container">
                 <div class="mright-8">
                   <div class="flex justify-between text--small text--bold mbot-8">
                     <p class-"js-navigation__cart-dropdown--item--vendor">${productVendor}</p>
@@ -92,7 +96,7 @@ function addToCart(obj, that, mobile){
                 <div class="">
                   <p class="text--bold text--small js-navigation__cart-dropdown--item--price">${productPrice}</p>
                 </div>
-                <div class="navigation__cart-dropdown--remove-item">
+                <div class="navigation__cart-dropdown--remove-item js-navigation__cart-dropdown--remove-item" data-card-id="${itemId}">
                   <img src="//cdn.shopify.com/s/files/1/2526/6552/t/2/assets/icon--close.svg?5336051900686237504" alt="">
                 </div>
               </div>
