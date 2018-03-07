@@ -87,8 +87,8 @@
 </div>
 <div class="cart-mobile--checkout-controls--container large-up--hide">
   <div class="cart-mobile--checkout-controls--details">
-    <p class="text--smaller text-light-grey">2 items</p>
-    <p class="text--smaller text-light-grey">subtotal: {{ cart.total_price | money }}</p>
+    <p class="text--smaller text-light-grey"><span class="js-cart-mobile--checkout--total-items">{{ cart.item_count }}</span> items</p>
+    <p class="text--smaller text-light-grey">subtotal: <span class="js-cart-mobile--checkout--total-price">{{ cart.total_price | money }}</span></p>
   </div>
     <div class="grid">
       <div class="grid__item">

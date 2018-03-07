@@ -93,7 +93,8 @@
               </div>
             </div>
             <div class="product-card__modal--add-to-cart js-product-card__modal--add-to-cart" data-product-id="{{product.id}}" data-variant-title="{{ product.variants.first.title }}" data-variant-id="{{product.variants.first.id}}" data-product-image="{{product.images.first.src | img_url: 'small'}}" data-product-vendor="{{product.vendor}}" data-product-title="{{productTitleClean}}" data-product-quantity="1" data-product-price="{{ product.price | money }}">
-              <p>ADD TO CART</p>
+              <p class="text-incomplete">ADD TO CART</p>
+              <p class="text-completed">ADDED TO CART</p>
             </div>
           </div>
         </div>

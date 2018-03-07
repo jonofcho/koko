@@ -24,11 +24,13 @@
           <div class="cart__item-details--quantity">
             <div class="flex align-center">
               <p>50ml</p>
-              <div class="cart__item-quantity-incrementor medium-down--hide">
+              <div class="cart__item-quantity-incrementor">
                 <p>{{ item.quantity }}</p>
+                {% comment %}
                 <div class="cart__arrow--container">
                   <img src="{{ 'icon--arrow-down.svg' | asset_url }}" alt="">
                 </div>
+                {% endcomment %}
               </div>
             </div>
             <p class="cart__item--price">{{ item.price | money }}</p>

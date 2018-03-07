@@ -53,7 +53,10 @@ function addToCart(obj, that, mobile){
       openMobileCartAlert();
 
       that.removeAttr('disabled');
-
+      that.addClass('completed');
+      timeOut = setTimeout(function(){
+        that.removeClass('completed');
+      }, 3000);
       var cartItems = "";
       $.ajax({
         url: '/cart.js',

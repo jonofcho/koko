@@ -94,6 +94,7 @@
   @extend .flex;
   @extend .justify-center;
   @extend .align-center;
+  cursor: pointer;
 }
 .pdp__add-to-cart{
   height: 48px;

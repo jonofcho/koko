@@ -76,7 +76,7 @@ main { /* 1 */
   display: block;
 }
 .theme__main-content--container{
-  padding-top: 100px;
+  padding-top: 120px;
 }
 @include media-query($large-up) {
   .theme__main-content--container{

@@ -13,6 +13,20 @@ $(document).ready(function(){
         $(`.cart__item--divider[data-remove="${variantId}"]`).remove();
         cartCount -= 1;
         $('.js-cart-count').text(cartCount);
+        $.ajax({
+          url: '/cart.js',
+          type: 'GET',
+          // data: postData,
+          // dataType:"json",
+        }).done(function(data){
+          var data = JSON.parse(data);
+          var totalPrice = data.total_price;
+          totalPrice = totalPrice/100;
+          totalPrice = "$" + totalPrice.toFixed(2);
+          var totalItems = data.item_count;
+          $('.js-cart-mobile--checkout--total-items').text(totalItems + ' items');
+          $('.js-cart-mobile--checkout--total-price').text(totalPrice);
+        })
       });
   })
 })

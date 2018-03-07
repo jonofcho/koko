@@ -78,7 +78,7 @@
   }
   .collection__product--alert{
     width: 62px;
-    font-size: 8px;
+    font-size: 6px;
     height: 23px;
     font-weight: bolder;
   }
@@ -139,6 +139,20 @@
 .product-card__modal--add-to-cart{
   @extend .pdp__add-to-cart;
   @extend .flex-center-center;
+  .text-completed{
+    display: none;
+  }
+}
+.product-card__modal--add-to-cart.completed{
+  background-color: white;
+  border: 1px solid $koko-text-blue;
+  color: $koko-text-blue;
+  .text-incomplete{
+    display: none;
+  }
+  .text-completed{
+    display: block;
+  }
 }
 .product-card__modal--exit{
   width: 16px;

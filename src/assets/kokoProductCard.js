@@ -64,7 +64,19 @@ $(document).ready(function(){
       id: productId,
     }).done(function(){
       console.log('success');
-      $(`.js-navigation__cart-dropdown--card[data-card-id="${productId}"]`).remove();
+      $.ajax({
+        url: '/cart.js',
+        type: 'GET',
+        // data: postData,
+        // dataType:"json",
+      }).done(function(data){
+        var data = JSON.parse(data);
+        var totalPrice = data.total_price;
+        totalPrice = totalPrice/100;
+        totalPrice = "$" + totalPrice.toFixed(2);
+        $('.navigation__cart--dropdown--total-price').text(totalPrice);
+        $(`.js-navigation__cart-dropdown--card[data-card-id="${productId}"]`).remove();
+      })
     }).fail(function(res , req){
       console.log(res);
       console.log(req);
@@ -79,6 +91,8 @@ $(document).ready(function(){
     $('.modal-overlay').trigger('click');
   })
   $('.modal').modal({
-
+     complete: function() {
+        $('.product-card__modal--add-to-cart').removeClass('completed')
+      }
   });
 })
