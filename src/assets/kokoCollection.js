@@ -16,14 +16,13 @@ $(document).ready(function(){
 
 
   $('.collection__vendor--checkbox--mobile').on('change', function() {
-     $('.collection__vendor--checkbox--mobile').not(this).prop('checked', false);
+     $('.collection__vendor--checkbox--mobile').not($(this)).prop('checked', false);
      var that = $(this);
      var selector = that.attr('name');
      var val = that.val();
      if (that.prop('checked') == false) {
        val = "";
      }
-     console.log(val);
      filterObject[selector] = val;
      // console.log(filterObject);
      cards.removeClass('open');
@@ -48,9 +47,9 @@ $(document).ready(function(){
      console.log(filteredCards);
 
      filteredCards.addClass('open');
-     if (filteredCard.length() == 0) {
-       console.log('none found');
-     }
+     // if (filteredCards.length() == 0) {
+     //   console.log('none found');
+     // }
   });
 
   $('.collection__tag--checkbox--mobile').on('change', function() {

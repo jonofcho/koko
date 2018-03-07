@@ -1,5 +1,6 @@
 .cart__subheader{
   @extend .text--semi-large;
+  margin-bottom: 16px;
 }
 .cart__item-list--container{
   // margin-top: 75px;
@@ -125,7 +126,7 @@
   }
   .cart-mobile--checkout-controls--container{
     position: fixed;
-    // height: 90px;
+    z-index: 10;
     bottom: 0;
     background-color: white;
     width: 100%;

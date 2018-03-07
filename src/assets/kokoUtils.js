@@ -50,7 +50,10 @@ function addToCart(obj, that, mobile){
       data: postData,
       dataType:"json",
     }).done(function(data){
-      openMobileCartAlert();
+      if (mobile) {
+        location.href = "/cart"
+      }
+      // openMobileCartAlert();
 
       that.removeAttr('disabled');
       that.addClass('completed');
