@@ -76,6 +76,9 @@ $(document).ready(function(){
         totalPrice = "$" + totalPrice.toFixed(2);
         $('.navigation__cart--dropdown--total-price').text(totalPrice);
         $(`.js-navigation__cart-dropdown--card[data-card-id="${productId}"]`).remove();
+        if (location.href.indexOf('cart') > -1) {
+          location.reload();
+        }
       })
     }).fail(function(res , req){
       console.log(res);
