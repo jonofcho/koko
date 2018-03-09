@@ -10,28 +10,40 @@
       {% assign itemSplitTitle = item.title | split: '_' %}
       {% assign itemTitle = itemSplitTitle.last %}
       {% assign itemTitleArr = itemTitle | split: '-' %}
+
       <div class="navigation__cart-dropdown--item-details relative js-navigation__cart-dropdown--card" data-card-id="{{item.id}}">
-        <a href="{{item.url}}">
-          <div class="navigation__cart-dropdown--added-item-image">
-            <img class="width--full" src="{{ item.image |  img_url: 'small' }}" alt="">
-          </div>
-        </a>
-        <div class="navigation__cart-dropdown--item--detail--container js-navigation__cart-dropdown--item--detail--container">
-          <div class="mright-8">
-            <div class="flex justify-between text--small text--bold mbot-8">
-              <p>{{item.vendor}}</p>
+        <div class="navigation__cart-dropdown--remove-item js-navigation__cart-dropdown--remove-item" data-card-id="{{item.id}}">
+          <img src="{{ 'icon--close.svg' | asset_url }}" alt="">
+        </div>
+        <div class="flex">
+          <a href="{{item.url}}">
+            <div class="navigation__cart-dropdown--added-item-image">
+              <img class="width--full" src="{{ item.image |  img_url: 'small' }}" alt="">
             </div>
-            <div class="text--semi-small mbot-8">
-              <p class="mbot-8">{{ itemTitleArr.first }}</p>
-              <p>{{ itemTitleArr.last }}</p>
+          </a>
+          <div class="navigation__cart-dropdown--item--detail--container js-navigation__cart-dropdown--item--detail--container">
+            <div class="mright-8">
+              <div class="flex justify-between text--small text--bold mbot-8">
+                <p>{{item.vendor}}</p>
+              </div>
+              <div class="text--semi-small mbot-8">
+                <p class="mbot-8">{{ itemTitleArr.first }}</p>
+                <p>{{ itemTitleArr.last }}</p>
+              </div>
+              <div class="flex-center-between width--full">
+                <div class="flex-center">
+                  <p class="text--smaller text--reduced text-lighter-grey">QTY:</p>
+                   <input class="js-navigation__cart-dropdown--card--quantity--changer navigation__cart-dropdown--card--quantity--changer js-navigation__cart-dropdown--card--quantity" type="number" name="" value="{{item.quantity}}" data-card-id="{{item.id}}" data-quantity="{{item.quantity}}">
+                </div>
+                <div class="">
+                  <button type="button" name="button" class="navigation__cart-dropdown--card--quantity--changer--apply js-navigation__cart-dropdown--card--quantity--changer--apply" data-item-id="{{ item.id }}">CHANGE</button>
+                  <button type="button" name="button" class="navigation__cart-dropdown--card--quantity--changer--apply complete hide" data-item-id="{{ item.id }}">CHANGED</button>
+                </div>
+              </div>
             </div>
-            <p class="text--smaller text--reduced text-lighter-grey">QTY: <span class="js-navigation__cart-dropdown--card--quantity" data-card-id="{{item.id}}" data-quantity="{{item.quantity}}">{{item.quantity}}</span></p>
-          </div>
-          <div class="">
-            <p class="text--bold text--small">{{item.price | money }}</p>
-          </div>
-          <div class="navigation__cart-dropdown--remove-item js-navigation__cart-dropdown--remove-item" data-card-id="{{item.id}}">
-            <img src="{{ 'icon--close.svg' | asset_url }}" alt="">
+            <div class="">
+              <p class="text--bold text--small">{{item.price | money }}</p>
+            </div>
           </div>
         </div>
       </div>
