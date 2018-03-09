@@ -11,7 +11,7 @@ $(document).ready(function(){
     var $quantity = that.siblings('.js-quantity--current');
     var currentQuantity = parseInt($quantity.text());
     currentQuantity += 1;
-    console.log(currentQuantity);
+    // console.log(currentQuantity);
     updateProductQuantity($quantity , currentQuantity)
     $quantity.text(currentQuantity);
   })
@@ -36,7 +36,7 @@ $(document).ready(function(){
       productId : that.data("variant-id"),
       productQuantity: that.data('product-quantity'),
     }
-    console.log(product);
+    // console.log(product);
     var mobile = that.data('mobile');
     addToCart(product, that , mobile)
   })
@@ -58,12 +58,12 @@ $(document).ready(function(){
   $('.navigation__cart-dropdown--cards--container').on('click', '.js-navigation__cart-dropdown--remove-item', function(){
     var that = $(this);
     var productId = that.data('card-id');
-    console.log('asdfsadf');
+    // console.log('asdfsadf');
     $.post('/cart/change.js', {
       quantity: 0,
       id: productId,
     }).done(function(){
-      console.log('success');
+      // console.log('success');
       $.ajax({
         url: '/cart.js',
         type: 'GET',
@@ -81,11 +81,11 @@ $(document).ready(function(){
         }
       })
     }).fail(function(res , req){
-      console.log(res);
-      console.log(req);
-      console.log('no bueno');
+      // console.log(res);
+      // console.log(req);
+      // console.log('no bueno');
     }).always(function(){
-      console.log('something happened');
+      // console.log('something happened');
       $(`.js-navigation__cart-dropdown--card[data-card-id="${productId}"]`).remove();
 
     })

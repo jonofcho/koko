@@ -1,7 +1,7 @@
 
 $(document).ready(function(){
   $('.collection__filter--selection--mobile option').on('click', function(){
-    console.log('click');
+    // console.log('click');
     $('.collection__filter--selection--mobile').trigger('change');
   })
 
@@ -44,7 +44,7 @@ $(document).ready(function(){
          return tags.indexOf(filterObject['skin-concern']) > -1;
        }
      })
-     console.log(filteredCards);
+     // console.log(filteredCards);
 
      filteredCards.addClass('open');
      // if (filteredCards.length() == 0) {
@@ -81,7 +81,7 @@ $(document).ready(function(){
          return tags.indexOf(filterObject['skin-concern']) > -1;
        }
      })
-     console.log(filteredCards);
+     // console.log(filteredCards);
 
      filteredCards.addClass('open');
   });
@@ -114,7 +114,7 @@ $(document).ready(function(){
         return tags.indexOf(filterObject['skin-concern']) > -1;
       }
     })
-    console.log(filteredCards);
+    // console.log(filteredCards);
 
     filteredCards.addClass('open');
 

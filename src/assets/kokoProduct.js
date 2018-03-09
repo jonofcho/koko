@@ -2,7 +2,7 @@ $(document).ready(function(){
   $('.js-product__card--controls--quick-view').on('click', function(){
     var that = $(this);
     var id = that.data('id');
-    console.log(id);
+    // console.log(id);
     $('.product-card__modal--inner').addClass('hide');
     $(`.product-card__modal--inner#${id}`).removeClass('hide');
 
@@ -18,7 +18,7 @@ $(document).ready(function(){
     var variantTitle = that.data('variant-title');
     var variantPrice = that.data('variant-price');
     variantPrice = variantPrice/100;
-    console.log(variantPrice.toFixed(2));
+    // console.log(variantPrice.toFixed(2));
     if (variantPrice.toFixed(2) % 1 == 0) {
       variantPrice = "$" + variantPrice.toFixed(2);
     }

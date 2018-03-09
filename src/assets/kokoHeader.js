@@ -106,7 +106,7 @@ $(document).ready(function(){
     openCartDropdown()
   })
   $('.js-navigation__icon--outer-container--cart').on('mouseleave', function(){
-    console.log('asdfasdf left');
+    // console.log('asdfasdf left');
     closeCartDropdown()
   })
 })

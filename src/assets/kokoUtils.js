@@ -5,7 +5,7 @@ function openCartDropdown(){
   $dropdown.addClass('active');
   if (!$dropdown.is(":hover")) {
     timeOut = setTimeout(function(){
-      console.log('timeOut');
+      // console.log('timeOut');
       $dropdown.removeClass('active');
     }, 8000);
     $dropdown.on('mouseenter', function(){
@@ -46,7 +46,7 @@ function updateCartDropdown(){
     totalPrice = totalPrice/100;
     totalPrice = "$" + totalPrice.toFixed(2);
     var cartItems = "";
-    console.log(data);
+    // console.log(data);
     var items = data.items;
     for (var i = 0; i < items.length; i++) {
       var item = items[i];
@@ -105,7 +105,7 @@ function updateCartDropdown(){
 }
 
 function addToCart(obj, that, mobile){
-  console.log(mobile);
+  // console.log(mobile);
     that.attr('disabled', true);
     var productId = obj.productId;
     var productQuantity = obj.productQuantity;
@@ -134,10 +134,10 @@ function addToCart(obj, that, mobile){
       openCartDropdown();
 
     }).fail(function(data){
-      console.log(data);
-      console.log('fail');
+      // console.log(data);
+      // console.log('fail');
     }).always(function(data){
-      console.log('post complete');
+      // console.log('post complete');
     })
 
 }
@@ -160,7 +160,7 @@ function updateProductQuantity($currentDiv , quantity){
 
   var that = $currentDiv
   var targetId = that.data('product-id');
-  console.log(quantity);
+  // console.log(quantity);
   $(`.js-product-card__modal--add-to-cart[data-variant-id="${targetId}"]`).attr('data-product-quantity', quantity);
 
 }
