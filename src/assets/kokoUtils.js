@@ -7,7 +7,7 @@ function openCartDropdown(){
     timeOut = setTimeout(function(){
       console.log('timeOut');
       $dropdown.removeClass('active');
-    }, 3000);
+    }, 8000);
     $dropdown.on('mouseenter', function(){
       clearTimeout(timeOut);
     })
