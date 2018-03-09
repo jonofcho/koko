@@ -120,6 +120,6 @@ $(document).ready(function(){
   })
   $('.js-navigation__icon--outer-container--cart').on('mouseleave', function(){
     // console.log('asdfasdf left');
-    closeCartDropdown()
+    // closeCartDropdown()
   })
 })

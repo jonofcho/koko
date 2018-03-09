@@ -61,6 +61,7 @@ function updateCartDropdown(){
       productPrice = "$" + productPrice.toFixed(2);
 
       var productQuantity = item.quantity;
+      var options = ""
 
       cartItems += `<div class="navigation__cart-dropdown--item-details relative js-navigation__cart-dropdown--card" data-card-id="${itemId}">
 
@@ -84,7 +85,7 @@ function updateCartDropdown(){
               </div>
               <div class="flex-center-between width--full">
                 <select class="js-navigation__dropdown--quantity--update navigation__dropdown--quantity--update" name="" data-item-id="${itemId}">
-                  <option value="${productQuantity}" default>${productQuantity}</option>
+                  <option value="${productQuantity}" selected="selected">${productQuantity}</option>
                   <option value="0">0</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
