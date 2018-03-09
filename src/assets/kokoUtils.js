@@ -61,10 +61,7 @@ function updateCartDropdown(){
       productPrice = "$" + productPrice.toFixed(2);
 
       var productQuantity = item.quantity;
-      var options = "";
-      for (var i = 0; i < 11; i++) {
-        options += `<option value="${i}">${i}</option>`;
-      }
+
       cartItems += `<div class="navigation__cart-dropdown--item-details relative js-navigation__cart-dropdown--card" data-card-id="${itemId}">
 
         <div class="navigation__cart-dropdown--remove-item js-navigation__cart-dropdown--remove-item" data-card-id="${itemId}">
@@ -86,10 +83,20 @@ function updateCartDropdown(){
                 <p>${variantTitle}</p>
               </div>
               <div class="flex-center-between width--full">
-              <select class="js-navigation__dropdown--quantity--update navigation__dropdown--quantity--update" name="" data-item-id="{{item.id}}">
-                <option value="${productQuantity}" default>${productQuantity}</option>`
-
-              `</select>
+                <select class="js-navigation__dropdown--quantity--update navigation__dropdown--quantity--update" name="" data-item-id="${itemId}">
+                  <option value="${productQuantity}" default>${productQuantity}</option>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                </select>
               </div>
             </div>
             <div class="">
@@ -104,6 +111,38 @@ function updateCartDropdown(){
   })
 }
 
+function removeFromCart(productId){
+  $.post('/cart/change.js', {
+    quantity: 0,
+    id: productId,
+  }).done(function(){
+    // console.log('success');
+    $.ajax({
+      url: '/cart.js',
+      type: 'GET',
+      // data: postData,
+      // dataType:"json",
+    }).done(function(data){
+      var data = JSON.parse(data);
+      var totalPrice = data.total_price;
+      totalPrice = totalPrice/100;
+      totalPrice = "$" + totalPrice.toFixed(2);
+      $('.navigation__cart--dropdown--total-price').text(totalPrice);
+      $(`.js-navigation__cart-dropdown--card[data-card-id="${productId}"]`).remove();
+      if (location.href.indexOf('cart') > -1) {
+        location.reload();
+      }
+    })
+  }).fail(function(res , req){
+    // console.log(res);
+    // console.log(req);
+    // console.log('no bueno');
+  }).always(function(){
+    // console.log('something happened');
+    $(`.js-navigation__cart-dropdown--card[data-card-id="${productId}"]`).remove();
+
+  })
+}
 function addToCart(obj, that, mobile){
   // console.log(mobile);
     that.attr('disabled', true);
@@ -130,6 +169,7 @@ function addToCart(obj, that, mobile){
       timeOut = setTimeout(function(){
         that.removeClass('completed');
       }, 3000);
+      $('.js-navigation__cart-dropdown--quantity-added-to-cart').text(productQuantity);
       updateCartDropdown();
       openCartDropdown();
 

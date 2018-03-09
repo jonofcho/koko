@@ -13,11 +13,18 @@ $(document).ready(function(){
   //     $(`.navigation__cart-dropdown--card--quantity--changer--apply[data-item-id="${itemId}"].complete`).addClass('hide');
   //   }, 3000);
   // })
-  $('.navigation__cart-dropdown--cards--container').on('change','.js-navigation__dropdown--quantity--update', function(){
+
+  $('.cart__item-details--quantity , .navigation__cart-dropdown').on('change','.js-navigation__dropdown--quantity--update', function(){
     var that = $(this);
     var itemId = that.data('item-id');
     var quantity = that.val();
-    cartDropdownUpdateQuantity(itemId , quantity);
+    console.log('change');
+    if (quantity == 0) {
+      removeFromCart(itemId);
+    }
+    else {
+      cartDropdownUpdateQuantity(itemId , quantity);
+    }
   })
 
   $('.js-navigation__search-icon--container').on('click', function () {

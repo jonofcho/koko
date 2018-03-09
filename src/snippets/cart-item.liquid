@@ -42,7 +42,7 @@
               {% endcomment %}
               <select class="js-navigation__dropdown--quantity--update navigation__dropdown--quantity--update" name="" data-item-id="{{item.id}}">
                 <option value="{{item.quantity}}" default>{{item.quantity}}</option>
-                {%- for i in (1..10) -%}
+                {%- for i in (0..10) -%}
                   <option value="{{i}}">{{i}}</option>
                 {%- endfor -%}
               </select>

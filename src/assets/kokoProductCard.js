@@ -59,36 +59,7 @@ $(document).ready(function(){
     var that = $(this);
     var productId = that.data('card-id');
     // console.log('asdfsadf');
-    $.post('/cart/change.js', {
-      quantity: 0,
-      id: productId,
-    }).done(function(){
-      // console.log('success');
-      $.ajax({
-        url: '/cart.js',
-        type: 'GET',
-        // data: postData,
-        // dataType:"json",
-      }).done(function(data){
-        var data = JSON.parse(data);
-        var totalPrice = data.total_price;
-        totalPrice = totalPrice/100;
-        totalPrice = "$" + totalPrice.toFixed(2);
-        $('.navigation__cart--dropdown--total-price').text(totalPrice);
-        $(`.js-navigation__cart-dropdown--card[data-card-id="${productId}"]`).remove();
-        if (location.href.indexOf('cart') > -1) {
-          location.reload();
-        }
-      })
-    }).fail(function(res , req){
-      // console.log(res);
-      // console.log(req);
-      // console.log('no bueno');
-    }).always(function(){
-      // console.log('something happened');
-      $(`.js-navigation__cart-dropdown--card[data-card-id="${productId}"]`).remove();
-
-    })
+    removeFromCart(productId);
   })
   $('.js-product-card__modal--exit').on('click', function(){
     $('.modal-overlay').trigger('click');

@@ -2,7 +2,7 @@
   <div class="flex mbot-18">
     <div class="navigation__cart-dropdown-check-icon">
     </div>
-    <p>1 Item Added To Cart</p>
+    <p class=""><span class="js-navigation__cart-dropdown--quantity-added-to-cart">0</span> Item Added To Cart</p>
   </div>
   <div class="navigation__cart-dropdown--cards--container">
     {%- for item in cart.items -%}
@@ -41,7 +41,7 @@
                 </div> -->
                 <select class="js-navigation__dropdown--quantity--update" name="" data-item-id="{{item.id}}">
                   <option value="{{item.quantity}}" default>{{item.quantity}}</option>
-                  {%- for i in (1..10) -%}
+                  {%- for i in (0..10) -%}
                     <option value="{{i}}">{{i}}</option>
                   {%- endfor -%}
                 </select>
