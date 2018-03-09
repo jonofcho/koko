@@ -3,15 +3,15 @@
 function openCartDropdown(){
   var $dropdown = $('.navigation__cart-dropdown');
   $dropdown.addClass('active');
-  if (!$dropdown.is(":hover")) {
-    timeOut = setTimeout(function(){
-      // console.log('timeOut');
-      $dropdown.removeClass('active');
-    }, 8000);
-    $dropdown.on('mouseenter', function(){
-      clearTimeout(timeOut);
-    })
-  }
+  // if (!$dropdown.is(":hover")) {
+  //   timeOut = setTimeout(function(){
+  //     // console.log('timeOut');
+  //     $dropdown.removeClass('active');
+  //   }, 8000);
+  //   $dropdown.on('mouseenter', function(){
+  //     clearTimeout(timeOut);
+  //   })
+  // }
   // $dropdown.on('mouseenter', function(){
   //   clearTimeout(timeOut);
   // })
