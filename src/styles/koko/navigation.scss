@@ -18,7 +18,7 @@
   top: 0;
 }
 .theme__navigation{
-  height: 4.714rem;
+  height: 3.714rem;
   // padding: 0 40px;
   @extend .flex;
   @extend .justify-between;
@@ -27,7 +27,7 @@
   @extend .bg-white;
 }
 .theme__promotion-bar{
-  height: 40px;
+  height: 30px;
   letter-spacing: 1.5px;
   background-color: $koko-bg-blue;
   color: $koko-text-blue;
@@ -35,7 +35,7 @@
 }
 
 .navigation__link{
-  height: 76px;
+  height: 3.714rem;
   margin-left: 28px;
   margin-right: 28px;
   &:hover{

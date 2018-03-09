@@ -6,7 +6,7 @@
           <div class="collections__main-links--container height--full">
             <h2 class="collection__main-links--subheader text-center"><a class="collection__main-link--subheader--link" href="/collections/shiseido">Shiseido</a></h2>
             <div class="width--full ">
-              <div class="collection__main-links--inner column-2">
+              <div class="collection__main-links--inner column-3">
                 {%- for child_link in linklists['brands'].links -%}
                 {% assign child_handle = child_link.title | handle %}
                   <a href="{{child_link.url}}"><h3 class="collections__mainlink" data-handle="{{child_handle}}">{{ child_link.title }}</h3></a>
