@@ -2,16 +2,22 @@
 
 $(document).ready(function(){
 
-  $('.navigation__cart-dropdown--cards--container , .cart__item-list--container ').on('click', '.js-navigation__cart-dropdown--card--quantity--changer--apply', function(){
-    var itemId = $(this).data('item-id');
-    var quantity = $(`.js-navigation__cart-dropdown--card--quantity--changer[data-card-id='${itemId}']`).val();
+  // $('.navigation__cart-dropdown--cards--container , .cart__item-list--container ').on('click', '.js-navigation__cart-dropdown--card--quantity--changer--apply', function(){
+  //   var itemId = $(this).data('item-id');
+  //   var quantity = $(`.js-navigation__cart-dropdown--card--quantity--changer[data-card-id='${itemId}']`).val();
+  //   cartDropdownUpdateQuantity(itemId , quantity);
+  //   $(`.navigation__cart-dropdown--card--quantity--changer--apply[data-item-id="${itemId}"]`).addClass('hide');
+  //   $(`.navigation__cart-dropdown--card--quantity--changer--apply[data-item-id="${itemId}"].complete`).removeClass('hide');
+  //   timeOut = setTimeout(function(){
+  //     $(`.navigation__cart-dropdown--card--quantity--changer--apply[data-item-id="${itemId}"]`).removeClass('hide');
+  //     $(`.navigation__cart-dropdown--card--quantity--changer--apply[data-item-id="${itemId}"].complete`).addClass('hide');
+  //   }, 3000);
+  // })
+  $('.navigation__cart-dropdown--cards--container').on('change','.js-navigation__dropdown--quantity--update', function(){
+    var that = $(this);
+    var itemId = that.data('item-id');
+    var quantity = that.val();
     cartDropdownUpdateQuantity(itemId , quantity);
-    $(`.navigation__cart-dropdown--card--quantity--changer--apply[data-item-id="${itemId}"]`).addClass('hide');
-    $(`.navigation__cart-dropdown--card--quantity--changer--apply[data-item-id="${itemId}"].complete`).removeClass('hide');
-    timeOut = setTimeout(function(){
-      $(`.navigation__cart-dropdown--card--quantity--changer--apply[data-item-id="${itemId}"]`).removeClass('hide');
-      $(`.navigation__cart-dropdown--card--quantity--changer--apply[data-item-id="${itemId}"].complete`).addClass('hide');
-    }, 3000);
   })
 
   $('.js-navigation__search-icon--container').on('click', function () {

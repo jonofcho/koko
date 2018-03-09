@@ -61,6 +61,10 @@ function updateCartDropdown(){
       productPrice = "$" + productPrice.toFixed(2);
 
       var productQuantity = item.quantity;
+      var options = "";
+      for (var i = 0; i < 11; i++) {
+        options += `<option value="${i}">${i}</option>`;
+      }
       cartItems += `<div class="navigation__cart-dropdown--item-details relative js-navigation__cart-dropdown--card" data-card-id="${itemId}">
 
         <div class="navigation__cart-dropdown--remove-item js-navigation__cart-dropdown--remove-item" data-card-id="${itemId}">
@@ -82,14 +86,10 @@ function updateCartDropdown(){
                 <p>${variantTitle}</p>
               </div>
               <div class="flex-center-between width--full">
-                <div class="flex-center">
-                  <p class="text--smaller text--reduced text-lighter-grey">QTY:</p>
-                   <input class="js-navigation__cart-dropdown--card--quantity--changer navigation__cart-dropdown--card--quantity--changer js-navigation__cart-dropdown--card--quantity" type="number" name="" value="${productQuantity}" data-card-id="${itemId}" data-quantity="${productQuantity}">
-                </div>
-                <div class="">
-                  <button type="button" name="button" class="navigation__cart-dropdown--card--quantity--changer--apply js-navigation__cart-dropdown--card--quantity--changer--apply" data-item-id="${itemId}">CHANGE</button>
-                  <button type="button" name="button" class="navigation__cart-dropdown--card--quantity--changer--apply complete hide" data-item-id="${itemId}">CHANGED</button>
-                </div>
+              <select class="js-navigation__dropdown--quantity--update navigation__dropdown--quantity--update" name="" data-item-id="{{item.id}}">
+                <option value="${productQuantity}" default>${productQuantity}</option>`
+
+              `</select>
               </div>
             </div>
             <div class="">

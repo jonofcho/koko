@@ -24,6 +24,7 @@
           <div class="cart__item-details--quantity">
             <div class="flex align-center">
               <p>50ml</p>
+              {% comment %}
               <form class="" action="/cart" method="post">
                 <div class="cart__item-quantity-incrementor">
 
@@ -31,13 +32,20 @@
                   <div class="">
                     <button type="submit" name="button" class="navigation__cart-dropdown--card--quantity--changer--apply js-cart-dropdown--card--quantity--changer--apply" data-item-id="{{ item.id }}">CHANGE</button>
                   </div>
-                  {% comment %}
+
                   <div class="cart__arrow--container">
                     <img src="{{ 'icon--arrow-down.svg' | asset_url }}" alt="">
                   </div>
-                  {% endcomment %}
+
                 </div>
               </form>
+              {% endcomment %}
+              <select class="js-navigation__dropdown--quantity--update navigation__dropdown--quantity--update" name="" data-item-id="{{item.id}}">
+                <option value="{{item.quantity}}" default>{{item.quantity}}</option>
+                {%- for i in (1..10) -%}
+                  <option value="{{i}}">{{i}}</option>
+                {%- endfor -%}
+              </select>
             </div>
             <p class="cart__item--price">{{ item.price | money }}</p>
           </div>
