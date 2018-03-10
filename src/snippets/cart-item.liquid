@@ -1,6 +1,10 @@
 {% assign itemTitleArr = item.title | split: '_'  %}
 {% assign itemColl = itemTitleArr[0] %}
 {% assign itemTitle = itemTitleArr[1] %}
+{%- if itemTitle contains '-' -%}
+  {% assign varTitleArr = itemTitle | split '-' %}
+  {% assign varTitle = varTitleArr[1] %}
+{%- endif -%}
 
 
 
@@ -23,7 +27,7 @@
           </div>
           <div class="cart__item-details--quantity">
             <div class="flex align-center">
-              <p>50ml</p>
+              <p>{{ varTitle }}</p>
               {% comment %}
               <form class="" action="/cart" method="post">
                 <div class="cart__item-quantity-incrementor">
@@ -41,7 +45,7 @@
               </form>
               {% endcomment %}
 
-              <select class="js-navigation__dropdown--quantity--update navigation__dropdown--quantity--update" name="" data-item-id="{{item.id}}" {%- if item.title contains 'Gift' -%} disabled style="color:white;"{%- endif -%}>
+              <select class="js-navigation__dropdown--quantity--update navigation__dropdown--quantity--update" name="" data-item-id="{{item.id}}">
                 {%- for i in (0..10) -%}
                   {%- if i == item.quantity -%}
                   <option value="{{i}}" selected="selected">{{i}}</option>
