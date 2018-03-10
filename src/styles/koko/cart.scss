@@ -1,3 +1,37 @@
+.cart__gifts--container{
+  padding: 32px;
+  @include media-query($medium-down) {
+    padding: 0;
+  }
+}
+.cart__gifts--header{
+  padding-top: 16px;
+  color: $koko-text-blue;
+}
+.cart__gift--cta{
+  background-color: $koko-text-blue;
+  color: white;
+  border: none;
+  padding: 16px 24px;
+  display: none;
+  font-size: 12px;
+  @include media-query($medium-down) {
+    display: block;
+  }
+}
+.cart__gift--cta--container{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  @extend .flex-center-center;
+  &:hover{
+    .cart__gift--cta{
+      display: block;
+    }
+  }
+}
 .cart__subheader{
   @extend .text--semi-large;
   margin-bottom: 16px;

@@ -40,7 +40,8 @@
                 </div>
               </form>
               {% endcomment %}
-              <select class="js-navigation__dropdown--quantity--update navigation__dropdown--quantity--update" name="" data-item-id="{{item.id}}">
+
+              <select class="js-navigation__dropdown--quantity--update navigation__dropdown--quantity--update" name="" data-item-id="{{item.id}}" {%- if item.title contains 'Gift' -%} disabled style="color:white;"{%- endif -%}>
                 {%- for i in (0..10) -%}
                   {%- if i == item.quantity -%}
                   <option value="{{i}}" selected="selected">{{i}}</option>
@@ -49,6 +50,7 @@
                   {%- endif -%}
                 {%- endfor -%}
               </select>
+
             </div>
             <p class="cart__item--price">{{ item.price | money }}</p>
           </div>

@@ -14,11 +14,31 @@
         </div>
       </div>
     </div>
-
   </div>
   <div class="grid">
       <div class="grid__item large-up--two-thirds medium-down--one-whole">
+        <div class="cart__gifts--container large-up--hide">
+            <div class="bg-white">
+              <h2 class="cart__gifts--header">You qualify for a free gift!</h2>
+              <div class="grid">
+                {%- for product in collections['promotion-gifts'].products -%}
+                  <div class="grid__item one-whole">
+                    <div class="mbot-16">
+                      <div class="relative">
+                        <img src="{{product.images.first.src | img_url: '480x'}}" alt="">
+                        <div class="cart__gift--cta--container">
+                            <button class="js-cart__gift--cta cart__gift--cta" data-variant-id="{{product.variants.first.id}}" type="button" name="button">ADD GIFT TO CART</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {%- endfor -%}
+              </div>
+
+            </div>
+        </div>
         <hr class="cart__item--divider">
+
         <div class="cart__item-list--container">
 
           {% for item in cart.items %}
@@ -35,6 +55,26 @@
       </div>
       <div class="grid__item large-up--one-third medium-down--hide">
         <div class="cart__payment--details">
+          <div class="cart__gifts--container">
+              <div class="bg-white">
+                <h2>You qualify for a free gift!</h2>
+                <div class="grid">
+                  {%- for product in collections['promotion-gifts'].products -%}
+                    <div class="grid__item one-whole">
+                      <div class="mbot-16">
+                        <div class="relative">
+                          <img src="{{product.images.first.src | img_url: '480x'}}" alt="">
+                          <div class="cart__gift--cta--container">
+                              <button class="js-cart__gift--cta cart__gift--cta" data-variant-id="{{product.variants.first.id}}" type="button" name="button">ADD GIFT TO CART</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  {%- endfor -%}
+                </div>
+
+              </div>
+          </div>
           <div class="cart__payment--options">
             <div class="pickup">
 
