@@ -44,8 +44,6 @@
 }
 .pdp__image{
   @extend .flex-center-center;
-  background-color: #FCF8FC;
-  padding: 65px;
   // height: 565px;
   // width: 455px;
 }
@@ -203,7 +201,6 @@
     max-width: 270px;
     height: auto;
     margin: 0 auto;
-    padding: 10px;
   }
   .pdp__info--price{
     font-weight: bolder;
