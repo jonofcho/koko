@@ -2,7 +2,7 @@
   <div class="flex mbot-18">
     <div class="navigation__cart-dropdown-check-icon">
     </div>
-    <p class=""><span class="js-navigation__cart-dropdown--quantity-added-to-cart">0</span> Item Added To Cart</p>
+    <p class=""><span class="js-navigation__cart-dropdown--quantity-added-to-cart">{{ cart.item_count }}</span> Item(s) in Cart</p>
   </div>
   <div class="navigation__cart-dropdown--cards--container">
     {%- for item in cart.items -%}

@@ -170,7 +170,12 @@ function addToCart(obj, that, mobile){
       timeOut = setTimeout(function(){
         that.removeClass('completed');
       }, 3000);
-      $('.js-navigation__cart-dropdown--quantity-added-to-cart').text(productQuantity);
+      var cartTotal = $('.js-navigation__cart-dropdown--quantity-added-to-cart').text();
+      cartTotal = parseInt(cartTotal);
+      console.log('HERERERERE');
+      console.log(cartTotal);
+      var newTotal = cartTotal + productQuantity;
+      $('.js-navigation__cart-dropdown--quantity-added-to-cart').text(newTotal);
       updateCartDropdown();
       openCartDropdown();
 
